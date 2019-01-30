@@ -18,8 +18,8 @@ import utils.ParsingParameters;
 import basicHLVLPackage.DecompositionType;
 import basicHLVLPackage.GroupType;
 import basicHLVLPackage.HlvlBasicFactory;
-import basicHLVLPackage.HlvlBasicKeys;
 import basicHLVLPackage.IHlvlParser;
+import basicHLVLPackage.HlvlBasicKeys;
 
 /**
  * This class parses splot models to HLVL.
