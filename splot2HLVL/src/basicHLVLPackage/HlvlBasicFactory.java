@@ -105,5 +105,22 @@ public class HlvlBasicFactory implements IhlvlBasicFactory, HlvlBasicKeys{
 
 		return out; 
 	}
+	@Override
+	public String getHeader(String targetName) {
+		return MODEL_LABEL + SPACE + targetName + "\n" + ELEMENTS_LABEL;
+		
+	}
+	@Override
+	public String getRelationsLab() {
+		return RELATIONS_LABEL;
+	}
+	@Override
+	public String getBasicOperationsBlock() {
+		
+		return  OPERATIONS_LABEL + 
+		VALID_MODEL +
+		COMMA +
+		NUM_CONF;
+	}
 
 }

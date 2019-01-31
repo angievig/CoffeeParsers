@@ -30,7 +30,7 @@ import basicHLVLPackage.HlvlBasicKeys;
  * Jan 2019
  */
 
-public class Splot2HlvlParser implements IHlvlParser, HlvlBasicKeys{
+public class Splot2HlvlParser implements IHlvlParser{
 	/**
 	 * params is an object with the parsing parameters
 	 */
@@ -91,20 +91,17 @@ public class Splot2HlvlParser implements IHlvlParser, HlvlBasicKeys{
 			traverseConstraints(featureModel);	
 			
 			// formating the output file
-			hlvlProgram.append(MODEL_LABEL);
-			hlvlProgram.append(params.getTargetName());
-			hlvlProgram.append("\n");
-			//including the elements
-			hlvlProgram.append(ELEMENTS_LABEL);
+			// including the Header
+			hlvlProgram.append(factory.getHeader(params.getTargetName()));
+			// including the elements
 			hlvlProgram.append(elements.toString());
 			//including the relations
-			hlvlProgram.append(RELATIONS_LABEL);
+			hlvlProgram.append(factory.getRelationsLab());
 			hlvlProgram.append(relations.toString());
 			//including the basic operations
-			hlvlProgram.append(OPERATIONS_LABEL);
-			hlvlProgram.append(VALID_MODEL);
-			hlvlProgram.append(COMMA);
-			hlvlProgram.append(NUM_CONF);
+			hlvlProgram.append(factory.getBasicOperationsBlock());
+			
+			//Writing the Hlvl program in a file
 			writeFile();
 		
 	}

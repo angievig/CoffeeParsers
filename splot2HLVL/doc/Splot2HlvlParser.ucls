@@ -48,7 +48,7 @@
   </enumeration>  
   <interface id="6" language="java" name="basicHLVLPackage.IHlvlParser" project="splot2HLVL" 
     file="/splot2HLVL/src/basicHLVLPackage/IHlvlParser.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1562" y="40"/>    
+    <position height="-1" width="-1" x="504" y="672"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
