@@ -1,0 +1,18 @@
+r0: coreElements(Mobile phone)
+boolean Calls
+boolean GPS
+boolean Screen
+boolean Media
+boolean MP3
+boolean Camera
+boolean Basic
+boolean High resolution
+r1:group(Media,[MP3, Camera])[1,*]
+r2:group(GPS,[Basic, High resolution])[1,*]
+r0:decomposition(Mobile phone,[Calls])<1>
+r1:decomposition(Mobile phone,[GPS])<0>
+r2:decomposition(Mobile phone,[Screen])<1>
+r3:decomposition(Mobile phone,[Media])<0>
+r4: mutex(GPS, Basic)
+r5: implies(High resolution,Camera)
+

@@ -1,0 +1,93 @@
+<mxGraphModel>
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="feature" parent="0"/>
+    <root label="Perro Caliente" type="root" id="1">
+      <mxCell style="" vertex="1" parent="feature">
+        <mxGeometry x="370" y="10" width="100" height="35" as="geometry"/>
+      </mxCell>
+    </root>
+    <general label="Panes" type="general" id="2">
+      <mxCell style="" vertex="1" parent="feature">
+        <mxGeometry x="190" y="70" width="100" height="35" as="geometry"/>
+      </mxCell>
+    </general>
+    <general label="Carnes" type="general" id="3">
+      <mxCell style="" vertex="1" parent="feature">
+        <mxGeometry x="370" y="80" width="100" height="35" as="geometry"/>
+      </mxCell>
+    </general>
+    <general label="Salsas" type="general" id="4">
+      <mxCell style="" vertex="1" parent="feature">
+        <mxGeometry x="520" y="70" width="100" height="35" as="geometry"/>
+      </mxCell>
+    </general>
+    <general label="Papetas" type="general" id="5">
+      <mxCell style="" vertex="1" parent="feature">
+        <mxGeometry x="650" y="60" width="100" height="35" as="geometry"/>
+      </mxCell>
+    </general>
+    <general label="Integral" type="general" id="6">
+      <mxCell style="" vertex="1" parent="feature">
+        <mxGeometry x="130" y="150" width="100" height="35" as="geometry"/>
+      </mxCell>
+    </general>
+    <general label="Pan de Oregano" type="general" id="7">
+      <mxCell style="" vertex="1" parent="feature">
+        <mxGeometry x="310" y="160" width="100" height="35" as="geometry"/>
+      </mxCell>
+    </general>
+    <general label="Vegetariana" type="general" id="8">
+      <mxCell style="" vertex="1" parent="feature">
+        <mxGeometry x="440" y="160" width="100" height="35" as="geometry"/>
+      </mxCell>
+    </general>
+    <general label="Carne de cerdo" type="general" id="9">
+      <mxCell style="" vertex="1" parent="feature">
+        <mxGeometry x="560" y="160" width="100" height="35" as="geometry"/>
+      </mxCell>
+    </general>
+    <rel_general_root type="relation" relType="mandatory" id="10">
+      <mxCell edge="1" parent="feature" source="2" target="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+    </rel_general_root>
+    <rel_general_root type="relation" relType="mandatory" id="11">
+      <mxCell edge="1" parent="feature" source="3" target="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+    </rel_general_root>
+    <rel_general_root type="relation" relType="mandatory" id="12">
+      <mxCell edge="1" parent="feature" source="4" target="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+    </rel_general_root>
+    <rel_general_root type="relation" relType="optional" id="13">
+      <mxCell edge="1" parent="feature" source="5" target="1">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+    </rel_general_root>
+    <rel_general_general type="relation" relType="optional" id="14">
+      <mxCell edge="1" parent="feature" source="6" target="2">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+    </rel_general_general>
+    <rel_general_general type="relation" relType="optional" id="15">
+      <mxCell edge="1" parent="feature" source="7" target="2">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+    </rel_general_general>
+    <rel_general_general type="relation" relType="optional" id="16">
+      <mxCell edge="1" parent="feature" source="8" target="3">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+    </rel_general_general>
+    <rel_general_general type="relation" relType="optional" id="17">
+      <mxCell edge="1" parent="feature" source="9" target="3">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+    </rel_general_general>
+    <mxCell id="component" parent="0" visible="0"/>
+    <mxCell id="binding_feature_component" parent="0" visible="0"/>
+  </root>
+</mxGraphModel>
