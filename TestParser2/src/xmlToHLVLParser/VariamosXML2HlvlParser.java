@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import basicHLVLPackage.DecompositionType;
 import basicHLVLPackage.GroupType;
 import basicHLVLPackage.HlvlBasicFactory;
+import basicHLVLPackage.HlvlBasicKeys;
 import basicHLVLPackage.IHlvlParser;
 import basicHLVLPackage.IhlvlBasicFactory;
 import utils.FileUtils;
@@ -18,47 +19,30 @@ import utils.ParsingParameters;
  * @version 1.5, 19/01/2019
  * @author Joan David Colina Echeverry
  */
-public class VariamosXML2HlvlParser implements IHlvlParser {
+public class VariamosXML2HlvlParser implements IHlvlParser, HlvlBasicKeys {
 
 	private ArrayList<Dependecy> importantXmlDependecy;
 
 	private ArrayList<Element> importantXmlElement;
 
 	private XmlReader xmlReader;
-	
+
 	private ParsingParameters params;
-	
-	private ArrayList<String> code;
+
+	private StringBuilder codee;
 
 	public VariamosXML2HlvlParser(ParsingParameters params) {
-		code = new ArrayList<String>();
-		this.params =params;
+
+		codee = new StringBuilder();
+		this.params = params;
 	}
-	
-	
+
 	public void writeFile() {
-		String lineCode="";
-		for (int i =0; i< code.size();i++) {
-			
-			lineCode = lineCode + code.get(i);
-		}
-		FileUtils.writeHLVLProgram(params.getOutputPath(),
-				lineCode);
+
+		FileUtils.writeHLVLProgram(params.getOutputPath(), codee.toString());
 		System.out.println("Conversion complete");
 	}
-//	public void validateHlvlCode() {
-//		ArrayList<String> aux= new ArrayList<String>();
-//		String lineCode ="model -----";
-//		aux.add(lineCode);
-//		lineCode = "Elements:";
-//		aux.add(lineCode);
-//		for (int i = 0; i < code.size(); i++) {
-//		lineCode = code.get(i);
-//		if (lineCode.startsWith("boolean")) {
-//			
-//		}
-//		}
-//	}
+
 	/**
 	 * this method is responsible for load the XML fiel and inicializate the
 	 * ArrayList
@@ -77,39 +61,29 @@ public class VariamosXML2HlvlParser implements IHlvlParser {
 	 * 
 	 * @return ArrayList<CharSequence> that contain all HLVL code lines
 	 */
-	public ArrayList<CharSequence> converterXmlDependecyToHLVLCode() {
+	public void converterXmlDependecyToHLVLCode() {
 		IhlvlBasicFactory converter = new HlvlBasicFactory();
-		ArrayList<CharSequence> result = new ArrayList<CharSequence>();
-		CharSequence aux = "";
 		for (int i = 0; i < importantXmlDependecy.size(); i++) {
-			String target = searchForName(importantXmlDependecy.get(i).getTarget());
-			String source = searchForName(importantXmlDependecy.get(i).getSource());
+			String target = getValidName(searchForName(importantXmlDependecy.get(i).getTarget()));
+			String source = getValidName(searchForName(importantXmlDependecy.get(i).getSource()));
 			String caso = importantXmlDependecy.get(i).getRelType();
 			switch (caso) {
 			case "mandatory":
-				aux = converter.getDecomposition(target, source,DecompositionType.Mandatory);
+				codee.append(converter.getDecomposition(target, source, DecompositionType.Mandatory));
 				break;
 			case "optional":
-				aux = converter.getDecomposition(target, source,DecompositionType.Optional);
+				codee.append(converter.getDecomposition(target, source, DecompositionType.Optional));
+
 				break;
 			case "requires":
-				aux = converter.getImplies(target, source);
+				codee.append(converter.getImplies(target, source));
+
 				break;
 			case "excludes":
-				aux = converter.getMutex(target, source);
+				codee.append(converter.getMutex(target, source));
 				break;
 			}
-			// TODO: Solucionar problema con null.
-			if (aux != null && aux != "") {
-				System.out.println(aux);
-
-				result.add(aux);
-				code.add(""+aux);
-			}
-			aux = "";
 		}
-
-		return result;
 	}
 
 	/**
@@ -134,105 +108,82 @@ public class VariamosXML2HlvlParser implements IHlvlParser {
 	 * 
 	 * @return ArrayList<CharSequence> that contain all HLVL code lines
 	 */
-	public ArrayList<CharSequence> converterXmlElementToHLVLCode() {
+	public void converterXmlElementToHLVLCode() {
 		IhlvlBasicFactory converter = new HlvlBasicFactory();
-		ArrayList<CharSequence> bundle = new ArrayList<CharSequence>();
-		ArrayList<CharSequence> result = new ArrayList<CharSequence>();
-		CharSequence aux = "";
-		CharSequence auxBundle = "";
-
+		codee.append("elements:");
 		for (int i = 0; i < importantXmlElement.size(); i++) {
 			String name = importantXmlElement.get(i).getName();
+			name = getValidName(name);
 			String caso = importantXmlElement.get(i).getType();
 			switch (caso) {
 			case "root":
-				aux = converter.getCore(name);
+				codee.append(converter.getCore(name));
+				codee.append(converter.getElement(name));
 				break;
 			case "general":
-				aux = converter.getElement(name);
+				codee.append(converter.getElement(name));
 				break;
 			case "leaf":
-				aux = converter.getElement(name);
+				codee.append(converter.getElement(name));
 				break;
 			case "bundle":
-				if (importantXmlElement.get(i).getBundleType().endsWith("OR")) {
-					
-					auxBundle = converter.getGroup(findRootBundle(importantXmlElement.get(i)), findGroupsElements(importantXmlElement.get(i)),GroupType.Or);
-				}else {
-					auxBundle = converter.getGroup(findRootBundle(importantXmlElement.get(i)), findGroupsElements(importantXmlElement.get(i)),GroupType.Alternative);
-				}
-			break;
-		}
-			// TODO: Solucionar problema con null.
-			if (aux != null && aux != "") {
-				System.out.println(aux);
-
-				result.add(aux);
-				code.add(""+aux);
+				if (importantXmlElement.get(i).getBundleType().endsWith("OR"))
+					codee.append(converter.getGroup(findRootBundle(importantXmlElement.get(i)),
+							findGroupsElements(importantXmlElement.get(i)), GroupType.Or));
+				else
+					codee.append(converter.getGroup(findRootBundle(importantXmlElement.get(i)),
+							findGroupsElements(importantXmlElement.get(i)), GroupType.Alternative));
+				break;
 			}
-			if (auxBundle != null && auxBundle != "") {
-				System.out.println(auxBundle);
-
-				bundle.add(auxBundle);
-			//	code.add(""+aux);
-			}
-			aux = "";
-			auxBundle ="";
 		}
-		
-		for (int i = 0; i < bundle.size(); i++) {
-			result.add(bundle.get(i));
-			code.add(""+bundle.get(i));
-		}
-		return result;
-
 	}
+
 	public String findRootBundle(Element element) {
 		String name = "";
-		if (element.getBundleType()!=null||!element.getBundleType().equals("")) {
-				String id = element.getId();
-			
+		if (element.getBundleType() != null || !element.getBundleType().equals("")) {
+			String id = element.getId();
 			for (int i = 0; i < importantXmlDependecy.size(); i++) {
-				
+
 				if (id.equals(importantXmlDependecy.get(i).getSource())) {
 					name = searchForName(importantXmlDependecy.get(i).getTarget());
 					break;
 				}
-			
-		}
+
 			}
+		}
+		name = getValidName(name);
 		return name;
 	}
+
 	public ArrayList<String> findGroupsElements(Element element) {
 		ArrayList<String> result = new ArrayList<String>();
-		if (element.getBundleType()!=null||!element.getBundleType().equals("")) {
+		if (element.getBundleType() != null || !element.getBundleType().equals("")) {
 			String id = element.getId();
-			
+
 			for (int i = 0; i < importantXmlDependecy.size(); i++) {
-				
+
 				if (id.equals(importantXmlDependecy.get(i).getTarget())) {
 					String name = searchForName(importantXmlDependecy.get(i).getSource());
+					name = getValidName(name);
 					result.add(name);
 				}
 			}
 		}
-		
+
 		return result;
 	}
 
-
 	@Override
 	public String getValidName(String name) {
-		
-		return null;
+		return name.replaceAll(" ", "_").replaceAll("\\-", "Minus").replaceAll("\\+", "Plus").replaceAll("\\.", "dot")
+				.replaceAll("/", "");
 	}
-
 
 	@Override
 	public void parse() throws Exception {
+		codee.append(HlvlBasicKeys.MODEL_LABEL);
 		converterXmlElementToHLVLCode();
 		converterXmlDependecyToHLVLCode();
 		writeFile();
-		
 	}
 }

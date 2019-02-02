@@ -14,7 +14,7 @@ class TestxmlToHLVLParser {
 		int i=1;
 		ParsingParameters params= new ParsingParameters();
 		
-		params.setInputPath("test-data/xmlToHLVLFiles/documentoXML3.xml");
+		params.setInputPath("test-data/xmlToHLVLFiles");
 		params.setOutputPath("test-data/HLVLFiles/");
 		params.setTargetName("testXmlToHLVL"+i);
 		

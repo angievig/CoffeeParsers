@@ -73,13 +73,16 @@ public class XmlReader {
 		importantXmlDependecy = new ArrayList<Dependecy>();
 		importantXmlElement = new ArrayList<Element>();
 		
-		//FileUtils fileUtils = new FileUtils();
-		//List<File> xmlFiel= fileUtils.readFileFromDirectory(path);
+		FileUtils fileUtils = new FileUtils();
+		List<File> xmlFiel= fileUtils.readFileFromDirectory(path);
+		//System.out.println("--"+xmlFiel.get(0));
 		try {
 			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-			File xmlFiel = new File(path);
-			org.w3c.dom.Document xmlTree = builder.parse(xmlFiel);
-			readDocument(xmlTree);
+			for (int i = 0; i < xmlFiel.size(); i++) {
+				
+				org.w3c.dom.Document xmlTree = builder.parse(xmlFiel.get(i));
+				readDocument(xmlTree);
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
