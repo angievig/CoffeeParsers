@@ -22,7 +22,13 @@ import utils.FileUtils;
  */
 public class XmlReader {
 
+	/**
+	 * @param ArrayList<Dependecy>: ArrayList with Dependecy objects
+	 */
 	private ArrayList<Dependecy> importantXmlDependecy;
+	/**
+	 * @param ArrayList<Dependecy>: ArrayList with Dependecy objects
+	 */
 	private ArrayList<Element> importantXmlElement;
 
 	/**
@@ -75,7 +81,7 @@ public class XmlReader {
 		
 		FileUtils fileUtils = new FileUtils();
 		List<File> xmlFiel= fileUtils.readFileFromDirectory(path);
-		//System.out.println("--"+xmlFiel.get(0));
+		
 		try {
 			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 			for (int i = 0; i < xmlFiel.size(); i++) {

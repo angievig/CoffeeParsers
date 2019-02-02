@@ -1,19 +1,22 @@
-r0: coreElements(Mobile_phone)
-boolean Mobile_phone
-boolean Calls
-boolean GPS
-boolean Screen
-boolean Media
-boolean MP3
-boolean Camera
-r1:group(Media,[MP3, Camera])[1,*]
-boolean Basic
-boolean High_resolution
-r2:group(GPS,[Basic, High_resolution])[1,*]
-r0:decomposition(Mobile_phone,[Calls])<1>
-r1:decomposition(Mobile_phone,[GPS])<0>
-r2:decomposition(Mobile_phone,[Screen])<1>
-r3:decomposition(Mobile_phone,[Media])<0>
-r4: mutex(GPS, Basic)
-r5: implies(High_resolution,Camera)
+model  basicFeatureModel
+elements: 
+	boolean Mobile_phone
+	boolean Calls
+	boolean GPS
+	boolean Screen
+	boolean Media
+	boolean MP3
+	boolean Camera
+	boolean Basic
+	boolean High_resolution
+relations:
+	r0: coreElements(Mobile_phone)
+	r1:group(Media,[MP3, Camera])[1,*]
+	r2:group(GPS,[Basic, High_resolution])[1,*]
+	r3:decomposition(Mobile_phone,[Calls])<1>
+	r4:decomposition(Mobile_phone,[GPS])<0>
+	r5:decomposition(Mobile_phone,[Screen])<1>
+	r6:decomposition(Mobile_phone,[Media])<0>
+	r7: mutex(GPS, Basic)
+	r8: implies(High_resolution,Camera)
 

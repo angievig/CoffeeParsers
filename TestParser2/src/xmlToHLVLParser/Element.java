@@ -8,10 +8,25 @@ package xmlToHLVLParser;
 */
 public class Element {
 
+	/**
+	 * @param String: Element's name
+	 */
 	String name;
+	/**
+	 * @param String: Element's id
+	 */
 	String id;
+	/**
+	 * @param String: Element's type
+	 */
 	String type;
+	/**
+	 * @param String: Element's selected
+	 */
 	String selected;
+	/**
+	 * @param String: Element's bundleType
+	 */
 	String bundleType;
 	
 	/**

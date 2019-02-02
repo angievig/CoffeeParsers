@@ -10,7 +10,6 @@ import java.util.List;
  * Coffee V1
  * January 2019
  */
-
 public class HlvlBasicFactory implements IhlvlBasicFactory, HlvlBasicKeys{
 	private int numId=0;
 	private String id="r";
@@ -105,6 +104,23 @@ public class HlvlBasicFactory implements IhlvlBasicFactory, HlvlBasicKeys{
 		out = out.substring(0, out.length() -3)+ CLOSE_CALL + "\n";
 
 		return out; 
+	}
+	@Override
+	public String getHeader(String targetName) {
+		return MODEL_LABEL + SPACE + targetName + "\n" + ELEMENTS_LABEL;
+		
+	}
+	@Override
+	public String getRelationsLab() {
+		return RELATIONS_LABEL;
+	}
+	@Override
+	public String getBasicOperationsBlock() {
+		
+		return  OPERATIONS_LABEL + 
+		VALID_MODEL +
+		COMMA +
+		NUM_CONF;
 	}
 
 }

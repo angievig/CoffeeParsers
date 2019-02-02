@@ -2,11 +2,11 @@ package test;
 
 import org.junit.jupiter.api.Test;
 import utils.ParsingParameters;
-import xmlToHLVLParser.VariamosXML2HlvlParser;
+import xmlToHLVLParser.VariamosXMLToHlvlParser;
 
 class TestxmlToHLVLParser {
 
-	private VariamosXML2HlvlParser parser;
+	private VariamosXMLToHlvlParser parser;
 	
 	@Test
 	void test() {
@@ -18,7 +18,7 @@ class TestxmlToHLVLParser {
 		params.setOutputPath("test-data/HLVLFiles/");
 		params.setTargetName("testXmlToHLVL"+i);
 		
-		parser = new VariamosXML2HlvlParser(params);
+		parser = new VariamosXMLToHlvlParser(params);
 		parser.loadArrayLists();
 		try {
 			parser.parse();

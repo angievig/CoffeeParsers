@@ -10,10 +10,25 @@ package xmlToHLVLParser;
 
 public class Dependecy {
 
+	/**
+	 * @param String: dependecy's type
+	 */
 	String type;
+	/**
+	 * @param String: dependecy's relType
+	 */
 	String relType;
+	/**
+	 * @param String: dependecy's id
+	 */
 	String id;
+	/**
+	 * @param String: dependecy's source
+	 */
 	String source;
+	/**
+	 * @param String: dependecy's target
+	 */
 	String target;
 
 	/**

@@ -90,9 +90,25 @@ public interface IhlvlBasicFactory {
 	 */
 	public String parseCNF2expression(List<String> positives, List<String> negatives);
 	
-	
-	
-	
 
+	
+	/**
+	 * Produces the header of an HLVL file
+	 * @param targetName a string with the name of the model (the same as the name of the file)
+	 * @return a String with a headero for the HLVL file
+	 */
+	public String getHeader(String targetName);
+
+	/**
+	 * Returns the label for the variability relations block
+	 * @return
+	 */
+	public String getRelationsLab();
+	
+	/**
+	 * Returns an operations block with the set of basic operations
+	 */
+	
+	public String getBasicOperationsBlock();
 	
 }
