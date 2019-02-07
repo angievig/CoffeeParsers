@@ -13,6 +13,8 @@ import java.util.List;
 public class HlvlBasicFactory implements IhlvlBasicFactory, HlvlBasicKeys{
 	private int numId=0;
 	private String id="r";
+	private CnfExpFactory expFactory= new CnfExpFactory();
+	
 	@Override
 	public String getElement(String identifier) {
 		return  ELM_DECLARATION + SPACE+ identifier + "\n";
@@ -92,18 +94,7 @@ public class HlvlBasicFactory implements IhlvlBasicFactory, HlvlBasicKeys{
 	}
 	@Override
 	public String parseCNF2expression(List<String> positives, List<String> negatives) {
-		String out=id+ (numId++) + COLON+  EXPRESSION+ OPEN_CALL;
-
-		for(String element: negatives){
-			out +=  NEG+ element+ SPACE+  L_OR + SPACE;
-		}
-		for(String element: positives){
-			out +=  element+ SPACE+ L_OR + SPACE;
-		}
-
-		out = out.substring(0, out.length() -3)+ CLOSE_CALL + "\n";
-
-		return out; 
+		return expFactory.getCNF2expression(positives, negatives, numId, id); 
 	}
 	@Override
 	public String getHeader(String targetName) {
