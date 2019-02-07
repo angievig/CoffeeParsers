@@ -1,4 +1,4 @@
-package basicHLVLPackage;
+package attHLVLPackage;
 
 /**
  * Enumeration declaring the types of Groups

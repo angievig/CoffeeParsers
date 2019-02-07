@@ -1,4 +1,4 @@
-package basicHLVLPackage;
+package instHLVLPackage;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import java.util.List;
  * Coffee V1
  * January 2019
  */
-public class HlvlBasicFactory implements IhlvlBasicFactory, HlvlBasicKeys{
+public class HlvlInstFactory implements IhlvlInstFactory, HlvlInstKeys{
 	private int numId=0;
 	private String id="r";
 	@Override

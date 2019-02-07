@@ -174,7 +174,7 @@ public class Splot2HlvlParser implements IHlvlParser{
 			else {
 				relations.append(
 						"\t"+ 
-						factory.getGroup(parentName, children, GroupType.Alternative));
+						factory.getGroup(parentName, children, GroupType.Xor));
 			}
 		}
 
