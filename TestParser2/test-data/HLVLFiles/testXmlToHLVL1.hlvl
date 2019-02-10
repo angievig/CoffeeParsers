@@ -1,14 +1,16 @@
 model  basicFeatureModel
 elements: 
+	boolean Camera
 	boolean Mobile_phone
+	boolean bundle
 	boolean Calls
 	boolean GPS
 	boolean Screen
 	boolean Media
-	boolean MP3
-	boolean Camera
 	boolean Basic
 	boolean High_resolution
+	boolean bundle
+	boolean MP3
 relations:
 	r0: coreElements(Mobile_phone)
 	r1:group(Media,[MP3, Camera])[1,*]

@@ -1,6 +1,9 @@
 package xmlToHLVLParser;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import basicHLVLPackage.DecompositionType;
 import basicHLVLPackage.GroupType;
@@ -27,9 +30,9 @@ public class VariamosXMLToHlvlParser implements IHlvlParser {
 	private ArrayList<Dependecy> importantXmlDependecy;
 
 	/**
-	 * @param ArrayList<Element>: ArrayList with Element objects
+	 * @param HashMap<String, Element>: HashMapwith Element objects
 	 */
-	private ArrayList<Element> importantXmlElement;
+	private HashMap<String, Element> xmlElements;
 
 	/**
 	 * @param xmlReader: relationship with the XmlReader class that fulfills the
@@ -56,9 +59,11 @@ public class VariamosXMLToHlvlParser implements IHlvlParser {
 	private IhlvlBasicFactory converter;
 
 	/**
-	 * this method is responsible for create a VariamosXMLToHlvlParser objet and inicializate HlvlCode parameter.
+	 * this method is responsible for create a VariamosXMLToHlvlParser objet and
+	 * inicializate HlvlCode parameter.
 	 * 
-	 * @param ParsingParameters: params that contain paths necesary to load xml fiel and save HLVL fiel.
+	 * @param ParsingParameters: params that contain paths necesary to load xml fiel
+	 *        and save HLVL fiel.
 	 */
 	public VariamosXMLToHlvlParser(ParsingParameters params) {
 		HlvlCode = new StringBuilder();
@@ -82,7 +87,8 @@ public class VariamosXMLToHlvlParser implements IHlvlParser {
 		converter = new HlvlBasicFactory();
 		xmlReader.loadXmlFiel(params.getInputPath());
 		importantXmlDependecy = xmlReader.getImportantXmlDependecy();
-		importantXmlElement = xmlReader.getImportantXmlElement();
+		xmlElements = xmlReader.getXmlElements();
+
 	}
 
 	/**
@@ -110,6 +116,7 @@ public class VariamosXMLToHlvlParser implements IHlvlParser {
 			case "excludes":
 				HlvlCode.append("	" + converter.getMutex(target, source));
 				break;
+
 			}
 		}
 	}
@@ -122,58 +129,45 @@ public class VariamosXMLToHlvlParser implements IHlvlParser {
 	 * @return Strign that represent the XML Element's name.
 	 */
 	public String searchForName(String id) {
-		String result = "";
-		for (int i = 0; i < importantXmlElement.size(); i++) {
-			if (importantXmlElement.get(i).getId().equals(id)) {
-				result = (String) importantXmlElement.get(i).getName();
-			}
-		}
-		return result;
+		return xmlElements.get(id).getName();
 	}
 
 	/**
 	 * this method is responsible for create boolean HLVL code
 	 */
-	void converterXmlElementToHLVLCode() {
+	public void converterXmlElementToHLVLCode() {
 
-		for (int i = 0; i < importantXmlElement.size(); i++) {
-			String name = getValidName(importantXmlElement.get(i).getName());
-			String caso = importantXmlElement.get(i).getType();
-			switch (caso) {
-			case "root":
-				HlvlCode.append("	" + converter.getElement(name));
-				break;
-			case "general":
-				HlvlCode.append("	" + converter.getElement(name));
-				break;
-			case "leaf":
-				HlvlCode.append("	" + converter.getElement(name));
-				break;
-			}
+		for (Entry<String, Element> entry : xmlElements.entrySet()) {
+			String name = getValidName(entry.getValue().getName());
+			HlvlCode.append("	" + converter.getElement(name));
 		}
+
 	}
 
 	/**
 	 * this method is responsible for create coreElements and group HLVL code
 	 */
 	public void converterGroupAndCore() {
-		for (int i = 0; i < importantXmlElement.size(); i++) {
-			String name = getValidName(importantXmlElement.get(i).getName());
-			String caso = importantXmlElement.get(i).getType();
+
+		for (Entry<String, Element> entry : xmlElements.entrySet()) {
+			String name = getValidName(entry.getValue().getName());
+			String caso = entry.getValue().getType();
 			switch (caso) {
 			case "root":
 				HlvlCode.append("	" + converter.getCore(name));
 				break;
 			case "bundle":
-				if (importantXmlElement.get(i).getBundleType().endsWith("OR"))
-					HlvlCode.append("	" + converter.getGroup(findRootBundle(importantXmlElement.get(i)),
-							findGroupsElements(importantXmlElement.get(i)), GroupType.Or));
+				if (entry.getValue().getBundleType().endsWith("OR"))
+					HlvlCode.append("	" + converter.getGroup(findRootBundle(entry.getValue()),
+							findGroupsElements(entry.getValue()), GroupType.Or));
 				else
-					HlvlCode.append("	" + converter.getGroup(findRootBundle(importantXmlElement.get(i)),
-							findGroupsElements(importantXmlElement.get(i)), GroupType.Alternative));
+					HlvlCode.append("	" + converter.getGroup(findRootBundle(entry.getValue()),
+							findGroupsElements(entry.getValue()), GroupType.Alternative));
 				break;
 			}
+
 		}
+
 	}
 
 	/**
@@ -189,6 +183,7 @@ public class VariamosXMLToHlvlParser implements IHlvlParser {
 		for (int i = 0; i < importantXmlDependecy.size(); i++) {
 			if (id.equals(importantXmlDependecy.get(i).getSource())) {
 				name = searchForName(importantXmlDependecy.get(i).getTarget());
+				break;
 			}
 		}
 		name = getValidName(name);
@@ -203,6 +198,7 @@ public class VariamosXMLToHlvlParser implements IHlvlParser {
 	 * @return ArrayList<String> that contain name of all XML Element.
 	 */
 	public ArrayList<String> findGroupsElements(Element element) {
+
 		ArrayList<String> result = new ArrayList<String>();
 		String id = element.getId();
 		for (int i = 0; i < importantXmlDependecy.size(); i++) {
