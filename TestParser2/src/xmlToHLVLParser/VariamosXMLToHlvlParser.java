@@ -111,7 +111,6 @@ public class VariamosXMLToHlvlParser implements IHlvlParser {
 				break;
 			case "requires":
 				HlvlCode.append("	" + converter.getImplies(target, source));
-
 				break;
 			case "excludes":
 				HlvlCode.append("	" + converter.getMutex(target, source));
