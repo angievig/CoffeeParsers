@@ -9,7 +9,7 @@ class TestxmlToHLVLParser {
 	private VariamosXMLToHlvlParser parser;
 	
 	@Test
-	void test() {
+	public void test() {
 		
 		int i=1;
 		ParsingParameters params= new ParsingParameters();
@@ -26,6 +26,10 @@ class TestxmlToHLVLParser {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public void testBoundle() {
+		
 	}
 
 }

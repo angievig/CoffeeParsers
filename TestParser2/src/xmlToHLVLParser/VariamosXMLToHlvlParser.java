@@ -98,7 +98,9 @@ public class VariamosXMLToHlvlParser implements IHlvlParser {
 	public void converterXmlDependecyToHLVLCode() {
 		HlvlCode.append(converter.getRelationsLab());
 		converterGroupAndCore();
+		System.out.println(importantXmlDependecy.size());
 		for (int i = 0; i < importantXmlDependecy.size(); i++) {
+
 			String target = getValidName(searchForName(importantXmlDependecy.get(i).getTarget()));
 			String source = getValidName(searchForName(importantXmlDependecy.get(i).getSource()));
 			String caso = importantXmlDependecy.get(i).getRelType();
@@ -110,7 +112,7 @@ public class VariamosXMLToHlvlParser implements IHlvlParser {
 				HlvlCode.append("	" + converter.getDecomposition(target, source, DecompositionType.Optional));
 				break;
 			case "requires":
-				HlvlCode.append("	" + converter.getImplies(target, source));
+				HlvlCode.append("	" + converter.getImplies(source, target));
 				break;
 			case "excludes":
 				HlvlCode.append("	" + converter.getMutex(target, source));
@@ -138,7 +140,9 @@ public class VariamosXMLToHlvlParser implements IHlvlParser {
 
 		for (Entry<String, Element> entry : xmlElements.entrySet()) {
 			String name = getValidName(entry.getValue().getName());
-			HlvlCode.append("	" + converter.getElement(name));
+			if (!name.equals("bundle")) {
+				HlvlCode.append("	" + converter.getElement(name));
+			}
 		}
 
 	}
@@ -164,9 +168,7 @@ public class VariamosXMLToHlvlParser implements IHlvlParser {
 							findGroupsElements(entry.getValue()), GroupType.Alternative));
 				break;
 			}
-
 		}
-
 	}
 
 	/**
