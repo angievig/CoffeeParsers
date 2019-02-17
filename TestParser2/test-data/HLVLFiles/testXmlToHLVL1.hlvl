@@ -1,24 +1,26 @@
 model  basicFeatureModel
 elements: 
-	boolean Camera
-	boolean Mobile_phone
-	boolean bundle
-	boolean Calls
-	boolean GPS
-	boolean Screen
-	boolean Media
-	boolean Basic
-	boolean High_resolution
-	boolean bundle
-	boolean MP3
+	boolean Sala_de_juegos
+	boolean Bañera
+	boolean Cuarto_secundario
+	boolean ducha
+	boolean Lava_Platos
+	boolean Garaje
+	boolean Orno
+	boolean Casa
+	boolean Baño
+	boolean Cocina
+	boolean Cuarto_Principal
+	boolean Biblioteca
 relations:
-	r0: coreElements(Mobile_phone)
-	r1:group(Media,[MP3, Camera])[1,*]
-	r2:group(GPS,[Basic, High_resolution])[1,*]
-	r3:decomposition(Mobile_phone,[Calls])<1>
-	r4:decomposition(Mobile_phone,[GPS])<0>
-	r5:decomposition(Mobile_phone,[Screen])<1>
-	r6:decomposition(Mobile_phone,[Media])<0>
-	r7: mutex(GPS, Basic)
-	r8: implies(High_resolution,Camera)
+	r0: coreElements(Casa)
+	r1:group(Casa,[Cocina, Baño, Cuarto_Principal, Cuarto_secundario])[1,*]
+	r2:group(Casa,[Biblioteca, Sala_de_juegos])[1,*]
+	r3:group(Baño,[Bañera, ducha])[1,*]
+	r4:decomposition(Cocina,[Lava_Platos])<1>
+	r5:decomposition(Cocina,[Orno])<0>
+	r6: implies(Cuarto_Principal,Baño)
+	r7:decomposition(Baño,[Cuarto_secundario])<0>
+	r8:decomposition(Casa,[Garaje])<0>
+	r9: mutex(Biblioteca, Sala_de_juegos)
 

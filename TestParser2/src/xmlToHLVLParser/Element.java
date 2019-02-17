@@ -11,23 +11,23 @@ public class Element {
 	/**
 	 * @param String: Element's name
 	 */
-	String name;
+	private String name;
 	/**
 	 * @param String: Element's id
 	 */
-	String id;
+	private String id;
 	/**
 	 * @param String: Element's type
 	 */
-	String type;
+	private String type;
 	/**
 	 * @param String: Element's selected
 	 */
-	String selected;
+	private String selected;
 	/**
 	 * @param String: Element's bundleType
 	 */
-	String bundleType;
+	private String bundleType;
 	
 	/**
 	 * this method return the element's name
