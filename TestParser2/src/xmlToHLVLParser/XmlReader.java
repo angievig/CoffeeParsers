@@ -1,15 +1,13 @@
 package xmlToHLVLParser;
 
 import java.io.File;
-
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-
 import utils.FileUtils;
 
 /**
@@ -27,9 +25,10 @@ public class XmlReader {
 	 */
 	private ArrayList<Dependecy> importantXmlDependecy;
 	/**
-	 * @param ArrayList<Dependecy>: ArrayList with Dependecy objects
+	 * @param HashMap<String, Element>: HashMap with Dependecy objects
 	 */
-	private ArrayList<Element> importantXmlElement;
+
+	private HashMap<String, Element> xmlElements;
 
 	/**
 	 * this method return a list of Dependecy objects
@@ -52,19 +51,21 @@ public class XmlReader {
 	/**
 	 * this method return a list of Element objects
 	 * 
-	 * @return ArrayList<Element>: ArrayList with Element objects
+	 * @return HashMap<String, Element>: HashMap with Element objects
 	 */
-	public ArrayList<Element> getImportantXmlElement() {
-		return importantXmlElement;
+
+	public HashMap<String, Element> getXmlElements() {
+		return xmlElements;
 	}
 
 	/**
 	 * this method change importantXMLElement' value for paramater.
 	 * 
-	 * @param ArrayList<Element>: ArrayList with Element objects
+	 * @param HashMap<String, Element>: HashMap with Element objects
 	 */
-	public void setImportantXmlElement(ArrayList<Element> importantXmlElement) {
-		this.importantXmlElement = importantXmlElement;
+
+	public void setXmlElements(HashMap<String, Element> xmlElements) {
+		this.xmlElements = xmlElements;
 	}
 
 	/**
@@ -77,23 +78,23 @@ public class XmlReader {
 	 */
 	public void loadXmlFiel(String path) {
 		importantXmlDependecy = new ArrayList<Dependecy>();
-		importantXmlElement = new ArrayList<Element>();
-		
-		FileUtils fileUtils = new FileUtils();
-		List<File> xmlFiel= fileUtils.readFileFromDirectory(path);
-		
+		xmlElements = new HashMap<String, Element>();
+		List<File> xmlFiel = FileUtils.readFileFromDirectory(path);
+
 		try {
 			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 			for (int i = 0; i < xmlFiel.size(); i++) {
-				
-				org.w3c.dom.Document xmlTree = builder.parse(xmlFiel.get(i));
+				org.w3c.dom.Document xmlTree = builder.parse(xmlFiel.get(1));
 				readDocument(xmlTree);
+				for (int j = 0; j < importantXmlDependecy.size(); j++) {
+					//System.out.println(importantXmlDependecy.get(j).getId());
+
+				}
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	/**
@@ -104,6 +105,7 @@ public class XmlReader {
 	 * @param n: node from XML tree
 	 */
 	public void addGeneralAndRootElement(Node n) {
+
 		Element xmlElement = new Element();
 
 		String name = n.getAttributes().item(1).getNodeValue();
@@ -114,8 +116,11 @@ public class XmlReader {
 
 		String type = n.getAttributes().item(2).getNodeValue();
 		xmlElement.setType(type);
+		if (!id.contains("clon")) {
 
-		importantXmlElement.add(xmlElement);
+			xmlElements.put(id, xmlElement);
+		}
+
 	}
 
 	/**
@@ -139,8 +144,11 @@ public class XmlReader {
 
 		String select = n.getAttributes().item(3).getNodeValue();
 		xmlElement.setSelected(select);
+		if (!id.contains("clon")) {
 
-		importantXmlElement.add(xmlElement);
+			xmlElements.put(id, xmlElement);
+		}
+
 	}
 
 	/**
@@ -154,7 +162,7 @@ public class XmlReader {
 		Element xmlElement = new Element();
 
 		String name = n.getAttributes().item(5).getNodeValue();
-		
+
 		xmlElement.setName(name);
 
 		String id = n.getAttributes().item(2).getNodeValue();
@@ -164,12 +172,56 @@ public class XmlReader {
 		xmlElement.setType(type);
 
 		String bundleType = n.getAttributes().item(0).getNodeValue();
-	
+
 		xmlElement.setBundleType(bundleType);
 
-		importantXmlElement.add(xmlElement);
+		if (!id.contains("clon")) {
+
+			xmlElements.put(id, xmlElement);
+		}
+
 	}
 
+	/**
+	 * this method is responsible for check if importarXmlDependecy  contain a Dependecy
+	 * wiht the same id
+	 * 
+	 * @param String: Dependecy's id
+	 */
+	private boolean exitsDependecy(String id) {
+		for (int i = 0; i < importantXmlDependecy.size(); i++) {
+			if (id.equals(importantXmlDependecy.get(i).id)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * this method is responsible for create and add to importarXmlDependecy a Dependecy
+	 * object with type 
+	 * 
+	 * @param n: node from XML tree
+	 */
+	public void addDependecy(Node n) {
+		Dependecy newDependecy = new Dependecy();
+		
+		newDependecy.setId(n.getAttributes().item(0).getNodeValue());
+		
+		newDependecy.setRelType(n.getAttributes().item(1).getNodeValue());
+		
+		newDependecy.setType("relation");
+		if (n.getAttributes().item(2) != null) {
+			newDependecy.setType(n.getAttributes().item(2).getNodeValue());
+		} else {
+			newDependecy.setRelType("bundle");
+		}
+		AddAtributesFromChildren(n, newDependecy);
+		
+		if (!exitsDependecy(n.getAttributes().item(0).getNodeValue())) 
+			importantXmlDependecy.add(newDependecy);
+	
+	}
 	/**
 	 * this method is responsible for travel whole XML tree and call methos to
 	 * create Element or Dependecy object.
@@ -177,44 +229,24 @@ public class XmlReader {
 	 * @param n: node from XML tree
 	 */
 	public void readDocument(Node n) {
-		if (n != null) {
-			if (n.getNodeName().equals("general") || n.getNodeName().equals("root")) {
-				if (n.getAttributes() != null && n.getAttributes().item(1) != null && n.getAttributes().item(0) != null
-						&& n.getAttributes().item(2) != null) {
-					addGeneralAndRootElement(n);
-				}
+
+		
+			if ((n.getNodeName().equals("general") || n.getNodeName().equals("root"))
+					&& n.getAttributes().item(0) != null) {
+				addGeneralAndRootElement(n);
 			} else if (n.getNodeName().equals("leaf")) {
-				if (n.getAttributes() != null && n.getAttributes().item(1) != null && n.getAttributes().item(0) != null
-						&& n.getAttributes().item(2) != null) {
-					addLeafElement(n);
-				}
+				addLeafElement(n);
 			} else if (n.getNodeName().equals("bundle")) {
-				if (n.getAttributes() != null && n.getAttributes().item(1) != null && n.getAttributes().item(0) != null
-						&& n.getAttributes().item(2) != null) {
-					addBundleElement(n);
-				}
+				addBundleElement(n);
 			} else if (n.getNodeName().indexOf("rel_") > (-1)) {
-				Dependecy newDependecy = new Dependecy();
-				if (n.getAttributes() != null && n.getAttributes().item(0) != null
-						&& n.getAttributes().item(1) != null) {
-					newDependecy.setId(n.getAttributes().item(0).getNodeValue());
-					newDependecy.setRelType(n.getAttributes().item(1).getNodeValue());
-					if (n.getAttributes().item(2) != null) {
-						newDependecy.setType(n.getAttributes().item(2).getNodeValue());
-					} else {
-						newDependecy.setRelType("bundle");
-						newDependecy.setType("relation");
-					}
-				}
-				AddAtributesFromChildren(n, newDependecy);
-				importantXmlDependecy.add(newDependecy);
+				addDependecy(n);
 			}
 			NodeList childrens = n.getChildNodes();
 			for (int i = 0; i < childrens.getLength(); i++) {
 				Node grandchildren = childrens.item(i);
 				readDocument(grandchildren);
 			}
-		}
+		
 	}
 
 	/**
