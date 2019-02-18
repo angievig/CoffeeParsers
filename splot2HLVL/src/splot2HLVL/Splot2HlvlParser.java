@@ -92,7 +92,7 @@ public class Splot2HlvlParser implements IHlvlParser{
 			
 			// formating the output file
 			// including the Header
-			hlvlProgram.append(factory.getHeader(params.getTargetName()));
+			hlvlProgram.append(factory.getHeader(params.getTargetName()+"_generated"));
 			// including the elements
 			hlvlProgram.append(elements.toString());
 			//including the relations

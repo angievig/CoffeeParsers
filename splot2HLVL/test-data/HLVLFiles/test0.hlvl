@@ -1,4 +1,4 @@
-model  test0
+model  test0_generated
 elements: 
 	boolean GPL
 	boolean Gtp
