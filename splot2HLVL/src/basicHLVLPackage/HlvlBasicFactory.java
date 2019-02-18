@@ -94,7 +94,7 @@ public class HlvlBasicFactory implements IhlvlBasicFactory, HlvlBasicKeys{
 	}
 	@Override
 	public String parseCNF2expression(List<String> positives, List<String> negatives) {
-		return expFactory.getCNF2expression(positives, negatives, numId, id); 
+		return expFactory.getCNF2expression(positives, negatives, numId++, id); 
 	}
 	@Override
 	public String getHeader(String targetName) {
