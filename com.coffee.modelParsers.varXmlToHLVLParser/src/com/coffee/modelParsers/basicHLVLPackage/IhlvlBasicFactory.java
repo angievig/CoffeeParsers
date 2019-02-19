@@ -1,4 +1,4 @@
-package basicHLVLPackage;
+package com.coffee.modelParsers.basicHLVLPackage;
 
 import java.util.List;
 

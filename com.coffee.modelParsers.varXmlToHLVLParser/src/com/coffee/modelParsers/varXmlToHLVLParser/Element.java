@@ -1,4 +1,4 @@
-package xmlToHLVLParser;
+package com.coffee.modelParsers.varXmlToHLVLParser;
 
 /**
 * this class repesent a root, general and leaf element from the XML tree

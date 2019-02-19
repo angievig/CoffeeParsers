@@ -1,4 +1,4 @@
-package basicHLVLPackage;
+package com.coffee.modelParsers.basicHLVLPackage;
 
 /**
  * Interface declaring the methods that must be included in a parser

@@ -1,4 +1,4 @@
-package basicHLVLPackage;
+package com.coffee.modelParsers.basicHLVLPackage;
 
 /**
  * Enumeration declaring the types of Groups
