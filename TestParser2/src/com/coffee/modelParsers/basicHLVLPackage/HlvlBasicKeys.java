@@ -1,4 +1,4 @@
-package basicHLVLPackage;
+package com.coffee.modelParsers.basicHLVLPackage;
 
 /**
  * Interface declaring  a set of constants used to represent HLVL constructs, and keywords 

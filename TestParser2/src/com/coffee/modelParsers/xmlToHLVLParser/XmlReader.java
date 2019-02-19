@@ -1,4 +1,4 @@
-package xmlToHLVLParser;
+package com.coffee.modelParsers.xmlToHLVLParser;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -8,7 +8,8 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import utils.FileUtils;
+
+import com.coffee.modelParsers.utils.FileUtils;
 
 /**
  * This is a class which is responsible for reading a XML file, loading that

@@ -1,4 +1,4 @@
-package utils;
+package com.coffee.modelParsers.utils;
 
 /**
  * Parameters for the splot to HLVL parameters

@@ -1,4 +1,4 @@
-package utils;
+package com.coffee.modelParsers.utils;
 
 import java.io.BufferedWriter;
 import java.io.File;

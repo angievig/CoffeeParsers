@@ -1,18 +1,17 @@
-package xmlToHLVLParser;
+package com.coffee.modelParsers.xmlToHLVLParser;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import basicHLVLPackage.DecompositionType;
-import basicHLVLPackage.GroupType;
-import basicHLVLPackage.HlvlBasicFactory;
-
-import basicHLVLPackage.IHlvlParser;
-import basicHLVLPackage.IhlvlBasicFactory;
-import utils.FileUtils;
-import utils.ParsingParameters;
+import com.coffee.modelParsers.basicHLVLPackage.DecompositionType;
+import com.coffee.modelParsers.basicHLVLPackage.GroupType;
+import com.coffee.modelParsers.basicHLVLPackage.HlvlBasicFactory;
+import com.coffee.modelParsers.basicHLVLPackage.IHlvlParser;
+import com.coffee.modelParsers.basicHLVLPackage.IhlvlBasicFactory;
+import com.coffee.modelParsers.utils.FileUtils;
+import com.coffee.modelParsers.utils.ParsingParameters;
 
 /**
  * Esta es una clase que es responsable de extraer informaci�n del objeto del

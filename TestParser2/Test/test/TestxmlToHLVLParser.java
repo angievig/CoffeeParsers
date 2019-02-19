@@ -1,8 +1,9 @@
 package test;
 
 import org.junit.jupiter.api.Test;
-import utils.ParsingParameters;
-import xmlToHLVLParser.VariamosXMLToHlvlParser;
+
+import com.coffee.modelParsers.utils.ParsingParameters;
+import com.coffee.modelParsers.xmlToHLVLParser.VariamosXMLToHlvlParser;
 
 class TestxmlToHLVLParser {
 

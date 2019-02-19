@@ -1,4 +1,4 @@
-package xmlToHLVLParser;
+package com.coffee.modelParsers.xmlToHLVLParser;
 
 /**
  * This class repesent a mandatory, optional, excludes, requires and group
