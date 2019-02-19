@@ -229,7 +229,7 @@ public class VariamosXMLToHlvlParser implements IHlvlParser {
 	 */
 	@Override
 	public void parse() throws Exception {
-		HlvlCode.append(converter.getHeader("basicFeatureModel"));
+		HlvlCode.append(converter.getHeader(params.getTargetName()+"_generated"));
 		converterXmlElementToHLVLCode();
 		converterXmlDependecyToHLVLCode();
 		writeFile();
