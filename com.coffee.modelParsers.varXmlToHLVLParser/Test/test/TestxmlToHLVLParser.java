@@ -3,7 +3,7 @@ package test;
 import org.junit.jupiter.api.Test;
 
 import com.coffee.modelParsers.utils.ParsingParameters;
-import com.coffee.modelParsers.xmlToHLVLParser.VariamosXMLToHlvlParser;
+import com.coffee.modelParsers.varXmlToHLVLParser.VariamosXMLToHlvlParser;
 
 class TestxmlToHLVLParser {
 

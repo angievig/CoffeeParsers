@@ -1,4 +1,4 @@
-package com.coffee.modelParsers.xmlToHLVLParser;
+package com.coffee.modelParsers.varXmlToHLVLParser;
 
 import java.util.ArrayList;
 import java.util.HashMap;
