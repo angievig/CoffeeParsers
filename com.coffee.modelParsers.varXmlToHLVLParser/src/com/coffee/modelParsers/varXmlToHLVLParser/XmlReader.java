@@ -1,15 +1,24 @@
 package com.coffee.modelParsers.varXmlToHLVLParser;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
 
 import com.coffee.modelParsers.utils.FileUtils;
+
 
 /**
  * This is a class which is responsible for reading a XML file, loading that
@@ -20,7 +29,7 @@ import com.coffee.modelParsers.utils.FileUtils;
  * @author Joan David Colina Echeverry
  */
 public class XmlReader {
-
+	
 	/**
 	 * @param ArrayList<Dependecy>: ArrayList with Dependecy objects
 	 */
@@ -34,7 +43,7 @@ public class XmlReader {
 	/**
 	 * this method return a list of Dependecy objects
 	 * 
-	 * @return ArrayList<Dependecy>: ArrayList with Dependecy objects
+	 * @return ArrayList: ArrayList with Dependecy objects
 	 */
 	public ArrayList<Dependecy> getImportantXmlDependecy() {
 		return importantXmlDependecy;
@@ -43,7 +52,7 @@ public class XmlReader {
 	/**
 	 * this method change importantXMLDependecy' value for paramater.
 	 * 
-	 * @param ArrayList<Dependecy>: ArrayList with Dependecy objects
+	 * @param importantXmlDependecy: ArrayList with Dependecy objects
 	 */
 	public void setImportantXmlDependecy(ArrayList<Dependecy> importantXmlDependecy) {
 		this.importantXmlDependecy = importantXmlDependecy;
@@ -52,7 +61,7 @@ public class XmlReader {
 	/**
 	 * this method return a list of Element objects
 	 * 
-	 * @return HashMap<String, Element>: HashMap with Element objects
+	 * @return HashMap: HashMap with Element objects
 	 */
 
 	public HashMap<String, Element> getXmlElements() {
@@ -62,7 +71,7 @@ public class XmlReader {
 	/**
 	 * this method change importantXMLElement' value for paramater.
 	 * 
-	 * @param HashMap<String, Element>: HashMap with Element objects
+	 * @param xmlElements: HashMap with Element objects
 	 */
 
 	public void setXmlElements(HashMap<String, Element> xmlElements) {
@@ -77,6 +86,7 @@ public class XmlReader {
 	 * 
 	 * @param path: string that represent the XML source to load.
 	 */
+
 	public void loadXmlFiel(String path) {
 		importantXmlDependecy = new ArrayList<Dependecy>();
 		xmlElements = new HashMap<String, Element>();
@@ -85,12 +95,8 @@ public class XmlReader {
 		try {
 			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 			for (int i = 0; i < xmlFiel.size(); i++) {
-				org.w3c.dom.Document xmlTree = builder.parse(xmlFiel.get(1));
+				org.w3c.dom.Document xmlTree = builder.parse(xmlFiel.get(i));
 				readDocument(xmlTree);
-				for (int j = 0; j < importantXmlDependecy.size(); j++) {
-					//System.out.println(importantXmlDependecy.get(j).getId());
-
-				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -98,6 +104,19 @@ public class XmlReader {
 
 	}
 
+	public void loadXmlString(String xml) {
+		importantXmlDependecy = new ArrayList<Dependecy>();
+		xmlElements = new HashMap<String, Element>();
+	
+		try {
+			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+			org.w3c.dom.Document xmlTree = builder.parse(new InputSource(new StringReader(xml)));
+			readDocument(xmlTree);
+		} catch (ParserConfigurationException | SAXException | IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
 	/**
 	 * this method is responsible for create and add to importarXmlElement a Element
 	 * object with type equal to General or Root. to create this objet is necesary a
@@ -184,8 +203,8 @@ public class XmlReader {
 	}
 
 	/**
-	 * this method is responsible for check if importarXmlDependecy  contain a Dependecy
-	 * wiht the same id
+	 * this method is responsible for check if importarXmlDependecy contain a
+	 * Dependecy wiht the same id
 	 * 
 	 * @param String: Dependecy's id
 	 */
@@ -197,20 +216,20 @@ public class XmlReader {
 		}
 		return false;
 	}
-	
+
 	/**
-	 * this method is responsible for create and add to importarXmlDependecy a Dependecy
-	 * object with type 
+	 * this method is responsible for create and add to importarXmlDependecy a
+	 * Dependecy object with type
 	 * 
 	 * @param n: node from XML tree
 	 */
 	public void addDependecy(Node n) {
 		Dependecy newDependecy = new Dependecy();
-		
+
 		newDependecy.setId(n.getAttributes().item(0).getNodeValue());
-		
+
 		newDependecy.setRelType(n.getAttributes().item(1).getNodeValue());
-		
+
 		newDependecy.setType("relation");
 		if (n.getAttributes().item(2) != null) {
 			newDependecy.setType(n.getAttributes().item(2).getNodeValue());
@@ -218,11 +237,12 @@ public class XmlReader {
 			newDependecy.setRelType("bundle");
 		}
 		AddAtributesFromChildren(n, newDependecy);
-		
-		if (!exitsDependecy(n.getAttributes().item(0).getNodeValue())) 
+
+		if (!exitsDependecy(n.getAttributes().item(0).getNodeValue()))
 			importantXmlDependecy.add(newDependecy);
-	
+
 	}
+
 	/**
 	 * this method is responsible for travel whole XML tree and call methos to
 	 * create Element or Dependecy object.
@@ -231,23 +251,22 @@ public class XmlReader {
 	 */
 	public void readDocument(Node n) {
 
-		
-			if ((n.getNodeName().equals("general") || n.getNodeName().equals("root"))
-					&& n.getAttributes().item(0) != null) {
-				addGeneralAndRootElement(n);
-			} else if (n.getNodeName().equals("leaf")) {
-				addLeafElement(n);
-			} else if (n.getNodeName().equals("bundle")) {
-				addBundleElement(n);
-			} else if (n.getNodeName().indexOf("rel_") > (-1)) {
-				addDependecy(n);
-			}
-			NodeList childrens = n.getChildNodes();
-			for (int i = 0; i < childrens.getLength(); i++) {
-				Node grandchildren = childrens.item(i);
-				readDocument(grandchildren);
-			}
-		
+		if ((n.getNodeName().equals("general") || n.getNodeName().equals("root"))
+				&& n.getAttributes().item(0) != null) {
+			addGeneralAndRootElement(n);
+		} else if (n.getNodeName().equals("leaf")) {
+			addLeafElement(n);
+		} else if (n.getNodeName().equals("bundle")) {
+			addBundleElement(n);
+		} else if (n.getNodeName().indexOf("rel_") > (-1)) {
+			addDependecy(n);
+		}
+		NodeList childrens = n.getChildNodes();
+		for (int i = 0; i < childrens.getLength(); i++) {
+			Node grandchildren = childrens.item(i);
+			readDocument(grandchildren);
+		}
+
 	}
 
 	/**
@@ -255,7 +274,7 @@ public class XmlReader {
 	 * target parameter to Dependecy object.
 	 * 
 	 * @param n: node from XML tree
-	 * @param newDeprendecy: Dependecy that need source and target parameter
+	 * @param newDependecy: Dependecy that need source and target parameter
 	 */
 	public void AddAtributesFromChildren(Node n, Dependecy newDependecy) {
 		NodeList childrens = n.getChildNodes();

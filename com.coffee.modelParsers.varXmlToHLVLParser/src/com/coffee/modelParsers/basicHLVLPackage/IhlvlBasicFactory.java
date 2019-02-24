@@ -13,8 +13,8 @@ public interface IhlvlBasicFactory {
 	
 	/**
 	 * Produces an hlvl sentence with the declaration of a boolean element
-	 * @param identifier
-	 * @return
+	 * @param identifier:
+	 * @return String: 
 	 */
 	
 	public String getElement(String identifier);
@@ -35,9 +35,9 @@ public interface IhlvlBasicFactory {
 
 	/**
 	 * Produces an implies declaration of the form left => right
-	 * @param left, the identifier of the left
-	 * @param right, the identifier in the right side of the implication
-	 * @return an hlvl sentence in the form implies(left, right)
+	 * @param left:  the identifier of the left
+	 * @param right:  the identifier in the right side of the implication
+	 * @return String: an hlvl sentence in the form implies(left, right)
 	 */
 	public String getImplies(String left, String right);
 	
@@ -51,19 +51,19 @@ public interface IhlvlBasicFactory {
 	
 	/**
 	 * 
-	 * @param parent id of the parent 
-	 * @param child is an identifier
-	 * @param type can be Mandatory or Optional, the decomposition types supported by HLVL(basic)
-	 * @return an hlvl sentence in the form decomposition(parent, [c1])< card> 
+	 * @param parent: id of the parent 
+	 * @param child: is an identifier
+	 * @param type: can be Mandatory or Optional, the decomposition types supported by HLVL(basic)
+	 * @return String: an hlvl sentence in the form decomposition(parent, [c1])< card> 
 	 */
 	public String getDecomposition(String parent, String child, DecompositionType type);
 	
 	/**
 	 * 
-	 * @param parent id of the parent 
-	 * @param children list of the cildren's identifiers
-	 * @param type can be Mandatory or Optional, the decomposition types supported by HLVL(basic)
-	 * @return an hlvl sentence in the form decomposition(parent, [c1, c2, ..cn])< card> 
+	 * @param parent: id of the parent 
+	 * @param children: list of the cildren's identifiers
+	 * @param type: can be Mandatory or Optional, the decomposition types supported by HLVL(basic)
+	 * @return String: an hlvl sentence in the form decomposition(parent, [c1, c2, ..cn])< card> 
 	 */
 	public String getDecompositionList(String parent, List <String> children, DecompositionType type);
 	
@@ -84,9 +84,9 @@ public interface IhlvlBasicFactory {
 	
 	/**
 	 * 
-	 * @param positives
-	 * @param negatives
-	 * @return
+	 * @param positives: 
+	 * @param negatives: 
+	 * return String: 
 	 */
 	public String parseCNF2expression(List<String> positives, List<String> negatives);
 	
@@ -94,19 +94,19 @@ public interface IhlvlBasicFactory {
 	
 	/**
 	 * Produces the header of an HLVL file
-	 * @param targetName a string with the name of the model (the same as the name of the file)
-	 * @return a String with a headero for the HLVL file
+	 * @param targetName: a string with the name of the model (the same as the name of the file)
+	 * @return String: a String with a headero for the HLVL file
 	 */
 	public String getHeader(String targetName);
 
 	/**
 	 * Returns the label for the variability relations block
-	 * @return
+	 * @return String:
 	 */
 	public String getRelationsLab();
 	
 	/**
-	 * Returns an operations block with the set of basic operations
+	 * Returns String: an operations block with the set of basic operations
 	 */
 	
 	public String getBasicOperationsBlock();

@@ -61,12 +61,20 @@ public class VariamosXMLToHlvlParser implements IHlvlParser {
 	 * this method is responsible for create a VariamosXMLToHlvlParser objet and
 	 * inicializate HlvlCode parameter.
 	 * 
-	 * @param ParsingParameters: params that contain paths necesary to load xml fiel
+	 * @param params: params that contain paths necesary to load xml fiel
 	 *        and save HLVL fiel.
 	 */
 	public VariamosXMLToHlvlParser(ParsingParameters params) {
 		HlvlCode = new StringBuilder();
 		this.params = params;
+	}
+	
+	/**
+	 * this method is responsible for create a VariamosXMLToHlvlParser objet
+	 * 
+	 */
+	public VariamosXMLToHlvlParser() {
+		HlvlCode = new StringBuilder();
 	}
 
 	/**
@@ -89,6 +97,15 @@ public class VariamosXMLToHlvlParser implements IHlvlParser {
 		xmlElements = xmlReader.getXmlElements();
 
 	}
+	
+	public void loadArrayLists(String xml) {
+		xmlReader = new XmlReader();
+		converter = new HlvlBasicFactory();
+		xmlReader.loadXmlString(xml);
+		importantXmlDependecy = xmlReader.getImportantXmlDependecy();
+		xmlElements = xmlReader.getXmlElements();
+	
+	}
 
 	/**
 	 * this method is responsible for create descomposition, implies and mutex HLVL
@@ -97,7 +114,6 @@ public class VariamosXMLToHlvlParser implements IHlvlParser {
 	public void converterXmlDependecyToHLVLCode() {
 		HlvlCode.append(converter.getRelationsLab());
 		converterGroupAndCore();
-		System.out.println(importantXmlDependecy.size());
 		for (int i = 0; i < importantXmlDependecy.size(); i++) {
 
 			String target = getValidName(searchForName(importantXmlDependecy.get(i).getTarget()));
@@ -105,7 +121,7 @@ public class VariamosXMLToHlvlParser implements IHlvlParser {
 			String caso = importantXmlDependecy.get(i).getRelType();
 			switch (caso) {
 			case "mandatory":
-				HlvlCode.append("	" + converter.getDecomposition(target, source, DecompositionType.Mandatory));
+				HlvlCode.append("	" + converter.getDecomposition(source, target, DecompositionType.Mandatory));
 				break;
 			case "optional":
 				HlvlCode.append("	" + converter.getDecomposition(target, source, DecompositionType.Optional));
@@ -122,11 +138,11 @@ public class VariamosXMLToHlvlParser implements IHlvlParser {
 	}
 
 	/**
-	 * this method is responsible for searh into the ArrayList<Element> the XML
+	 * this method is responsible for searh into the ArrayList the XML
 	 * Element's name having the XML Element's id
 	 * 
 	 * @param id: string that represent the XML Element's id.
-	 * @return Strign that represent the XML Element's name.
+	 * @return String that represent the XML Element's name.
 	 */
 	public String searchForName(String id) {
 		return xmlElements.get(id).getName();
@@ -171,7 +187,7 @@ public class VariamosXMLToHlvlParser implements IHlvlParser {
 	}
 
 	/**
-	 * this method is responsible for searh into the ArrayList<Element> the element
+	 * this method is responsible for searh into the ArrayList the element
 	 * that groups the other elements
 	 * 
 	 * @param element: Element that represent a XML bundle.
@@ -191,11 +207,11 @@ public class VariamosXMLToHlvlParser implements IHlvlParser {
 	}
 
 	/**
-	 * this method is responsible for searh into the ArrayList<Element> all elements
+	 * this method is responsible for searh into the ArrayList all elements
 	 * grouped by the element bundel
 	 * 
 	 * @param element: Element that represent a XML bundle.
-	 * @return ArrayList<String> that contain name of all XML Element.
+	 * @return ArrayList that contain name of all XML Element.
 	 */
 	public ArrayList<String> findGroupsElements(Element element) {
 
@@ -228,9 +244,20 @@ public class VariamosXMLToHlvlParser implements IHlvlParser {
 	 */
 	@Override
 	public void parse() throws Exception {
+		loadArrayLists();
 		HlvlCode.append(converter.getHeader(params.getTargetName()+"_generated"));
 		converterXmlElementToHLVLCode();
 		converterXmlDependecyToHLVLCode();
 		writeFile();
 	}
+
+	@Override
+	public String parse(String data) throws Exception {
+		loadArrayLists(data);
+		HlvlCode.append(converter.getHeader("Auto_generated"));
+		converterXmlElementToHLVLCode();
+		converterXmlDependecyToHLVLCode();
+		return  HlvlCode.toString();
+	}
+	
 }

@@ -40,7 +40,7 @@ public class Element {
 	/**
 	 * this method change element's name value for paramater.
 	 * 
-	 * @param String: element's name
+	 * @param name: element's name
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -58,7 +58,7 @@ public class Element {
 	/**
 	 * this method change element's id value for paramater.
 	 * 
-	 * @param String: element's id
+	 * @param id: element's id
 	 */
 	public void setId(String id) {
 		this.id = id;
@@ -74,7 +74,7 @@ public class Element {
 	/**
 	 * this method change element's type value for paramater.
 	 * 
-	 * @param String: element's type
+	 * @param type: element's type
 	 */
 	public void setType(String type) {
 		this.type = type;
@@ -90,7 +90,7 @@ public class Element {
 	/**
 	 * this method change element's selected value for paramater.
 	 * 
-	 * @param String: element's selected
+	 * @param selected: element's selected
 	 */
 	public void setSelected(String selected) {
 		this.selected = selected;
@@ -106,7 +106,7 @@ public class Element {
 	/**
 	 * this method change element's boundleType value for paramater.
 	 * 
-	 * @param String: element's boundleType
+	 * @param bundleType: element's boundleType
 	 */
 	public void setBundleType(String bundleType) {
 		this.bundleType = bundleType;

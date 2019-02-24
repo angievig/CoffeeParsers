@@ -11,8 +11,8 @@ public class FileUtils {
 	/**
 	 * Lee la lista de archivos de un directorio
 	 * 
-	 * @param directoryPath
-	 * @return
+	 * @param directoryPath: 
+	 * @return List: 
 	 */
 	public static List<File> readFileFromDirectory(String directoryPath) {
 		File Dir = new File(directoryPath);
@@ -33,7 +33,8 @@ public class FileUtils {
 	/**
 	 * Recibe una cadena y la escribe en un archivo de extension hlvl
 	 * 
-	 * @param program
+	 * @param program: 
+	 * @param path: 
 	 */
 	public static void writeHLVLProgram(String path, String program) {
 		try {

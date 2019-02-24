@@ -19,11 +19,14 @@ public interface IHlvlParser {
 	
 	/**
 	 * Method 
-	 * @throws Exception
+	 * @throws Exception: 
 	 */
 	public void parse() throws Exception;
 	
-	
-
+	/**
+	 * Method 
+	 * @throws Exception: 
+	 */
+	public String parse(String data)throws Exception;
 
 }

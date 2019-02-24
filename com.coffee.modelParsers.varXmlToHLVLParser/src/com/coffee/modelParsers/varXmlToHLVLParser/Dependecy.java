@@ -43,7 +43,7 @@ public class Dependecy {
 	/**
 	 * this method change dependecy's type value for paramater.
 	 * 
-	 * @param String: dependecy's type
+	 * @param type: dependecy's type
 	 */
 	public void setType(String type) {
 		this.type = type;
@@ -61,7 +61,7 @@ public class Dependecy {
 	/**
 	 * this method change dependecy's relType value for paramater.
 	 * 
-	 * @param String: dependecy's relType
+	 * @param relType: dependecy's relType
 	 */
 	public void setRelType(String relType) {
 		this.relType = relType;
@@ -79,7 +79,7 @@ public class Dependecy {
 	/**
 	 * this method change dependecy's relType value for paramater.
 	 * 
-	 * @param String: dependecy's relType
+	 * @param id: dependecy's relType
 	 */
 	public void setId(String id) {
 		this.id = id;
@@ -97,7 +97,7 @@ public class Dependecy {
 	/**
 	 * this method change dependecy's source value for paramater.
 	 * 
-	 * @param String: dependecy's source
+	 * @param source: dependecy's source
 	 */
 	public void setSource(String source) {
 		this.source = source;
@@ -115,7 +115,7 @@ public class Dependecy {
 	/**
 	 * this method change dependecy's target value for paramater.
 	 * 
-	 * @param String: dependecy's target
+	 * @param target: dependecy's target
 	 */
 	public void setTarget(String target) {
 		this.target = target;
