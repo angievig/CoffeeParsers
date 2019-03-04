@@ -24,12 +24,6 @@
                         <version>2.3</version>
                 </extension>
         </extensions>
-        <distributionManagement>
-        <repository>
-                <id>nfms4redd</id>
-                <url>ftp://maven.nfms4redd.org/repo</url>
-                <uniqueVersion>false</uniqueVersion>
-        </repository>
-</distributionManagement>
+        
   </build>
 </project>
