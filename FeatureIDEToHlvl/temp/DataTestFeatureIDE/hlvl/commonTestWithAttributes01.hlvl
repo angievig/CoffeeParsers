@@ -1,0 +1,37 @@
+model  commonTestWithAttributes01_generated
+elements: 
+	boolean Tetris
+	boolean TRESD_Car_Race
+	boolean Chess
+	boolean Games
+	boolean Task
+	att long maxParConn
+	boolean Video_Call
+	boolean GPS
+	att long size
+	boolean RAM
+	boolean GPU
+	att long speed
+	boolean CPU
+	boolean Processors
+	att long resolution
+	boolean Screen
+	att double speed
+	boolean TRESG_Conector
+	boolean Hardware
+	boolean Mobile_Phone
+relations:
+	r0: coreElements(Mobile_Phone)
+	r1:decomposition(Mobile_Phone,[Hardware])<1>
+	r2:decomposition(Hardware,[TRESG_Conector])<0>
+	r3:decomposition(Hardware,[Screen])<1>
+	r4:decomposition(Hardware,[Processors])<1>
+	r5:decomposition(Processors,[CPU])<0>
+	r6:decomposition(Processors,[GPU])<0>
+	r7:decomposition(Hardware,[RAM])<1>
+	r8:decomposition(Hardware,[GPS])<0>
+	r9:decomposition(Mobile_Phone,[Video_Call])<0>
+	r10:decomposition(Mobile_Phone,[Task])<0>
+	r11:group(Games,[Chess, TRESD_Car_Race, Tetris])[1,*]
+	r12:decomposition(Mobile_Phone,[Games])<0>
+
