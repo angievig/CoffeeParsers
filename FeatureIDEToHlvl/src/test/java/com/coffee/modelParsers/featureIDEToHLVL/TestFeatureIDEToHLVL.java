@@ -17,6 +17,7 @@ import com.coffee.modelParsers.utils.ParsingParameters;
 public class TestFeatureIDEToHLVL {
 
 	public static final String COMMONT_PATH_INPUT="temp/DataTestFeatureIDE/featureIDE";
+	public static final String COMMONT_PATH_INPUT_ATT="temp/DataTestFeatureIDE/featureIDE/featureIDEWithAtt";
 	public static final String COMMONT_PATH_OUTPUT="temp/DataTestFeatureIDE/hlvl";
 
 	private FeatureIDEToHLVL fToH;
@@ -54,12 +55,26 @@ public class TestFeatureIDEToHLVL {
 				"    <featureOrder userDefined=\"false\"/>\r\n" + 
 				"</featureModel>";
 		
-		String resultado = "model  Auto_generated\n" + "elements: \n" + "	boolean Testris\n"
-				+ "	boolean TRESDCarRace\n" + "	boolean Chess\n" + "	boolean Games\n" + "	boolean Task\n"
-				+ "	boolean VideoCall\n" + "	boolean GPS\n" + "	boolean RAM\n" + "	boolean GPU\n"
-				+ "	boolean CPU\n" + "	boolean Processors\n" + "	boolean ScreenResolution\n"
-				+ "	boolean TRESGConector\n" + "	boolean HardWare\n" + "	boolean EjemploFeatureIDE\n"
-				+ "relations:\n" + "	r0: coreElements(EjemploFeatureIDE)\n"
+		String resultado = "model  Auto_generated\n" + 
+				"elements: \n" + 
+				"	boolean Testris\n"+
+				"	boolean TRESDCarRace\n" + 
+				"	boolean Chess\n" + 
+				"	"+ 
+				"boolean Games\n" + 
+				"	boolean Task\n"
+				+ "	boolean VideoCall\n" + 
+				"	boolean GPS\n" + 
+				"	boolean RAM\n" + 
+				"	boolean GPU\n"
+				+ "	boolean CPU\n" + 
+				"	boolean Processors\n" + 
+				"	boolean ScreenResolution\n"
+				+ "	boolean TRESGConector\n" + 
+				"	boolean HardWare\n" + 
+				"	boolean EjemploFeatureIDE\n"
+				+ "relations:\n" + 
+				"	r0: coreElements(EjemploFeatureIDE)\n"
 				+ "	r1:decomposition(EjemploFeatureIDE,[HardWare])<1>\n"
 				+ "	r2:decomposition(HardWare,[TRESGConector])<0>\n"
 				+ "	r3:decomposition(HardWare,[ScreenResolution])<1>\n"
@@ -81,6 +96,7 @@ public class TestFeatureIDEToHLVL {
 	
 	@Test
 	public void InputStringCommonTestV2() {
+
 		fToH= new FeatureIDEToHLVL();
 		String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\r\n" + 
 				"<featureModel>\r\n" + 
@@ -287,9 +303,8 @@ public class TestFeatureIDEToHLVL {
 	}
 	
 	@Test
-	public void testWithAttributes() {
-		ParsingParameters params = new ParsingParameters();
-		params.setInputPath(COMMONT_PATH_INPUT);
+	public void testWithAttributes() {		ParsingParameters params = new ParsingParameters();
+		params.setInputPath(COMMONT_PATH_INPUT_ATT);
 		params.setOutputPath(COMMONT_PATH_OUTPUT);
 		params.setTargetName("commonTestWithAttributes");
 		fToH = new FeatureIDEToHLVL(params);
@@ -299,46 +314,50 @@ public class TestFeatureIDEToHLVL {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		String resultado = "model  commonTest01_generated\n" + 
+		String resultado = "model  commonTestWithAttributes_generated\n" + 
 				"elements: \n" + 
 				"	boolean Tetris\n" + 
 				"	boolean TRESD_Car_Race\n" + 
 				"	boolean Chess\n" + 
 				"	boolean Games\n" + 
 				"	boolean Task\n" + 
-				"	att long maxParConn\n" + 
+				"	att symbolic maxParConn\n" + 
 				"	boolean Video_Call\n" + 
 				"	boolean GPS\n" + 
-				"	att long size\n" + 
+				"	att symbolic size\n" + 
 				"	boolean RAM\n" + 
 				"	boolean GPU\n" + 
-				"	att long speed\n" + 
+				"	att symbolic speed\n" + 
 				"	boolean CPU\n" + 
 				"	boolean Processors\n" + 
-				"	att long resolution\n" + 
+				"	att symbolic resolution\n" + 
 				"	boolean Screen\n" + 
-				"	att double speed\n" + 
+				"	att symbolic speed\n" + 
 				"	boolean TRESG_Conector\n" + 
 				"	boolean Hardware\n" + 
 				"	boolean Mobile_Phone\n" + 
 				"relations:\n" + 
 				"	r0: coreElements(Mobile_Phone)\n" + 
 				"	r1:decomposition(Mobile_Phone,[Hardware])<1>\n" + 
-				"	r2:decomposition(Hardware,[TRESG_Conector])<0>\n" + 
-				"	r3:decomposition(Hardware,[Screen])<1>\n" + 
-				"	r4:decomposition(Hardware,[Processors])<1>\n" + 
-				"	r5:decomposition(Processors,[CPU])<0>\n" + 
-				"	r6:decomposition(Processors,[GPU])<0>\n" + 
-				"	r7:decomposition(Hardware,[RAM])<1>\n" + 
-				"	r8:decomposition(Hardware,[GPS])<0>\n" + 
-				"	r9:decomposition(Mobile_Phone,[Video_Call])<0>\n" + 
-				"	r10:decomposition(Mobile_Phone,[Task])<0>\n" + 
-				"	r11:group(Games,[Chess, TRESD_Car_Race, Tetris])[1,*]\n" + 
-				"	r12:decomposition(Mobile_Phone,[Games])<0>\n" + 
-				""
-;
+				"	r2:decomposition(speed,[and])<1>\n" + 
+				"	r3:decomposition(Hardware,[TRESG_Conector])<0>\n" + 
+				"	r4:decomposition(resolution,[and])<1>\n" + 
+				"	r5:decomposition(Hardware,[Screen])<1>\n" + 
+				"	r6:decomposition(Hardware,[Processors])<1>\n" + 
+				"	r7:decomposition(speed,[and])<1>\n" + 
+				"	r8:decomposition(Processors,[CPU])<0>\n" + 
+				"	r9:decomposition(Processors,[GPU])<0>\n" + 
+				"	r10:decomposition(size,[and])<1>\n" + 
+				"	r11:decomposition(Hardware,[RAM])<1>\n" + 
+				"	r12:decomposition(Hardware,[GPS])<0>\n" + 
+				"	r13:decomposition(maxParConn,[and])<1>\n" + 
+				"	r14:decomposition(Mobile_Phone,[Video_Call])<0>\n" + 
+				"	r15:decomposition(Mobile_Phone,[Task])<0>\n" + 
+				"	r16:group(Games,[Chess, TRESD_Car_Race, Tetris])[1,*]\n" + 
+				"	r17:decomposition(Mobile_Phone,[Games])<0>\n";
+
 		try {
-			File file = new File(COMMONT_PATH_OUTPUT+"/commonTest01.hlvl");
+			File file = new File(COMMONT_PATH_OUTPUT+"/commonTestWithAttributes.hlvl");
 			FileReader f = new FileReader(file);
 			BufferedReader in = new BufferedReader(f);
 			String linea = in.readLine();

@@ -15,15 +15,13 @@ public class HlvlAttFactory extends HlvlBasicFactory implements HlvlAttKeys, IHl
 		case INTEGER:
 			out= ATT +SPACE + INTEGER + SPACE + identifier+ "\n";
 			break;
-		case LONG:
-			out= ATT +SPACE + LONG + SPACE + identifier+ "\n";
+		case SYMBOLIC:
+			out= ATT +SPACE + SYMBOLIC + SPACE + identifier+ "\n";
 			break;
 		case STRING:
 			out= ATT +SPACE + STRING + SPACE + identifier+ "\n";
 			break;
-		case DOUBLE:
-			out= ATT +SPACE + DOUBLE + SPACE + identifier+ "\n";
-			break;
+	
 		}
 		return  out;
 	}

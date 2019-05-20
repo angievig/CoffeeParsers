@@ -266,18 +266,17 @@ public class FeatureIDEToHLVL implements IHlvlParser {
 				if (params != null) {
 					HlvlCode.insert(converter.getHeader(params.getTargetName() + "_generated").length(),
 							"	" + converter.getElement(n.getAttributes().item(i).getNodeValue()));
-					addAttributes(n,converter.getHeader(params.getTargetName() + "_generated").length());
+					addAttributes(n,converter.getHeader(params.getTargetName() + "_generated").length(), n.getParentNode().getNodeName());
 				} else {
 
 					HlvlCode.insert((converter.getHeader("Auto_generated").length()),
 							"	" + converter.getElement(n.getAttributes().item(i).getNodeValue()));
-					addAttributes(n,converter.getHeader("Auto_generated").length());
+					addAttributes(n,converter.getHeader("Auto_generated").length(),n.getParentNode().getNodeName());
 				}
 			}
 		}
 	}
-	
-	public void addAttributes(Node n, int pos) {
+	public void addAttributes(Node n, int pos,String nameFhater) {
 		for (int i = 0; i < n.getChildNodes().getLength(); i++) {
 			if (n.getChildNodes().item(i).getNodeName().equals("attribute")) {
 			
@@ -285,22 +284,51 @@ public class FeatureIDEToHLVL implements IHlvlParser {
 					String type=n.getChildNodes().item(i).getAttributes().item(1).getNodeValue();
 					switch (type) {
 					case "double":
-						HlvlCode.insert(pos,"	" + converter.getAtt(name,AttType.DOUBLE));
+						HlvlCode.insert(pos,"	" + converter.getAtt(name,AttType.SYMBOLIC));
+						HlvlCode.insert(HlvlCode.length(),"	" + converter.getDecomposition(name, nameFhater,DecompositionType.Mandatory) );
 						break;
 					case "long":
-						HlvlCode.insert(pos,"	" + converter.getAtt(name,AttType.LONG));
+						HlvlCode.insert(pos,"	" + converter.getAtt(name,AttType.SYMBOLIC));
+						HlvlCode.insert(HlvlCode.length(),"	" + converter.getDecomposition(name, nameFhater,DecompositionType.Mandatory) );
 						break;
 					case "integer":
 						HlvlCode.insert(pos,"	" + converter.getAtt(name,AttType.INTEGER));
+						HlvlCode.insert(HlvlCode.length(),"	" + converter.getDecomposition(name, nameFhater,DecompositionType.Mandatory) );
 						break;
 					case "string":
 						HlvlCode.insert(pos,"	" + converter.getAtt(name,AttType.STRING));
+						HlvlCode.insert(HlvlCode.length(),"	" + converter.getDecomposition(name, nameFhater,DecompositionType.Mandatory) );
 						break;
 					}
 
 			}
 		}
 	}
+	
+//	public void addAttributes(Node n, int pos) {
+//		for (int i = 0; i < n.getChildNodes().getLength(); i++) {
+//			if (n.getChildNodes().item(i).getNodeName().equals("attribute")) {
+//			
+//					String name =n.getChildNodes().item(i).getAttributes().item(0).getNodeValue();
+//					String type=n.getChildNodes().item(i).getAttributes().item(1).getNodeValue();
+//					switch (type) {
+//					case "double":
+//						HlvlCode.insert(pos,"	" + converter.getAtt(name,AttType.DOUBLE));
+//						break;
+//					case "long":
+//						HlvlCode.insert(pos,"	" + converter.getAtt(name,AttType.LONG));
+//						break;
+//					case "integer":
+//						HlvlCode.insert(pos,"	" + converter.getAtt(name,AttType.INTEGER));
+//						break;
+//					case "string":
+//						HlvlCode.insert(pos,"	" + converter.getAtt(name,AttType.STRING));
+//						break;
+//					}
+//
+//			}
+//		}
+//	}
 
 	/**
 	 * this method is responsible for ensure the format of the item name
