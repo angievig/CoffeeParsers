@@ -128,6 +128,7 @@ public class FeatureIDEToHLVL implements IHlvlParser {
 		}
 	}
 
+	//EL METODO addConstrains solo funcionas para constrains del tipo A => B / A => !B
 	/**
 	 * this method is responsible to in HlvlCode the HLVL code that 
 	 * represent mutex and implies in HLVL from n
@@ -156,6 +157,12 @@ public class FeatureIDEToHLVL implements IHlvlParser {
 			}
 		}
 	}
+	
+	public void addComplexConstrains(Node n) {
+		
+	}
+	
+	
 
 	/**
 	 * this method is responsible to group names's childrens from n

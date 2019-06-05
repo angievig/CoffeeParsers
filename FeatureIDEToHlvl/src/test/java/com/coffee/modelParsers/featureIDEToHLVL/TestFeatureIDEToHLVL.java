@@ -18,10 +18,47 @@ public class TestFeatureIDEToHLVL {
 
 	public static final String COMMONT_PATH_INPUT="temp/DataTestFeatureIDE/featureIDE";
 	public static final String COMMONT_PATH_INPUT_ATT="temp/DataTestFeatureIDE/featureIDE/featureIDEWithAtt";
+	public static final String COMMONT_PATH_INPUT_CONSTRAINS="temp/DataTestFeatureIDE/featureIDE/featureIDEWithAtt";
 	public static final String COMMONT_PATH_OUTPUT="temp/DataTestFeatureIDE/hlvl";
 
 	private FeatureIDEToHLVL fToH;
 
+	@Test
+	public void StringWithConstrains() {
+		ParsingParameters params = new ParsingParameters();
+		params.setInputPath(COMMONT_PATH_INPUT_CONSTRAINS);
+		params.setOutputPath(COMMONT_PATH_OUTPUT);
+		params.setTargetName("commonTestWithConstrains");
+		fToH = new FeatureIDEToHLVL(params);
+
+		try {
+			fToH.parse();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		//LA SIGUIENTE EXPRESION NO SE PUEDE LOGRAR CON FEATUREIDE
+		//expression (3 <= card . confidentiality AND card.\r\n" + "confidentiality <= 5)
+		String resultado ="expression (Task => CPU)" + 
+						  "expression (Video_Call && !Task && GPS = TRESG_Conector)";
+		try {
+			File file = new File(COMMONT_PATH_OUTPUT+"/commonTestWithConstrains.hlvl");
+			FileReader f = new FileReader(file);
+			BufferedReader in = new BufferedReader(f);
+			String linea = in.readLine();
+		
+			String datosHLVL = "";
+			while (!linea.equals("")) {
+				datosHLVL += linea + "\n";
+				linea = in.readLine();
+			}
+			assertTrue(datosHLVL.equals(resultado));
+			in.close();
+			f.close();
+		} catch (IOException e) {
+			fail();
+		}
+		
+	}
 	@Test
 	public void InputStringCommonTest() {
 		fToH= new FeatureIDEToHLVL();
@@ -367,8 +404,8 @@ public class TestFeatureIDEToHLVL {
 				datosHLVL += linea + "\n";
 				linea = in.readLine();
 			}
-			System.out.println(datosHLVL);
-			System.out.println(resultado);
+//			System.out.println(datosHLVL);
+//			System.out.println(resultado);
 			assertTrue(datosHLVL.equals(resultado));
 			in.close();
 			f.close();
