@@ -90,6 +90,13 @@ public interface IHlvlBasicFactory {
 	 */
 	public String parseCNF2expression(List<String> positives, List<String> negatives);
 	
+	/**
+	 * 
+	 * @param expression
+
+	 * @return
+	 */
+	public String parserExpression(String expresion);
 
 	
 	/**
