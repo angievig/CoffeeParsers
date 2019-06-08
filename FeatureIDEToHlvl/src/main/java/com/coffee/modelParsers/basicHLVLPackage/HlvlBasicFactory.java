@@ -96,6 +96,12 @@ public class HlvlBasicFactory implements IHlvlBasicFactory, HlvlBasicKeys{
 	public String parseCNF2expression(List<String> positives, List<String> negatives) {
 		return expFactory.getCNF2expression(positives, negatives, numId++, id); 
 	}
+	
+	@Override
+	public String parserExpression(String expresion) {
+		// TODO Auto-generated method stub
+		return id+(numId++)+COLON+ EXPRESSION+OPEN_CALL+expresion+CLOSE_CALL+"\n";
+	}
 	@Override
 	public String getHeader(String targetName) {
 		return MODEL_LABEL + SPACE + targetName + "\n" + ELEMENTS_LABEL;

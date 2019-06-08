@@ -39,4 +39,6 @@ relations:
 	r15:decomposition(Mobile_Phone,[Task])<0>
 	r16:group(Games,[Chess, TRESD_Car_Race, Tetris])[1,*]
 	r17:decomposition(Mobile_Phone,[Games])<0>
+	r18:expression(((Task) => (CPU)))
+	r19:expression((((Video_Call) AND ((~ (Task)) AND ((GPS) OR (GPU)))) => (TRESG_Conector)))
 

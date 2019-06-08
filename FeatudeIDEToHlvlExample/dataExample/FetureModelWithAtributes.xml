@@ -32,28 +32,7 @@
             </or>
         </and>
     </struct>
-    <constraints>
-        <rule>
-            <imp>
-                <var>Task</var>
-                <var>CPU</var>
-            </imp>
-        </rule>
-        <rule>
-            <imp>
-                <conj>
-                    <conj>
-                        <var>Video_Call</var>
-                        <not>
-                            <var>Task</var>
-                        </not>
-                    </conj>
-                    <var>GPS</var>
-                </conj>
-                <var>TRESG_Conector</var>
-            </imp>
-        </rule>
-    </constraints>
+    <constraints/>
     <calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
     <comments/>
     <featureOrder userDefined="false"/>

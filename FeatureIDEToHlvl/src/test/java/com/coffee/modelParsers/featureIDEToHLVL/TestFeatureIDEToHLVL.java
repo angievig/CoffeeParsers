@@ -18,7 +18,7 @@ public class TestFeatureIDEToHLVL {
 
 	public static final String COMMONT_PATH_INPUT="temp/DataTestFeatureIDE/featureIDE";
 	public static final String COMMONT_PATH_INPUT_ATT="temp/DataTestFeatureIDE/featureIDE/featureIDEWithAtt";
-	public static final String COMMONT_PATH_INPUT_CONSTRAINS="temp/DataTestFeatureIDE/featureIDE/featureIDEWithAtt";
+	public static final String COMMONT_PATH_INPUT_CONSTRAINS="temp/DataTestFeatureIDE/featureIDE/featureIDEWithConstrains";
 	public static final String COMMONT_PATH_OUTPUT="temp/DataTestFeatureIDE/hlvl";
 
 	private FeatureIDEToHLVL fToH;
@@ -38,8 +38,50 @@ public class TestFeatureIDEToHLVL {
 		}
 		//LA SIGUIENTE EXPRESION NO SE PUEDE LOGRAR CON FEATUREIDE
 		//expression (3 <= card . confidentiality AND card.\r\n" + "confidentiality <= 5)
-		String resultado ="expression (Task => CPU)" + 
-						  "expression (Video_Call && !Task && GPS = TRESG_Conector)";
+		String resultado ="model  commonTestWithConstrains_generated\n" + 
+				"elements: \n" + 
+				"	boolean Tetris\n" + 
+				"	boolean TRESD_Car_Race\n" + 
+				"	boolean Chess\n" + 
+				"	boolean Games\n" + 
+				"	boolean Task\n" + 
+				"	att symbolic maxParConn\n" + 
+				"	boolean Video_Call\n" + 
+				"	boolean GPS\n" + 
+				"	att symbolic size\n" + 
+				"	boolean RAM\n" + 
+				"	boolean GPU\n" + 
+				"	att symbolic speed\n" + 
+				"	boolean CPU\n" + 
+				"	boolean Processors\n" + 
+				"	att symbolic resolution\n" + 
+				"	boolean Screen\n" + 
+				"	att symbolic speed\n" + 
+				"	boolean TRESG_Conector\n" + 
+				"	boolean Hardware\n" + 
+				"	boolean Mobile_Phone\n" + 
+				"relations:\n" + 
+				"	r0: coreElements(Mobile_Phone)\n" + 
+				"	r1:decomposition(Mobile_Phone,[Hardware])<1>\n" + 
+				"	r2:decomposition(speed,[and])<1>\n" + 
+				"	r3:decomposition(Hardware,[TRESG_Conector])<0>\n" + 
+				"	r4:decomposition(resolution,[and])<1>\n" + 
+				"	r5:decomposition(Hardware,[Screen])<1>\n" + 
+				"	r6:decomposition(Hardware,[Processors])<1>\n" + 
+				"	r7:decomposition(speed,[and])<1>\n" + 
+				"	r8:decomposition(Processors,[CPU])<0>\n" + 
+				"	r9:decomposition(Processors,[GPU])<0>\n" + 
+				"	r10:decomposition(size,[and])<1>\n" + 
+				"	r11:decomposition(Hardware,[RAM])<1>\n" + 
+				"	r12:decomposition(Hardware,[GPS])<0>\n" + 
+				"	r13:decomposition(maxParConn,[and])<1>\n" + 
+				"	r14:decomposition(Mobile_Phone,[Video_Call])<0>\n" + 
+				"	r15:decomposition(Mobile_Phone,[Task])<0>\n" + 
+				"	r16:group(Games,[Chess, TRESD_Car_Race, Tetris])[1,*]\n" + 
+				"	r17:decomposition(Mobile_Phone,[Games])<0>\n" + 
+				"	r18:expression(((Task) => (CPU)))\n" + 
+				"	r19:expression((((Video_Call) AND ((~ (Task)) AND ((GPS) OR (GPU)))) => (TRESG_Conector)))\n";
+
 		try {
 			File file = new File(COMMONT_PATH_OUTPUT+"/commonTestWithConstrains.hlvl");
 			FileReader f = new FileReader(file);
@@ -210,12 +252,12 @@ public class TestFeatureIDEToHLVL {
 				"	r8:group(Processors,[GPU, CPU])	r9:decomposition(HardWare,[Processors])<1>\n" + 
 				"	r10:decomposition(HardWare,[ScreenResolution])<1>\n" + 
 				"	r11:decomposition(HardWare,[TRESGConector])<0>\n" + 
-				"	r12: implies(TRESGConector,GPU)\n" + 
-				"	r13: mutex(GPS, Chess)\n";
+				"	r12:expression(((TRESGConector) => (GPU)))\n" + 
+				"	r13:expression(((GPS) => (~ (Chess))))\n";
 
 		try {
 			String variamosResult = fToH.parse(xml);
-	
+			System.out.println(variamosResult);
 			assertTrue(resultado.equals(variamosResult));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -317,8 +359,8 @@ public class TestFeatureIDEToHLVL {
 				"	r8:group(Processors,[GPU, CPU])	r9:decomposition(HardWare,[Processors])<1>\n" + 
 				"	r10:decomposition(HardWare,[ScreenResolution])<1>\n" + 
 				"	r11:decomposition(HardWare,[TRESGConector])<0>\n" + 
-				"	r12: implies(TRESGConector,GPU)\n" + 
-				"	r13: mutex(GPS, Chess)\n";
+				"	r12:expression(((TRESGConector) => (GPU)))\n" + 
+				"	r13:expression(((GPS) => (~ (Chess))))\n";
 		try {
 			File file = new File(COMMONT_PATH_OUTPUT+"/commonTest0.hlvl");
 			FileReader f = new FileReader(file);

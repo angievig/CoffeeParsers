@@ -2,17 +2,17 @@ package com.coffee.modelParsers.featureIDEToHlvlParser;
 
 import java.util.ArrayList;
 
+
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import com.coffee.modelParsers.ExpresionHLVLPackage.HlvlExpressionKeys;
 import com.coffee.modelParsers.attHLVLPackage.AttType;
 import com.coffee.modelParsers.attHLVLPackage.HlvlAttFactory;
 import com.coffee.modelParsers.attHLVLPackage.IHlvlAttFactory;
 import com.coffee.modelParsers.basicHLVLPackage.DecompositionType;
 import com.coffee.modelParsers.basicHLVLPackage.GroupType;
-import com.coffee.modelParsers.basicHLVLPackage.HlvlBasicFactory;
 import com.coffee.modelParsers.basicHLVLPackage.IHlvlParser;
-import com.coffee.modelParsers.basicHLVLPackage.IHlvlBasicFactory;
 import com.coffee.modelParsers.utils.FileUtils;
 import com.coffee.modelParsers.utils.ParsingParameters;
 /**
@@ -120,6 +120,7 @@ public class FeatureIDEToHLVL implements IHlvlParser {
 			addRelations(n);
 		} else if (n.getNodeName().equals("rule")) {
 			addConstrains(n);
+			
 		}
 		NodeList childrens = n.getChildNodes();
 		for (int i = 0; i < childrens.getLength(); i++) {
@@ -128,7 +129,6 @@ public class FeatureIDEToHLVL implements IHlvlParser {
 		}
 	}
 
-	//EL METODO addConstrains solo funcionas para constrains del tipo A => B / A => !B
 	/**
 	 * this method is responsible to in HlvlCode the HLVL code that 
 	 * represent mutex and implies in HLVL from n
@@ -136,30 +136,30 @@ public class FeatureIDEToHLVL implements IHlvlParser {
 	 * @param n: n represent a Node
 	 */
 	public void addConstrains(Node n) {
-		NodeList childsAux = n.getChildNodes();
-		for (int i = 0; i < childsAux.getLength(); i++) {
-			if (childsAux.item(i).getNodeName().equals("imp")) {
-				String name1 = "Null";
-				String name2 = "Null";
-				NodeList granChildrens = childsAux.item(i).getChildNodes();
-				for (int j = 0; j < granChildrens.getLength(); j++) {
-					if (granChildrens.item(j).getNodeName().equals("var") && name1.equals("Null")) {
-						name1 = granChildrens.item(j).getFirstChild().getNodeValue();
-					} else if (granChildrens.item(j).getNodeName().equals("var") && !name1.equals("Null")) {
-						name2 = granChildrens.item(j).getFirstChild().getNodeValue();
-						HlvlCode.append("	" + converter.getImplies(name1, name2));
-					} else if (granChildrens.item(j).getNodeName().equals("not")) {
-						name2 = granChildrens.item(j).getChildNodes().item(1).getFirstChild().getNodeValue();
-						HlvlCode.append("	" + converter.getMutex(name1, name2));
-					}
-				}
-
-			}
-		}
+		String expression ="";	
+		HlvlCode.append("	"+converter.parserExpression(addComplexConstrains(n.getFirstChild().getNextSibling(), expression)));
 	}
 	
-	public void addComplexConstrains(Node n) {
-		
+	public String addComplexConstrains(Node n, String result) {
+		String valueNode = n.getNodeName();
+		switch (valueNode) {
+		case "imp":
+			result ="("+addComplexConstrains(n.getFirstChild().getNextSibling(), result)+" "+HlvlExpressionKeys.IMP+" "+addComplexConstrains(n.getLastChild().getPreviousSibling(), result)+")";
+			break;
+		case "conj":
+			result ="("+addComplexConstrains(n.getFirstChild().getNextSibling(), result)+" "+HlvlExpressionKeys.AND+" "+addComplexConstrains(n.getLastChild().getPreviousSibling(), result)+")";
+			break;		
+		case "disj":
+			result ="("+addComplexConstrains(n.getFirstChild().getNextSibling(), result)+" "+HlvlExpressionKeys.OR+" "+addComplexConstrains(n.getLastChild().getPreviousSibling(), result)+")";
+			break;
+		case "not":
+			result ="("+HlvlExpressionKeys.NOT+" "+addComplexConstrains(n.getFirstChild().getNextSibling(), result)+")";
+			break;
+		case "var":
+			result ="("+n.getFirstChild().getNodeValue()+")";
+			break;
+		}
+		return result;
 	}
 	
 	
