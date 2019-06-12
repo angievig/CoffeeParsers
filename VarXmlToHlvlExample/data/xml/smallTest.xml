@@ -57,7 +57,7 @@
         <mxGeometry relative="1" as="geometry"/>
       </mxCell>
     </rel_bundle_root>
-    <general label="baño" type="general" id="12">
+    <general label="bano" type="general" id="12">
       <mxCell style="" vertex="1" parent="feature">
         <mxGeometry x="720" y="230" width="100" height="35" as="geometry"/>
       </mxCell>

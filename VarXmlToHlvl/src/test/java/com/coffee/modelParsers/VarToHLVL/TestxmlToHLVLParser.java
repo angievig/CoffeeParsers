@@ -30,7 +30,7 @@ public class TestxmlToHLVLParser {
 				+ "      <mxCell style=\"\" vertex=\"1\" parent=\"feature\">\r\n"
 				+ "        <mxGeometry x=\"321\" y=\"20\" width=\"100\" height=\"35\" as=\"geometry\"/>\r\n"
 				+ "      </mxCell>\r\n" + "    </root>\r\n"
-				+ "    <general label=\"Baño\" type=\"general\" id=\"2\">\r\n"
+				+ "    <general label=\"Bano\" type=\"general\" id=\"2\">\r\n"
 				+ "      <mxCell style=\"\" vertex=\"1\" parent=\"feature\">\r\n"
 				+ "        <mxGeometry x=\"200\" y=\"200\" width=\"100\" height=\"35\" as=\"geometry\"/>\r\n"
 				+ "      </mxCell>\r\n" + "    </general>\r\n"
@@ -59,7 +59,7 @@ public class TestxmlToHLVLParser {
 				+ "      <mxCell edge=\"1\" parent=\"feature\" source=\"10\" target=\"2\">\r\n"
 				+ "        <mxGeometry relative=\"1\" as=\"geometry\"/>\r\n" + "      </mxCell>\r\n"
 				+ "    </rel_bundle_general>\r\n"
-				+ "    <leaf label=\"Bañera\" type=\"leaf\" selected=\"1\" id=\"12\">\r\n"
+				+ "    <leaf label=\"Banera\" type=\"leaf\" selected=\"1\" id=\"12\">\r\n"
 				+ "      <mxCell style=\"\" vertex=\"1\" parent=\"feature\">\r\n"
 				+ "        <mxGeometry x=\"110\" y=\"350\" width=\"100\" height=\"35\" as=\"geometry\"/>\r\n"
 				+ "      </mxCell>\r\n" + "    </leaf>\r\n"
@@ -146,7 +146,7 @@ public class TestxmlToHLVLParser {
 				+ "        <mxGeometry relative=\"1\" as=\"geometry\"/>\r\n" + "      </mxCell>\r\n"
 				+ "    </rel_general_general>\r\n" + "    <mxCell id=\"component\" parent=\"0\" visible=\"0\"/>\r\n"
 				+ "    <mxCell id=\"binding_feature_component\" parent=\"0\" visible=\"0\"/>\r\n"
-				+ "    <leaf label=\"Bañera\" type=\"leaf\" selected=\"1\" id=\"clon12\">\r\n"
+				+ "    <leaf label=\"Banera\" type=\"leaf\" selected=\"1\" id=\"clon12\">\r\n"
 				+ "      <mxCell style=\"fillColor=#DCDCDC;\" vertex=\"1\" parent=\"binding_feature_component\">\r\n"
 				+ "        <mxGeometry x=\"560\" y=\"200\" width=\"100\" height=\"35\" as=\"geometry\"/>\r\n"
 				+ "      </mxCell>\r\n" + "    </leaf>\r\n"
@@ -166,30 +166,31 @@ public class TestxmlToHLVLParser {
 		String result = "model  Auto_generated\n" + 
 				"elements: \n" + 
 				"	boolean Sala_de_juegos\n" + 
-				"	boolean Bañera\n" + 
+				"	boolean Banera\n" + 
 				"	boolean Cuarto_secundario\n" + 
 				"	boolean ducha\n" + 
 				"	boolean Lava_Platos\n" + 
 				"	boolean Garaje\n" + 
 				"	boolean Orno\n" + 
 				"	boolean Casa\n" + 
-				"	boolean Baño\n" + 
+				"	boolean Bano\n" + 
 				"	boolean Cocina\n" + 
 				"	boolean Cuarto_Principal\n" + 
 				"	boolean Biblioteca\n" + 
 				"relations:\n" + 
 				"	r0: coreElements(Casa)\n" + 
-				"	r1:group(Casa,[Cocina, Baño, Cuarto_Principal, Cuarto_secundario])[1,*]\n" + 
+				"	r1:group(Casa,[Cocina, Bano, Cuarto_Principal, Cuarto_secundario])[1,*]\n" + 
 				"	r2:group(Casa,[Biblioteca, Sala_de_juegos])[1,*]\n" + 
-				"	r3:group(Baño,[Bañera, ducha])[1,*]\n" + 
+				"	r3:group(Bano,[Banera, ducha])[1,*]\n" + 
 				"	r4:decomposition(Lava_Platos,[Cocina])<1>\n" + 
 				"	r5:decomposition(Cocina,[Orno])<0>\n" + 
-				"	r6: implies(Cuarto_Principal,Baño)\n" + 
-				"	r7:decomposition(Baño,[Cuarto_secundario])<0>\n" + 
+				"	r6: implies(Cuarto_Principal,Bano)\n" + 
+				"	r7:decomposition(Bano,[Cuarto_secundario])<0>\n" + 
 				"	r8:decomposition(Casa,[Garaje])<0>\n" + 
 				"	r9: mutex(Biblioteca, Sala_de_juegos)\n";
 		try {
 			String variamosResult = variamosXMLToHlvlParser.parse(xml);
+			
 			assertTrue(result.equals(variamosResult));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -239,7 +240,7 @@ public class TestxmlToHLVLParser {
 				+ "    </rel_bundle_root>\r\n" + "    <rel_bundle_root type=\"relation\" id=\"11\">\r\n"
 				+ "      <mxCell edge=\"1\" parent=\"feature\" source=\"2\" target=\"1\">\r\n"
 				+ "        <mxGeometry relative=\"1\" as=\"geometry\"/>\r\n" + "      </mxCell>\r\n"
-				+ "    </rel_bundle_root>\r\n" + "    <general label=\"baño\" type=\"general\" id=\"12\">\r\n"
+				+ "    </rel_bundle_root>\r\n" + "    <general label=\"bano\" type=\"general\" id=\"12\">\r\n"
 				+ "      <mxCell style=\"\" vertex=\"1\" parent=\"feature\">\r\n"
 				+ "        <mxGeometry x=\"720\" y=\"230\" width=\"100\" height=\"35\" as=\"geometry\"/>\r\n"
 				+ "      </mxCell>\r\n" + "    </general>\r\n"
@@ -284,7 +285,7 @@ public class TestxmlToHLVLParser {
 		String result = "model  Auto_generated\n" + 
 				"elements: \n" + 
 				"	boolean casa\n" + 
-				"	boolean baño\n" + 
+				"	boolean bano\n" + 
 				"	boolean garaje\n" + 
 				"	boolean cuartoPrincipal\n" + 
 				"	boolean AnteMinusJardin\n" + 
@@ -293,15 +294,15 @@ public class TestxmlToHLVLParser {
 				"relations:\n" + 
 				"	r0: coreElements(casa)\n" + 
 				"	r1:group(casa,[garaje, AnteMinusJardin])[1,*]\n" + 
-				"	r2:group(casa,[cocina, baño])	r3:decomposition(cuartoPrincipal,[casa])<1>\n" + 
+				"	r2:group(casa,[cocina, bano])[1,1]\n"+				
+				"	r3:decomposition(cuartoPrincipal,[casa])<1>\n" + 
 				"	r4:decomposition(casa,[cuartoInvitador])<0>\n" + 
 				"	r5: implies(cuartoPrincipal,garaje)\n" + 
-				"	r6: mutex(AnteMinusJardin, cuartoInvitador)\n"
-;
+				"	r6: mutex(AnteMinusJardin, cuartoInvitador)\n";
 
 		try {
 			String variamosResult = variamosXMLToHlvlParser.parse(xml);
-			
+		
 			assertTrue(result.equals(variamosResult));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -361,7 +362,7 @@ public class TestxmlToHLVLParser {
 				+ "      <mxCell style=\"\" vertex=\"1\" parent=\"feature\">\r\n"
 				+ "        <mxGeometry x=\"821.5\" y=\"181\" width=\"100\" height=\"35\" as=\"geometry\"/>\r\n"
 				+ "      </mxCell>\r\n" + "    </general>\r\n"
-				+ "    <general label=\"Departamento de economía\" type=\"general\" id=\"13\">\r\n"
+				+ "    <general label=\"Departamento de economia\" type=\"general\" id=\"13\">\r\n"
 				+ "      <mxCell style=\"\" vertex=\"1\" parent=\"feature\">\r\n"
 				+ "        <mxGeometry x=\"838\" y=\"94\" width=\"100\" height=\"35\" as=\"geometry\"/>\r\n"
 				+ "      </mxCell>\r\n" + "    </general>\r\n"
@@ -630,7 +631,7 @@ public class TestxmlToHLVLParser {
 				+ "      <mxCell edge=\"1\" parent=\"feature\" source=\"86\" target=\"82\">\r\n"
 				+ "        <mxGeometry relative=\"1\" as=\"geometry\"/>\r\n" + "      </mxCell>\r\n"
 				+ "    </rel_leaf_general>\r\n"
-				+ "    <leaf label=\"Programas de acompañamiento\" type=\"leaf\" selected=\"1\" id=\"88\">\r\n"
+				+ "    <leaf label=\"Programas de acompanamiento\" type=\"leaf\" selected=\"1\" id=\"88\">\r\n"
 				+ "      <mxCell style=\"\" vertex=\"1\" parent=\"feature\">\r\n"
 				+ "        <mxGeometry x=\"380\" y=\"395.5\" width=\"100\" height=\"35\" as=\"geometry\"/>\r\n"
 				+ "      </mxCell>\r\n" + "    </leaf>\r\n"
@@ -671,7 +672,7 @@ public class TestxmlToHLVLParser {
 				+ "      <mxCell style=\"fillColor=#DCDCDC;\" vertex=\"1\" parent=\"binding_feature_component\">\r\n"
 				+ "        <mxGeometry x=\"180\" y=\"480\" width=\"100\" height=\"35\" as=\"geometry\"/>\r\n"
 				+ "      </mxCell>\r\n" + "    </leaf>\r\n"
-				+ "    <leaf label=\"Programas de acompañamiento\" type=\"leaf\" selected=\"1\" id=\"clon88\">\r\n"
+				+ "    <leaf label=\"Programas de acompanamiento\" type=\"leaf\" selected=\"1\" id=\"clon88\">\r\n"
 				+ "      <mxCell style=\"fillColor=#DCDCDC;\" vertex=\"1\" parent=\"binding_feature_component\">\r\n"
 				+ "        <mxGeometry x=\"430\" y=\"410\" width=\"100\" height=\"35\" as=\"geometry\"/>\r\n"
 				+ "      </mxCell>\r\n" + "    </leaf>\r\n"
@@ -687,7 +688,7 @@ public class TestxmlToHLVLParser {
 		String result = "model  Auto_generated\n" + 
 				"elements: \n" + 
 				"	boolean Director_de_estudiantes\n" + 
-				"	boolean Programas_de_acompañamiento\n" + 
+				"	boolean Programas_de_acompanamiento\n" + 
 				"	boolean Ingenieria_civil\n" + 
 				"	boolean Ingenieria_electrica\n" + 
 				"	boolean Sicologos\n" + 
@@ -700,7 +701,7 @@ public class TestxmlToHLVLParser {
 				"	boolean Sociologia\n" + 
 				"	boolean Departamento_de_ingenieria\n" + 
 				"	boolean Sicologia\n" + 
-				"	boolean Departamento_de_economía\n" + 
+				"	boolean Departamento_de_economia\n" + 
 				"	boolean Antropologia\n" + 
 				"	boolean Departamento_de_humanidades\n" + 
 				"	boolean Departamento_de_Salud\n" + 
@@ -723,11 +724,12 @@ public class TestxmlToHLVLParser {
 				"	r0:group(Universidad,[Departamento_de_investigacion, Bienestar_Universitario])[1,*]\n" + 
 				"	r1: coreElements(Universidad)\n" + 
 				"	r2:group(Universidad,[Direccion_Academica, Departamento_de_finanzas, Departamento_de_recursos_humanos])[1,*]\n" + 
-				"	r3:group(Universidad,[Departamento_de_ciencias_exactas, Departamento_de_humanidades, Departamento_de_economía, Departamento_de_Salud, Departamento_de_ingenieria, Departamento_TIC])	r4:decomposition(Jefe_de_departamento,[Departamento_de_ciencias_exactas])<1>\n" + 
+				"	r3:group(Universidad,[Departamento_de_ciencias_exactas, Departamento_de_humanidades, Departamento_de_economia, Departamento_de_Salud, Departamento_de_ingenieria, Departamento_TIC])[1,1]\n"+
+				"	r4:decomposition(Jefe_de_departamento,[Departamento_de_ciencias_exactas])<1>\n" + 
 				"	r5:decomposition(Jefe_de_departamento,[Departamento_TIC])<1>\n" + 
 				"	r6:decomposition(Jefe_de_departamento,[Departamento_de_ingenieria])<1>\n" + 
 				"	r7:decomposition(Jefe_de_departamento,[Departamento_de_Salud])<1>\n" + 
-				"	r8:decomposition(Jefe_de_departamento,[Departamento_de_economía])<1>\n" + 
+				"	r8:decomposition(Jefe_de_departamento,[Departamento_de_economia])<1>\n" + 
 				"	r9:decomposition(Jefe_de_departamento,[Departamento_de_humanidades])<1>\n" + 
 				"	r10:decomposition(Ingenieria_Sistemas,[Departamento_TIC])<1>\n" + 
 				"	r11:decomposition(Ingenieria_Telematica,[Departamento_TIC])<1>\n" + 
@@ -735,8 +737,8 @@ public class TestxmlToHLVLParser {
 				"	r13:decomposition(Ingenieria_civil,[Departamento_de_ingenieria])<1>\n" + 
 				"	r14:decomposition(Departamento_de_ingenieria,[Ingenieria_electrica])<0>\n" + 
 				"	r15: mutex(Ingenieria_civil, Ingenieria_electrica)\n" + 
-				"	r16:decomposition(Economia_y_finanzas_esteriores,[Departamento_de_economía])<1>\n" + 
-				"	r17:decomposition(Administracion,[Departamento_de_economía])<1>\n" + 
+				"	r16:decomposition(Economia_y_finanzas_esteriores,[Departamento_de_economia])<1>\n" + 
+				"	r17:decomposition(Administracion,[Departamento_de_economia])<1>\n" + 
 				"	r18:decomposition(Sicologia,[Departamento_de_humanidades])<1>\n" + 
 				"	r19:decomposition(Departamento_de_humanidades,[Sociologia])<0>\n" + 
 				"	r20:decomposition(Departamento_de_humanidades,[Antropologia])<0>\n" + 
@@ -758,14 +760,13 @@ public class TestxmlToHLVLParser {
 				"	r36:decomposition(Departamento_de_investigacion,[Investigacion_Estudiantil])<0>\n" + 
 				"	r37:decomposition(Investigacion_Estudiantil,[Voluntariado_Investigacion])<0>\n" + 
 				"	r38:decomposition(Monitores_Investigacion,[Investigacion_Estudiantil])<1>\n" + 
-				"	r39:decomposition(Programas_de_acompañamiento,[Bienestar_Universitario])<1>\n" + 
+				"	r39:decomposition(Programas_de_acompanamiento,[Bienestar_Universitario])<1>\n" + 
 				"	r40:decomposition(Director_de_estudiantes,[Sicologos])<0>\n" + 
 				"	r41:decomposition(Director_de_estudiantes,[Profesores_Deportes])<0>\n" + 
 				"	r42: mutex(Sicologos, Profesores_Deportes)\n";
 
 		try {
 			String variamosResult = variamosXMLToHlvlParser.parse(xml);
-			
 			assertTrue(result.equals(variamosResult));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -789,14 +790,14 @@ public class TestxmlToHLVLParser {
 		}
 
 		String resultado = "model  commonTest_generated\n" + "elements: \n" + "	boolean Sala_de_juegos\n"
-				+ "	boolean Bañera\n" + "	boolean Cuarto_secundario\n" + "	boolean ducha\n"
+				+ "	boolean Banera\n" + "	boolean Cuarto_secundario\n" + "	boolean ducha\n"
 				+ "	boolean Lava_Platos\n" + "	boolean Garaje\n" + "	boolean Orno\n" + "	boolean Casa\n"
-				+ "	boolean Baño\n" + "	boolean Cocina\n" + "	boolean Cuarto_Principal\n"
+				+ "	boolean Bano\n" + "	boolean Cocina\n" + "	boolean Cuarto_Principal\n"
 				+ "	boolean Biblioteca\n" + "relations:\n" + "	r0: coreElements(Casa)\n"
-				+ "	r1:group(Casa,[Cocina, Baño, Cuarto_Principal, Cuarto_secundario])[1,*]\n"
-				+ "	r2:group(Casa,[Biblioteca, Sala_de_juegos])[1,*]\n" + "	r3:group(Baño,[Bañera, ducha])[1,*]\n"
+				+ "	r1:group(Casa,[Cocina, Bano, Cuarto_Principal, Cuarto_secundario])[1,*]\n"
+				+ "	r2:group(Casa,[Biblioteca, Sala_de_juegos])[1,*]\n" + "	r3:group(Bano,[Banera, ducha])[1,*]\n"
 				+ "	r4:decomposition(Lava_Platos,[Cocina])<1>\n" + "	r5:decomposition(Cocina,[Orno])<0>\n"
-				+ "	r6: implies(Cuarto_Principal,Baño)\n" + "	r7:decomposition(Baño,[Cuarto_secundario])<0>\n"
+				+ "	r6: implies(Cuarto_Principal,Bano)\n" + "	r7:decomposition(Bano,[Cuarto_secundario])<0>\n"
 				+ "	r8:decomposition(Casa,[Garaje])<0>\n" + "	r9: mutex(Biblioteca, Sala_de_juegos)\n";
 		try {
 			File file = new File(COMMON_PATH_OUTPUT+"/commonTest.hlvl");
@@ -835,7 +836,7 @@ public class TestxmlToHLVLParser {
 		String resultado ="model  smallTest_generated\n"+
 				"elements: \n" + 
 				"	boolean casa\n" + 
-				"	boolean baño\n" + 
+				"	boolean bano\n" + 
 				"	boolean garaje\n" + 
 				"	boolean cuartoPrincipal\n" + 
 				"	boolean AnteMinusJardin\n" + 
@@ -844,7 +845,8 @@ public class TestxmlToHLVLParser {
 				"relations:\n" + 
 				"	r0: coreElements(casa)\n" + 
 				"	r1:group(casa,[garaje, AnteMinusJardin])[1,*]\n" + 
-				"	r2:group(casa,[cocina, baño])	r3:decomposition(cuartoPrincipal,[casa])<1>\n" + 
+				"	r2:group(casa,[cocina, bano])[1,1]\n"+ 
+				"	r3:decomposition(cuartoPrincipal,[casa])<1>\n" + 
 				"	r4:decomposition(casa,[cuartoInvitador])<0>\n" + 
 				"	r5: implies(cuartoPrincipal,garaje)\n" + 
 				"	r6: mutex(AnteMinusJardin, cuartoInvitador)\n";
@@ -861,8 +863,6 @@ public class TestxmlToHLVLParser {
 
 			}
 		
-			System.out.println(resultado);
-			System.out.println(datosHLVL);
 			assertTrue(datosHLVL.equals(resultado));
 			in.close();
 			f.close();
@@ -888,7 +888,7 @@ public class TestxmlToHLVLParser {
 		String resultado = "model  bigTest_generated\n" + 
 				"elements: \n" + 
 				"	boolean Director_de_estudiantes\n" + 
-				"	boolean Programas_de_acompañamiento\n" + 
+				"	boolean Programas_de_acompanamiento\n" + 
 				"	boolean Ingenieria_civil\n" + 
 				"	boolean Ingenieria_electrica\n" + 
 				"	boolean Sicologos\n" + 
@@ -901,7 +901,7 @@ public class TestxmlToHLVLParser {
 				"	boolean Sociologia\n" + 
 				"	boolean Departamento_de_ingenieria\n" + 
 				"	boolean Sicologia\n" + 
-				"	boolean Departamento_de_economía\n" + 
+				"	boolean Departamento_de_economia\n" + 
 				"	boolean Antropologia\n" + 
 				"	boolean Departamento_de_humanidades\n" + 
 				"	boolean Departamento_de_Salud\n" + 
@@ -924,11 +924,12 @@ public class TestxmlToHLVLParser {
 				"	r0:group(Universidad,[Departamento_de_investigacion, Bienestar_Universitario])[1,*]\n" + 
 				"	r1: coreElements(Universidad)\n" + 
 				"	r2:group(Universidad,[Direccion_Academica, Departamento_de_finanzas, Departamento_de_recursos_humanos])[1,*]\n" + 
-				"	r3:group(Universidad,[Departamento_de_ciencias_exactas, Departamento_de_humanidades, Departamento_de_economía, Departamento_de_Salud, Departamento_de_ingenieria, Departamento_TIC])	r4:decomposition(Jefe_de_departamento,[Departamento_de_ciencias_exactas])<1>\n" + 
+				"	r3:group(Universidad,[Departamento_de_ciencias_exactas, Departamento_de_humanidades, Departamento_de_economia, Departamento_de_Salud, Departamento_de_ingenieria, Departamento_TIC])[1,1]\n"+
+				"	r4:decomposition(Jefe_de_departamento,[Departamento_de_ciencias_exactas])<1>\n" + 
 				"	r5:decomposition(Jefe_de_departamento,[Departamento_TIC])<1>\n" + 
 				"	r6:decomposition(Jefe_de_departamento,[Departamento_de_ingenieria])<1>\n" + 
 				"	r7:decomposition(Jefe_de_departamento,[Departamento_de_Salud])<1>\n" + 
-				"	r8:decomposition(Jefe_de_departamento,[Departamento_de_economía])<1>\n" + 
+				"	r8:decomposition(Jefe_de_departamento,[Departamento_de_economia])<1>\n" + 
 				"	r9:decomposition(Jefe_de_departamento,[Departamento_de_humanidades])<1>\n" + 
 				"	r10:decomposition(Ingenieria_Sistemas,[Departamento_TIC])<1>\n" + 
 				"	r11:decomposition(Ingenieria_Telematica,[Departamento_TIC])<1>\n" + 
@@ -936,8 +937,8 @@ public class TestxmlToHLVLParser {
 				"	r13:decomposition(Ingenieria_civil,[Departamento_de_ingenieria])<1>\n" + 
 				"	r14:decomposition(Departamento_de_ingenieria,[Ingenieria_electrica])<0>\n" + 
 				"	r15: mutex(Ingenieria_civil, Ingenieria_electrica)\n" + 
-				"	r16:decomposition(Economia_y_finanzas_esteriores,[Departamento_de_economía])<1>\n" + 
-				"	r17:decomposition(Administracion,[Departamento_de_economía])<1>\n" + 
+				"	r16:decomposition(Economia_y_finanzas_esteriores,[Departamento_de_economia])<1>\n" + 
+				"	r17:decomposition(Administracion,[Departamento_de_economia])<1>\n" + 
 				"	r18:decomposition(Sicologia,[Departamento_de_humanidades])<1>\n" + 
 				"	r19:decomposition(Departamento_de_humanidades,[Sociologia])<0>\n" + 
 				"	r20:decomposition(Departamento_de_humanidades,[Antropologia])<0>\n" + 
@@ -959,7 +960,7 @@ public class TestxmlToHLVLParser {
 				"	r36:decomposition(Departamento_de_investigacion,[Investigacion_Estudiantil])<0>\n" + 
 				"	r37:decomposition(Investigacion_Estudiantil,[Voluntariado_Investigacion])<0>\n" + 
 				"	r38:decomposition(Monitores_Investigacion,[Investigacion_Estudiantil])<1>\n" + 
-				"	r39:decomposition(Programas_de_acompañamiento,[Bienestar_Universitario])<1>\n" + 
+				"	r39:decomposition(Programas_de_acompanamiento,[Bienestar_Universitario])<1>\n" + 
 				"	r40:decomposition(Director_de_estudiantes,[Sicologos])<0>\n" + 
 				"	r41:decomposition(Director_de_estudiantes,[Profesores_Deportes])<0>\n" + 
 				"	r42: mutex(Sicologos, Profesores_Deportes)\n";
@@ -975,12 +976,6 @@ public class TestxmlToHLVLParser {
 				datosHLVL += linea + "\n";
 				linea = in.readLine();
 			}
-
-//			for (int i = 0; i < resultado.length(); i++) {
-//				System.out.println(resultado.charAt(i));
-//				System.out.println(datosHLVL.charAt(i));
-//			}
-			
 			assertTrue(datosHLVL.equals(resultado));
 			in.close();
 			f.close();

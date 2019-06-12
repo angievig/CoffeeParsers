@@ -1,6 +1,7 @@
 package com.coffee.modelParsers.VarXmlToHlvlParser.example;
 
 import com.coffee.modelParsers.utils.ParsingParameters;
+
 import com.coffee.modelParsers.varXmlToHLVLParser.VariamosXMLToHlvlParser;
 
 public class example {
@@ -11,13 +12,13 @@ public class example {
 	
 	public static void exampleString() {
 		variamosXMLToHlvlParser= new VariamosXMLToHlvlParser();
-		xml ="<mxGraphModel>\r\n" + "  <root>\r\n" + "    <mxCell id=\"0\"/>\r\n"
+		String xml = "<mxGraphModel>\r\n" + "  <root>\r\n" + "    <mxCell id=\"0\"/>\r\n"
 				+ "    <mxCell id=\"feature\" parent=\"0\"/>\r\n"
 				+ "    <root label=\"Casa\" type=\"root\" id=\"1\">\r\n"
 				+ "      <mxCell style=\"\" vertex=\"1\" parent=\"feature\">\r\n"
 				+ "        <mxGeometry x=\"321\" y=\"20\" width=\"100\" height=\"35\" as=\"geometry\"/>\r\n"
 				+ "      </mxCell>\r\n" + "    </root>\r\n"
-				+ "    <general label=\"Baño\" type=\"general\" id=\"2\">\r\n"
+				+ "    <general label=\"Bano\" type=\"general\" id=\"2\">\r\n"
 				+ "      <mxCell style=\"\" vertex=\"1\" parent=\"feature\">\r\n"
 				+ "        <mxGeometry x=\"200\" y=\"200\" width=\"100\" height=\"35\" as=\"geometry\"/>\r\n"
 				+ "      </mxCell>\r\n" + "    </general>\r\n"
@@ -46,7 +47,7 @@ public class example {
 				+ "      <mxCell edge=\"1\" parent=\"feature\" source=\"10\" target=\"2\">\r\n"
 				+ "        <mxGeometry relative=\"1\" as=\"geometry\"/>\r\n" + "      </mxCell>\r\n"
 				+ "    </rel_bundle_general>\r\n"
-				+ "    <leaf label=\"Bañera\" type=\"leaf\" selected=\"1\" id=\"12\">\r\n"
+				+ "    <leaf label=\"Banera\" type=\"leaf\" selected=\"1\" id=\"12\">\r\n"
 				+ "      <mxCell style=\"\" vertex=\"1\" parent=\"feature\">\r\n"
 				+ "        <mxGeometry x=\"110\" y=\"350\" width=\"100\" height=\"35\" as=\"geometry\"/>\r\n"
 				+ "      </mxCell>\r\n" + "    </leaf>\r\n"
@@ -133,7 +134,7 @@ public class example {
 				+ "        <mxGeometry relative=\"1\" as=\"geometry\"/>\r\n" + "      </mxCell>\r\n"
 				+ "    </rel_general_general>\r\n" + "    <mxCell id=\"component\" parent=\"0\" visible=\"0\"/>\r\n"
 				+ "    <mxCell id=\"binding_feature_component\" parent=\"0\" visible=\"0\"/>\r\n"
-				+ "    <leaf label=\"Bañera\" type=\"leaf\" selected=\"1\" id=\"clon12\">\r\n"
+				+ "    <leaf label=\"Banera\" type=\"leaf\" selected=\"1\" id=\"clon12\">\r\n"
 				+ "      <mxCell style=\"fillColor=#DCDCDC;\" vertex=\"1\" parent=\"binding_feature_component\">\r\n"
 				+ "        <mxGeometry x=\"560\" y=\"200\" width=\"100\" height=\"35\" as=\"geometry\"/>\r\n"
 				+ "      </mxCell>\r\n" + "    </leaf>\r\n"

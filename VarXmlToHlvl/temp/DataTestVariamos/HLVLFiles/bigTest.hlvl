@@ -1,7 +1,7 @@
 model  bigTest_generated
 elements: 
 	boolean Director_de_estudiantes
-	boolean Programas_de_acompañamiento
+	boolean Programas_de_acompanamiento
 	boolean Ingenieria_civil
 	boolean Ingenieria_electrica
 	boolean Sicologos
@@ -14,7 +14,7 @@ elements:
 	boolean Sociologia
 	boolean Departamento_de_ingenieria
 	boolean Sicologia
-	boolean Departamento_de_economía
+	boolean Departamento_de_economia
 	boolean Antropologia
 	boolean Departamento_de_humanidades
 	boolean Departamento_de_Salud
@@ -37,11 +37,12 @@ relations:
 	r0:group(Universidad,[Departamento_de_investigacion, Bienestar_Universitario])[1,*]
 	r1: coreElements(Universidad)
 	r2:group(Universidad,[Direccion_Academica, Departamento_de_finanzas, Departamento_de_recursos_humanos])[1,*]
-	r3:group(Universidad,[Departamento_de_ciencias_exactas, Departamento_de_humanidades, Departamento_de_economía, Departamento_de_Salud, Departamento_de_ingenieria, Departamento_TIC])	r4:decomposition(Jefe_de_departamento,[Departamento_de_ciencias_exactas])<1>
+	r3:group(Universidad,[Departamento_de_ciencias_exactas, Departamento_de_humanidades, Departamento_de_economia, Departamento_de_Salud, Departamento_de_ingenieria, Departamento_TIC])[1,1]
+	r4:decomposition(Jefe_de_departamento,[Departamento_de_ciencias_exactas])<1>
 	r5:decomposition(Jefe_de_departamento,[Departamento_TIC])<1>
 	r6:decomposition(Jefe_de_departamento,[Departamento_de_ingenieria])<1>
 	r7:decomposition(Jefe_de_departamento,[Departamento_de_Salud])<1>
-	r8:decomposition(Jefe_de_departamento,[Departamento_de_economía])<1>
+	r8:decomposition(Jefe_de_departamento,[Departamento_de_economia])<1>
 	r9:decomposition(Jefe_de_departamento,[Departamento_de_humanidades])<1>
 	r10:decomposition(Ingenieria_Sistemas,[Departamento_TIC])<1>
 	r11:decomposition(Ingenieria_Telematica,[Departamento_TIC])<1>
@@ -49,8 +50,8 @@ relations:
 	r13:decomposition(Ingenieria_civil,[Departamento_de_ingenieria])<1>
 	r14:decomposition(Departamento_de_ingenieria,[Ingenieria_electrica])<0>
 	r15: mutex(Ingenieria_civil, Ingenieria_electrica)
-	r16:decomposition(Economia_y_finanzas_esteriores,[Departamento_de_economía])<1>
-	r17:decomposition(Administracion,[Departamento_de_economía])<1>
+	r16:decomposition(Economia_y_finanzas_esteriores,[Departamento_de_economia])<1>
+	r17:decomposition(Administracion,[Departamento_de_economia])<1>
 	r18:decomposition(Sicologia,[Departamento_de_humanidades])<1>
 	r19:decomposition(Departamento_de_humanidades,[Sociologia])<0>
 	r20:decomposition(Departamento_de_humanidades,[Antropologia])<0>
@@ -72,7 +73,7 @@ relations:
 	r36:decomposition(Departamento_de_investigacion,[Investigacion_Estudiantil])<0>
 	r37:decomposition(Investigacion_Estudiantil,[Voluntariado_Investigacion])<0>
 	r38:decomposition(Monitores_Investigacion,[Investigacion_Estudiantil])<1>
-	r39:decomposition(Programas_de_acompañamiento,[Bienestar_Universitario])<1>
+	r39:decomposition(Programas_de_acompanamiento,[Bienestar_Universitario])<1>
 	r40:decomposition(Director_de_estudiantes,[Sicologos])<0>
 	r41:decomposition(Director_de_estudiantes,[Profesores_Deportes])<0>
 	r42: mutex(Sicologos, Profesores_Deportes)
