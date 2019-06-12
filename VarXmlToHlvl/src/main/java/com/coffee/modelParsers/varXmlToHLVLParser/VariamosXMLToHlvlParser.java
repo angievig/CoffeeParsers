@@ -1,8 +1,8 @@
 package com.coffee.modelParsers.varXmlToHLVLParser;
 import java.util.ArrayList;
 
+
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Map.Entry;
 
 import com.coffee.modelParsers.basicHLVLPackage.DecompositionType;
@@ -180,7 +180,7 @@ public class VariamosXMLToHlvlParser implements IHlvlParser {
 							findGroupsElements(entry.getValue()), GroupType.Or));
 				else
 					HlvlCode.append("	" + converter.getGroup(findRootBundle(entry.getValue()),
-							findGroupsElements(entry.getValue()), GroupType.And));
+							findGroupsElements(entry.getValue()), GroupType.Xor));
 				break;
 			}
 		}

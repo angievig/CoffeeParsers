@@ -62,7 +62,7 @@
         <mxGeometry x="821.5" y="181" width="100" height="35" as="geometry"/>
       </mxCell>
     </general>
-    <general label="Departamento de economía" type="general" id="13">
+    <general label="Departamento de economia" type="general" id="13">
       <mxCell style="" vertex="1" parent="feature">
         <mxGeometry x="838" y="94" width="100" height="35" as="geometry"/>
       </mxCell>
@@ -412,7 +412,7 @@
         <mxGeometry relative="1" as="geometry"/>
       </mxCell>
     </rel_leaf_general>
-    <leaf label="Programas de acompañamiento" type="leaf" selected="1" id="88">
+    <leaf label="Programas de acompanamiento" type="leaf" selected="1" id="88">
       <mxCell style="" vertex="1" parent="feature">
         <mxGeometry x="380" y="395.5" width="100" height="35" as="geometry"/>
       </mxCell>
@@ -464,7 +464,7 @@
         <mxGeometry x="180" y="480" width="100" height="35" as="geometry"/>
       </mxCell>
     </leaf>
-    <leaf label="Programas de acompañamiento" type="leaf" selected="1" id="clon88">
+    <leaf label="Programas de acompanamiento" type="leaf" selected="1" id="clon88">
       <mxCell style="fillColor=#DCDCDC;" vertex="1" parent="binding_feature_component">
         <mxGeometry x="430" y="410" width="100" height="35" as="geometry"/>
       </mxCell>
