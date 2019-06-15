@@ -217,23 +217,24 @@ public class FeatureIDEToHLVL implements IHlvlParser {
 	 * @param n: n represent a Node
 	 */
 	public void addDescomposition(Node n) {
-		for (int i = 0; i < n.getAttributes().getLength(); i++) {
-			if (n.getAttributes().item(i).getNodeName().equals("mandatory")
-					&& (findNameInNode(n.getParentNode()).equals("")) && (!n.getParentNode().getNodeName().equals("or")
-							&& !n.getParentNode().getNodeName().equals("alt"))) {
+		//for (int i = 0; i < n.getAttributes().getLength(); i++) {
+			if (n.getAttributes().item(0).getNodeName().equals("mandatory")&& 
+			   (findNameInNode(n.getParentNode()).equals("")) && 
+			   (!n.getParentNode().getNodeName().equals("or")&& 
+				!n.getParentNode().getNodeName().equals("alt"))) {
 				HlvlCode.append("	" + converter.getCore(findNameInNode(n)));
-			} else if (n.getAttributes().item(i).getNodeName().equals("mandatory")
-					&& (!findNameInNode(n.getParentNode()).equals("")) && (!n.getParentNode().getNodeName().equals("or")
-							&& !n.getParentNode().getNodeName().equals("alt"))) {
-				HlvlCode.append("	" + converter.getDecomposition(findNameInNode(n.getParentNode()), findNameInNode(n),
-						DecompositionType.Mandatory));
-			} else if ((!findNameInNode(n.getParentNode()).equals("")) && n.getAttributes().getLength() == 1
+			} else if (n.getAttributes().item(0).getNodeName().equals("mandatory")&& 
+					  (!findNameInNode(n.getParentNode()).equals("")) && 
+					  (!n.getParentNode().getNodeName().equals("or")
+					&& !n.getParentNode().getNodeName().equals("alt"))) {
+				HlvlCode.append("	" + converter.getDecomposition(findNameInNode(n.getParentNode()), findNameInNode(n),DecompositionType.Mandatory));
+			} else if ((!findNameInNode(n.getParentNode()).equals("")) 
+					&& n.getAttributes().getLength() == 1
 					&& (!n.getParentNode().getNodeName().equals("or")
-							&& !n.getParentNode().getNodeName().equals("alt"))) {
-				HlvlCode.append("	" + converter.getDecomposition(findNameInNode(n.getParentNode()), findNameInNode(n),
-						DecompositionType.Optional));
+					&& !n.getParentNode().getNodeName().equals("alt"))) {
+				HlvlCode.append("	" + converter.getDecomposition(findNameInNode(n.getParentNode()), findNameInNode(n),DecompositionType.Optional));
 			}
-		}
+		//}
 	}
 
 	public void addRelations(Node n) {
@@ -268,12 +269,13 @@ public class FeatureIDEToHLVL implements IHlvlParser {
 	 * @param n: n represent a Node
 	 */
 	public void addElement(Node n) {
+		StringBuilder test = HlvlCode;
 		for (int i = 0; i < n.getAttributes().getLength(); i++) {
 			if (n.getAttributes().item(i).getNodeName().equals("name")) {
 				if (params != null) {
 					HlvlCode.insert(converter.getHeader(params.getTargetName() + "_generated").length(),
 							"	" + converter.getElement(n.getAttributes().item(i).getNodeValue()));
-					addAttributes(n,converter.getHeader(params.getTargetName() + "_generated").length(), n.getParentNode().getNodeName());
+					addAttributes(n,converter.getHeader(params.getTargetName() + "_generated").length(), findNameInNode(n));
 				} else {
 
 					HlvlCode.insert((converter.getHeader("Auto_generated").length()),
@@ -284,6 +286,7 @@ public class FeatureIDEToHLVL implements IHlvlParser {
 		}
 	}
 	public void addAttributes(Node n, int pos,String nameFhater) {
+	
 		for (int i = 0; i < n.getChildNodes().getLength(); i++) {
 			if (n.getChildNodes().item(i).getNodeName().equals("attribute")) {
 			
