@@ -63,36 +63,37 @@ public class TestFeatureIDEToHLVL {
 				"relations:\n" + 
 				"	r0: coreElements(Mobile_Phone)\n" + 
 				"	r1:decomposition(Mobile_Phone,[Hardware])<1>\n" + 
-				"	r2:decomposition(speed,[and])<1>\n" + 
+				"	r2:decomposition(speed,[TRESG_Conector])<1>\n" + 
 				"	r3:decomposition(Hardware,[TRESG_Conector])<0>\n" + 
-				"	r4:decomposition(resolution,[and])<1>\n" + 
+				"	r4:decomposition(resolution,[Screen])<1>\n" + 
 				"	r5:decomposition(Hardware,[Screen])<1>\n" + 
 				"	r6:decomposition(Hardware,[Processors])<1>\n" + 
-				"	r7:decomposition(speed,[and])<1>\n" + 
+				"	r7:decomposition(speed,[CPU])<1>\n" + 
 				"	r8:decomposition(Processors,[CPU])<0>\n" + 
 				"	r9:decomposition(Processors,[GPU])<0>\n" + 
-				"	r10:decomposition(size,[and])<1>\n" + 
+				"	r10:decomposition(size,[RAM])<1>\n" + 
 				"	r11:decomposition(Hardware,[RAM])<1>\n" + 
 				"	r12:decomposition(Hardware,[GPS])<0>\n" + 
-				"	r13:decomposition(maxParConn,[and])<1>\n" + 
+				"	r13:decomposition(maxParConn,[Video_Call])<1>\n" + 
 				"	r14:decomposition(Mobile_Phone,[Video_Call])<0>\n" + 
 				"	r15:decomposition(Mobile_Phone,[Task])<0>\n" + 
 				"	r16:group(Games,[Chess, TRESD_Car_Race, Tetris])[1,*]\n" + 
 				"	r17:decomposition(Mobile_Phone,[Games])<0>\n" + 
 				"	r18:expression(((Task) => (CPU)))\n" + 
-				"	r19:expression((((Video_Call) AND ((~ (Task)) AND ((GPS) OR (GPU)))) => (TRESG_Conector)))\n";
+				"	r19:expression((((Video_Call) AND ((~ (Task)) AND ((GPS) OR (GPU)))) => (TRESG_Conector)))\n" + 
+				"";
 
 		try {
 			File file = new File(COMMONT_PATH_OUTPUT+"/commonTestWithConstrains.hlvl");
 			FileReader f = new FileReader(file);
 			BufferedReader in = new BufferedReader(f);
 			String linea = in.readLine();
-		
 			String datosHLVL = "";
 			while (!linea.equals("")) {
 				datosHLVL += linea + "\n";
 				linea = in.readLine();
 			}
+			System.out.println(datosHLVL);
 			assertTrue(datosHLVL.equals(resultado));
 			in.close();
 			f.close();
@@ -257,7 +258,7 @@ public class TestFeatureIDEToHLVL {
 
 		try {
 			String variamosResult = fToH.parse(xml);
-			System.out.println(variamosResult);
+			
 			assertTrue(resultado.equals(variamosResult));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -418,22 +419,24 @@ public class TestFeatureIDEToHLVL {
 				"relations:\n" + 
 				"	r0: coreElements(Mobile_Phone)\n" + 
 				"	r1:decomposition(Mobile_Phone,[Hardware])<1>\n" + 
-				"	r2:decomposition(speed,[and])<1>\n" + 
+				"	r2:decomposition(speed,[TRESG_Conector])<1>\n" + 
 				"	r3:decomposition(Hardware,[TRESG_Conector])<0>\n" + 
-				"	r4:decomposition(resolution,[and])<1>\n" + 
+				"	r4:decomposition(resolution,[Screen])<1>\n" + 
 				"	r5:decomposition(Hardware,[Screen])<1>\n" + 
 				"	r6:decomposition(Hardware,[Processors])<1>\n" + 
-				"	r7:decomposition(speed,[and])<1>\n" + 
+				"	r7:decomposition(speed,[CPU])<1>\n" + 
 				"	r8:decomposition(Processors,[CPU])<0>\n" + 
 				"	r9:decomposition(Processors,[GPU])<0>\n" + 
-				"	r10:decomposition(size,[and])<1>\n" + 
+				"	r10:decomposition(size,[RAM])<1>\n" + 
 				"	r11:decomposition(Hardware,[RAM])<1>\n" + 
 				"	r12:decomposition(Hardware,[GPS])<0>\n" + 
-				"	r13:decomposition(maxParConn,[and])<1>\n" + 
+				"	r13:decomposition(maxParConn,[Video_Call])<1>\n" + 
 				"	r14:decomposition(Mobile_Phone,[Video_Call])<0>\n" + 
 				"	r15:decomposition(Mobile_Phone,[Task])<0>\n" + 
 				"	r16:group(Games,[Chess, TRESD_Car_Race, Tetris])[1,*]\n" + 
-				"	r17:decomposition(Mobile_Phone,[Games])<0>\n";
+				"	r17:decomposition(Mobile_Phone,[Games])<0>\n" + 
+				"";
+
 
 		try {
 			File file = new File(COMMONT_PATH_OUTPUT+"/commonTestWithAttributes.hlvl");
@@ -446,8 +449,7 @@ public class TestFeatureIDEToHLVL {
 				datosHLVL += linea + "\n";
 				linea = in.readLine();
 			}
-//			System.out.println(datosHLVL);
-//			System.out.println(resultado);
+			System.out.println(datosHLVL);
 			assertTrue(datosHLVL.equals(resultado));
 			in.close();
 			f.close();
