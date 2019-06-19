@@ -1,5 +1,9 @@
 package splot2HLVL;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
@@ -9,6 +13,7 @@ import constraints.BooleanVariable;
 import constraints.PropositionalFormula;
 import fm.FeatureGroup;
 import fm.FeatureModel;
+import fm.FeatureModelException;
 import fm.FeatureTreeNode;
 import fm.RootNode;
 import fm.SolitaireFeature;
@@ -55,7 +60,12 @@ public class Splot2HlvlParser implements IHlvlParser{
 	public HlvlBasicFactory factory;
 	
 
-
+	public Splot2HlvlParser() {
+		hlvlProgram= new StringBuilder();
+		elements= new StringBuilder();
+		relations= new StringBuilder();
+		factory= new HlvlBasicFactory();
+	}
 	/**
 	 * constructor
 	 * @param params
@@ -68,6 +78,44 @@ public class Splot2HlvlParser implements IHlvlParser{
 		factory= new HlvlBasicFactory();
 	}
 
+	private void writeFile(String metaData) throws IOException {
+		File fileDir = new File("splotFiles/splotData.xml");
+		BufferedWriter bw = new BufferedWriter(new FileWriter(fileDir));
+		bw.write(metaData);
+		bw.close();		
+	}
+	
+	public String parser(String metaData) throws FeatureModelException, IOException {
+		writeFile(metaData);
+		
+		ParsingParameters params= new ParsingParameters();
+		params.setInputPath("splotFiles/splotData.xml");
+		params.setOutputPath("splotFiles");
+		params.setTargetName("hlvlData");
+		this.params = params;
+		FeatureModel featureModel = new XMLFeatureModel(this.params.getInputPath(), XMLFeatureModel.USE_VARIABLE_NAME_AS_ID);
+		// Load the XML file and creates the feature model
+		featureModel.loadModel();
+		
+		//traversing the feature tree for obtaining the feature and the hierarchical dependencies
+		traverseDFS(featureModel.getRoot(), 0);
+		
+		
+		traverseConstraints(featureModel);	
+		
+		// formating the output file
+		// including the Header
+		hlvlProgram.append(factory.getHeader(params.getTargetName()+"_generated"));
+		// including the elements
+		hlvlProgram.append(elements.toString());
+		//including the relations
+		hlvlProgram.append(factory.getRelationsLab());
+		hlvlProgram.append(relations.toString());
+		//including the basic operations
+		hlvlProgram.append(factory.getBasicOperationsBlock());
+		return hlvlProgram.toString();
+	}
+	
 	public void parse() throws Exception{
 		
 
@@ -80,9 +128,9 @@ public class Splot2HlvlParser implements IHlvlParser{
 			 *   Note: if an ID is specified for a feature node in the XML file it will always prevail
 			 */			
 			FeatureModel featureModel = new XMLFeatureModel(params.getInputPath(), XMLFeatureModel.USE_VARIABLE_NAME_AS_ID);
-		
 			// Load the XML file and creates the feature model
 			featureModel.loadModel();
+			
 			
 			//traversing the feature tree for obtaining the feature and the hierarchical dependencies
 			traverseDFS(featureModel.getRoot(), 0);
@@ -103,7 +151,6 @@ public class Splot2HlvlParser implements IHlvlParser{
 			
 			//Writing the Hlvl program in a file
 			writeFile();
-		
 	}
 		
 	private void traverseDFS(FeatureTreeNode node, int tab) {
