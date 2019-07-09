@@ -17,4 +17,11 @@
       </plugin>
     </plugins>
   </build>
+  <dependencies>
+  	<dependency>
+		    <groupId>com</groupId>
+		    <artifactId>basicHLVLPackage</artifactId>
+		    <version>1</version>
+		</dependency>
+  </dependencies>
 </project>

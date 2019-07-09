@@ -21,22 +21,22 @@ elements:
 	boolean Hardware
 	boolean Mobile_Phone
 relations:
-	r0: coreElements(Mobile_Phone)
-	r1:decomposition(Mobile_Phone,[Hardware])<1>
-	r2:decomposition(speed,[TRESG_Conector])<1>
-	r3:decomposition(Hardware,[TRESG_Conector])<0>
-	r4:decomposition(resolution,[Screen])<1>
-	r5:decomposition(Hardware,[Screen])<1>
-	r6:decomposition(Hardware,[Processors])<1>
-	r7:decomposition(speed,[CPU])<1>
-	r8:decomposition(Processors,[CPU])<0>
-	r9:decomposition(Processors,[GPU])<0>
-	r10:decomposition(size,[RAM])<1>
-	r11:decomposition(Hardware,[RAM])<1>
-	r12:decomposition(Hardware,[GPS])<0>
-	r13:decomposition(maxParConn,[Video_Call])<1>
-	r14:decomposition(Mobile_Phone,[Video_Call])<0>
-	r15:decomposition(Mobile_Phone,[Task])<0>
-	r16:group(Games,[Chess, TRESD_Car_Race, Tetris])[1,*]
-	r17:decomposition(Mobile_Phone,[Games])<0>
+	r0: common(Mobile_Phone)
+	r1:decomposition(Mobile_Phone,[Hardware],[1,1])
+	r2:decomposition(speed,[TRESG_Conector],[1,1])
+	r3:decomposition(Hardware,[TRESG_Conector],[0,1])
+	r4:decomposition(resolution,[Screen],[1,1])
+	r5:decomposition(Hardware,[Screen],[1,1])
+	r6:decomposition(Hardware,[Processors],[1,1])
+	r7:decomposition(speed,[CPU],[1,1])
+	r8:decomposition(Processors,[CPU],[0,1])
+	r9:decomposition(Processors,[GPU],[0,1])
+	r10:decomposition(size,[RAM],[1,1])
+	r11:decomposition(Hardware,[RAM],[1,1])
+	r12:decomposition(Hardware,[GPS],[0,1])
+	r13:decomposition(maxParConn,[Video_Call],[1,1])
+	r14:decomposition(Mobile_Phone,[Video_Call],[0,1])
+	r15:decomposition(Mobile_Phone,[Task],[0,1])
+	r16:group(Games,[Chess, TRESD_Car_Race, Tetris],[1,*])
+	r17:decomposition(Mobile_Phone,[Games],[0,1])
 

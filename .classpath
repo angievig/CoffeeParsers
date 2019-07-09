@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="com.coffee.transformationLibraries/src"/>
+	<classpathentry kind="src" path="FeatureIDEToHlvl/src/main/java"/>
+	<classpathentry kind="src" path="FeatureIDEToHlvl/src/test/java"/>
+	<classpathentry kind="src" path="splot2HLVL/src"/>
+	<classpathentry kind="src" path="splot2HLVL/Test"/>
+	<classpathentry kind="src" path="splotToPLHLCL/src"/>
+	<classpathentry kind="src" path="VarXmlToHlvl/src/main/java"/>
+	<classpathentry kind="src" path="VarXmlToHlvl/src/test/java"/>
+	<classpathentry kind="src" path="VarXmlToHlvlExample/src"/>
+	<classpathentry kind="lib" path="jars/FeatureIDEToHlvlParser.jar"/>
+	<classpathentry kind="lib" path="jars/VarXmlToHlvlParser.jar"/>
+	<classpathentry kind="lib" path="splot2HLVL/lib/sxfm.jar"/>
+	<classpathentry kind="output" path="FeatureIDEToHlvl/target/classes"/>
+</classpath>

@@ -16,17 +16,18 @@ elements:
 	boolean Games
 	boolean EjemploFeatureIDE
 relations:
-	r0: coreElements(EjemploFeatureIDE)
-	r1:group(Games,[Testris, TRESDCarRace, Chess])[1,*]
-	r2:decomposition(EjemploFeatureIDE,[Games])<0>
-	r3:decomposition(EjemploFeatureIDE,[Task])<0>
-	r4:decomposition(EjemploFeatureIDE,[VideoCall])<0>
-	r5:decomposition(EjemploFeatureIDE,[HardWare])<1>
-	r6:decomposition(HardWare,[GPS])<0>
-	r7:decomposition(HardWare,[RAM])<1>
-	r8:group(Processors,[GPU, CPU])	r9:decomposition(HardWare,[Processors])<1>
-	r10:decomposition(HardWare,[ScreenResolution])<1>
-	r11:decomposition(HardWare,[TRESGConector])<0>
+	r0: common(EjemploFeatureIDE)
+	r1:group(Games,[Testris, TRESDCarRace, Chess],[1,*])
+	r2:decomposition(EjemploFeatureIDE,[Games],[0,1])
+	r3:decomposition(EjemploFeatureIDE,[Task],[0,1])
+	r4:decomposition(EjemploFeatureIDE,[VideoCall],[0,1])
+	r5:decomposition(EjemploFeatureIDE,[HardWare],[1,1])
+	r6:decomposition(HardWare,[GPS],[0,1])
+	r7:decomposition(HardWare,[RAM],[1,1])
+	r8:group(Processors,[GPU, CPU],)
+	r9:decomposition(HardWare,[Processors],[1,1])
+	r10:decomposition(HardWare,[ScreenResolution],[1,1])
+	r11:decomposition(HardWare,[TRESGConector],[0,1])
 	r12:expression(((TRESGConector) => (GPU)))
 	r13:expression(((GPS) => (~ (Chess))))
 

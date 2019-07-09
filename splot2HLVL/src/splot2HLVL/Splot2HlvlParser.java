@@ -8,6 +8,11 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
+import com.coffee.modelParsers.basicHLVLPackage.DecompositionType;
+import com.coffee.modelParsers.basicHLVLPackage.GroupType;
+import com.coffee.modelParsers.basicHLVLPackage.HlvlBasicFactory;
+import com.coffee.modelParsers.basicHLVLPackage.IHlvlParser;
+
 import constraints.BooleanVariable;
 
 import constraints.PropositionalFormula;
@@ -20,11 +25,7 @@ import fm.SolitaireFeature;
 import fm.XMLFeatureModel;
 import utils.FileUtils;
 import utils.ParsingParameters;
-import basicHLVLPackage.DecompositionType;
-import basicHLVLPackage.GroupType;
-import basicHLVLPackage.HlvlBasicFactory;
-import basicHLVLPackage.IHlvlParser;
-import basicHLVLPackage.HlvlBasicKeys;
+
 
 /**
  * This class parses splot models to HLVL.
@@ -291,6 +292,12 @@ public class Splot2HlvlParser implements IHlvlParser{
 	
 	public String getProgram() {
 		return hlvlProgram.toString();
+	}
+	
+	@Override
+	public String parse(String arg0) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

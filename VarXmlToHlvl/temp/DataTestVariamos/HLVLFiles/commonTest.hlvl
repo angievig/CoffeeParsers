@@ -13,14 +13,14 @@ elements:
 	boolean Cuarto_Principal
 	boolean Biblioteca
 relations:
-	r0: coreElements(Casa)
-	r1:group(Casa,[Cocina, Bano, Cuarto_Principal, Cuarto_secundario])[1,*]
-	r2:group(Casa,[Biblioteca, Sala_de_juegos])[1,*]
-	r3:group(Bano,[Banera, ducha])[1,*]
-	r4:decomposition(Lava_Platos,[Cocina])<1>
-	r5:decomposition(Cocina,[Orno])<0>
+	r0: common(Casa)
+	r1:group(Casa,[Cocina, Bano, Cuarto_Principal, Cuarto_secundario],[1,*])
+	r2:group(Casa,[Biblioteca, Sala_de_juegos],[1,*])
+	r3:group(Bano,[Banera, ducha],[1,*])
+	r4:decomposition(Lava_Platos,[Cocina],[1,1])
+	r5:decomposition(Cocina,[Orno],[0,1])
 	r6: implies(Cuarto_Principal,Bano)
-	r7:decomposition(Bano,[Cuarto_secundario])<0>
-	r8:decomposition(Casa,[Garaje])<0>
+	r7:decomposition(Bano,[Cuarto_secundario],[0,1])
+	r8:decomposition(Casa,[Garaje],[0,1])
 	r9: mutex(Biblioteca, Sala_de_juegos)
 
