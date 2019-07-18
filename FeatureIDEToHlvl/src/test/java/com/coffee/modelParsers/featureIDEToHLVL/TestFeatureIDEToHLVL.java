@@ -51,7 +51,7 @@ public class TestFeatureIDEToHLVL {
 				"	att symbolic size\n" + 
 				"	boolean RAM\n" + 
 				"	boolean GPU\n" + 
-				"	att symbolic speed\n" + 
+				"	att symbolic speed2\n" + 
 				"	boolean CPU\n" + 
 				"	boolean Processors\n" + 
 				"	att symbolic resolution\n" + 
@@ -68,7 +68,7 @@ public class TestFeatureIDEToHLVL {
 				"	r4:decomposition(resolution,[Screen],[1,1])\n" + 
 				"	r5:decomposition(Hardware,[Screen],[1,1])\n" + 
 				"	r6:decomposition(Hardware,[Processors],[1,1])\n" + 
-				"	r7:decomposition(speed,[CPU],[1,1])\n" + 
+				"	r7:decomposition(speed2,[CPU],[1,1])\n" + 
 				"	r8:decomposition(Processors,[CPU],[0,1])\n" + 
 				"	r9:decomposition(Processors,[GPU],[0,1])\n" + 
 				"	r10:decomposition(size,[RAM],[1,1])\n" + 
@@ -426,7 +426,7 @@ public class TestFeatureIDEToHLVL {
 				"	att symbolic size\n" + 
 				"	boolean RAM\n" + 
 				"	boolean GPU\n" + 
-				"	att symbolic speed\n" + 
+				"	att symbolic speed2\n" + 
 				"	boolean CPU\n" + 
 				"	boolean Processors\n" + 
 				"	att symbolic resolution\n" + 
@@ -443,7 +443,7 @@ public class TestFeatureIDEToHLVL {
 				"	r4:decomposition(resolution,[Screen],[1,1])\n" + 
 				"	r5:decomposition(Hardware,[Screen],[1,1])\n" + 
 				"	r6:decomposition(Hardware,[Processors],[1,1])\n" + 
-				"	r7:decomposition(speed,[CPU],[1,1])\n" + 
+				"	r7:decomposition(speed2,[CPU],[1,1])\n" + 
 				"	r8:decomposition(Processors,[CPU],[0,1])\n" + 
 				"	r9:decomposition(Processors,[GPU],[0,1])\n" + 
 				"	r10:decomposition(size,[RAM],[1,1])\n" + 

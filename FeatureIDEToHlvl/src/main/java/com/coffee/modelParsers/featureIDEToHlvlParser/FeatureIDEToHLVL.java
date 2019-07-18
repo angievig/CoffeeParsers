@@ -280,7 +280,7 @@ public class FeatureIDEToHLVL implements IHlvlParser {
 
 					HlvlCode.insert((converter.getHeader("Auto_generated").length()),
 							"	" + converter.getElement(n.getAttributes().item(i).getNodeValue()));
-					addAttributes(n,converter.getHeader("Auto_generated").length(),n.getParentNode().getNodeName());
+					addAttributes(n,converter.getHeader("Auto_generated").length(),findNameInNode(n));
 				}
 			}
 		}

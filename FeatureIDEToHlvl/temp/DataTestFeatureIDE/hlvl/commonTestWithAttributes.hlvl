@@ -11,7 +11,7 @@ elements:
 	att symbolic size
 	boolean RAM
 	boolean GPU
-	att symbolic speed
+	att symbolic speed2
 	boolean CPU
 	boolean Processors
 	att symbolic resolution
@@ -28,7 +28,7 @@ relations:
 	r4:decomposition(resolution,[Screen],[1,1])
 	r5:decomposition(Hardware,[Screen],[1,1])
 	r6:decomposition(Hardware,[Processors],[1,1])
-	r7:decomposition(speed,[CPU],[1,1])
+	r7:decomposition(speed2,[CPU],[1,1])
 	r8:decomposition(Processors,[CPU],[0,1])
 	r9:decomposition(Processors,[GPU],[0,1])
 	r10:decomposition(size,[RAM],[1,1])

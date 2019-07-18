@@ -12,7 +12,7 @@
                 </feature>
                 <and mandatory="true" name="Processors">
                     <feature name="CPU">
-                        <attribute name="speed" type="long" unit="(MHz)"/>
+                        <attribute name="speed2" type="long" unit="(MHz)"/>
                     </feature>
                     <feature name="GPU"/>
                 </and>
