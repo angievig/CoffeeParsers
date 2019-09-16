@@ -9,10 +9,10 @@ import java.util.List;
 
 public class FileUtils {
 	/**
-	 * Lee la lista de archivos de un directorio
-	 * 
-	 * @param directoryPath: 
-	 * @return List: 
+	 * Read
+	 * File de dichos archivos
+	 * @param directoryPath: ruta del directorio 
+	 * @return List: lista de objetos File de los archivos encontrados en el directorio
 	 */
 	public static List<File> readFileFromDirectory(String directoryPath) {
 		File Dir = new File(directoryPath);

@@ -14,7 +14,7 @@ public interface IHlvlBasicFactory {
 	/**
 	 * Produces an hlvl sentence with the declaration of a boolean element
 	 * @param identifier
-	 * @return
+	 * @return string that represents the declaration of a hlvl boolean element 
 	 */
 	
 	public String getElement(String identifier);
@@ -95,7 +95,7 @@ public interface IHlvlBasicFactory {
 	/**
 	 * Produces the header of an HLVL file
 	 * @param targetName a string with the name of the model (the same as the name of the file)
-	 * @return a String with a headero for the HLVL file
+	 * @return a String with a header for the HLVL file
 	 */
 	public String getHeader(String targetName);
 
