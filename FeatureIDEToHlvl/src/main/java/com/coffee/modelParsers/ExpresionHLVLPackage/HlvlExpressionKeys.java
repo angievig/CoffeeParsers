@@ -3,7 +3,7 @@ package com.coffee.modelParsers.ExpresionHLVLPackage;
 public interface HlvlExpressionKeys {
 
 	/**
-     * Expressions 
+     * Expressions keys used in HLVL syntax.
      */
      public static String NOT ="~";
      public static String AND ="AND";

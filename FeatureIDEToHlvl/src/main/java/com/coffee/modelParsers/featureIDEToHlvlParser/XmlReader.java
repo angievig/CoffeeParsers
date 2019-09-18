@@ -21,26 +21,30 @@ import com.coffee.modelParsers.utils.FileUtils;
  * 
  * @version 0.5, 03/04/2019
  * @author Joan David Colina Echeverry
+ * Modified by Manuel Quintero
  */
 public class XmlReader {
 
 	/**
-	 * @param xmlTree: relationship with the ArrayList class that represent all XML
-	 *                 trees loaded by xmlReader
+	 * Attribute that represents a association relationship with the ArrayList class 
+	 * that is used to store and represent all XML trees loaded by xmlReader
 	 */
 	private ArrayList<Node> xmlTree;
-
-
+	
+	/**
+	 * Constructor of the class XmlReader
+	 */
 	public XmlReader() {
 		xmlTree= new ArrayList<Node>();
 	}
 	
 	/**
-	 * this method is responsible to load each XML fiel in path and add it in xmlTree
+	 * This method is responsible of loading each XML file in the specific path and 
+	 * add it in the xmlTree attribute
 	 * 
-	 * @param path: string that represent the XML source to load.
+	 * @param path String that represent the XML source that is going to be loaded.
 	 */
-	public void loadXmlFiel(String path) {
+	public void loadXmlFile(String path) {
 
 		List<File> xmlFiel = FileUtils.readFileFromDirectory(path);
 		try {
@@ -54,27 +58,29 @@ public class XmlReader {
 	}
 
 	/**
-	 * this method return a list of Node objects
+	 * This method returns a ArrayList<Node> that represents the xmlTree. 
+	 * It contains all the Nodes of the current xmlTree.
 	 * 
-	 * @return ArrayList: ArrayList with Node objects
+	 * @return An ArrayList with the Node objects of the current xmlTree.
 	 */
 	public ArrayList<Node> getXmlTree() {
 		return xmlTree;
 	}
 
 	/**
-	 * this method change xmlTree's value for paramater.
+	 * This method is used to set a new value for the attribute xmlTree.
 	 * 
-	 * @param xmlTree: ArrayList with Node objects
+	 * @param xmlTree ArrayList with Node objects that represent a xmlTree.
 	 */
 	public void setXmlTree(ArrayList<Node> xmlTree) {
 		this.xmlTree = xmlTree;
 	}
 
 	/**
-	 * this method is responsible to load xmlTree the XML code from xml
+	 * This method is responsible to load xmlTree from a  XML code that is received as
+	 * a parameter.
 	 * 
-	 * @param xml: string that represent the XML source to load.
+	 * @param xml String that contains the XML code to load.
 	 */
 	public void loadXmlString(String xml) {
 		try {
