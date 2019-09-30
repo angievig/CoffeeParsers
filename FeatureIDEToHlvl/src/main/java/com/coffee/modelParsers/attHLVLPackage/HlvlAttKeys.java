@@ -4,12 +4,12 @@ package com.coffee.modelParsers.attHLVLPackage;
 public interface HlvlAttKeys{
 	
 	/**
-	 * form to declarate a element wiht attributes
+	 * Form to declare a element with attributes
 	 */
 	public static String ATT ="att";
 	
 	/**
-	 * types of ATT
+	 * Types of attributes.
 	 */
 	public static String INTEGER ="integer";
 	public static String STRING ="string";

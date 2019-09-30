@@ -33,7 +33,7 @@ public interface HlvlBasicKeys {
 	 public static String OR ="[1,*]";
 	 
 	 /**
-	  * Syntax elements
+	  * Syntax elements for the HLVL language
 	  */
 	  public static String OPEN_CALL ="(";
 	  public static String CLOSE_CALL =")";
@@ -44,7 +44,7 @@ public interface HlvlBasicKeys {
 	  public static String SPACE =" ";
 	  
 	  /**
-	   * Model labels
+	   * Model labels for the HLVL language
 	   */
 	   public static String MODEL_LABEL ="model " ;
 	   public static String ELEMENTS_LABEL ="elements: \n"; 
@@ -53,7 +53,7 @@ public interface HlvlBasicKeys {
 	   public static String OPERATIONS_LABEL = "operations: \n";
 	   
 	   /**
-	    * Basic operations
+	    * Basic operations for the HLVL language
 	    */
 	    public static String VALID_MODEL ="validModel";
 	    public static String NUM_CONF ="numberOfConfigurations";
@@ -62,7 +62,7 @@ public interface HlvlBasicKeys {
 	    public static String VALID_CONF ="validConfiguration";
 	    
 	    /**
-	     * Expressions 
+	     * Expressions for the HLVL language
 	     */
 	     public static String NEG ="~";
 	     public static String L_AND ="AND";

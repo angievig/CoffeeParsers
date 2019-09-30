@@ -10,22 +10,25 @@ package com.coffee.modelParsers.basicHLVLPackage;
 public interface IHlvlParser {
 	
 	/**
-	 * Method to formatting the name of an element in a valid name 
-	 * for hlvl (no spaces, no symbols, etc)
-	 * @param name is the identifier of the element
-	 * @return a String with formatted name
+	 * This method is responsible of ensuring that the correct format(no spaces, no symbols, etc)
+	 * is always preserved by any element's name.
+	 * @param name Name of any Element.
+	 * @return String with the name in a valid format.
 	 */
 	public String getValidName(String name);
 	
+
 	/**
-	 * Method 
-	 * @throws Exception
+	 * This method is responsible for the parsing of the specific model that is contained in a File.
+	 * It must follow specific instructions to ensure a correct parsing.
 	 */
 	public void parse() throws Exception;
 	
 	/**
-	 * Method 
-	 * @throws Exception: 
+	 * This method is responsible for the parsing of the specific XML code that is contained in a String.
+	 * It must follow specific instructions to ensure a correct parsing.
+	 * @param data: String that contains XML code.
+	 * @return String that contains HLVL code that was produced by parsing data
 	 */
 	public String parse(String data)throws Exception;
 	

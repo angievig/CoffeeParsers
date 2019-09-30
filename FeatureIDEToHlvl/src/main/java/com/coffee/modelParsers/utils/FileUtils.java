@@ -9,10 +9,9 @@ import java.util.List;
 
 public class FileUtils {
 	/**
-	 * Lee la lista de archivos de un directorio
-	 * 
-	 * @param directoryPath
-	 * @return
+	 * This method is responsible of reading the correspondent files from a directory path.
+	 * @param directoryPath String that contains the path to a specific directory.
+	 * @return A List<File> that contains File objects that correspond to the directory specified in the path.
 	 */
 	public static List<File> readFileFromDirectory(String directoryPath) {
 		File Dir = new File(directoryPath);
@@ -31,9 +30,9 @@ public class FileUtils {
 	}
 
 	/**
-	 * Recibe una cadena y la escribe en un archivo de extension hlvl
-	 * 
-	 * @param program
+	 * Method that is responsible to write the HLVL code received into a specific file.hlvl
+	 * @param path path to reach the specified file.hlvl that the program is writing into.
+	 * @param program HLVL code that is going to be written inside the file.hlvl
 	 */
 	public static void writeHLVLProgram(String path, String program) {
 		try {
