@@ -8,7 +8,7 @@ package com.coffee.modelParsers.varXmlToHLVLParser;
  * modified on 25th January by avillota
  */
 
-public class Dependecy {
+public class Dependency {
 
 	/**
 	 * @param String: dependecy's type
