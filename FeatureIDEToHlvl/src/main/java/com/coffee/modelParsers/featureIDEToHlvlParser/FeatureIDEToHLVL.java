@@ -80,10 +80,12 @@ public class FeatureIDEToHLVL implements IHlvlParser {
 	 * Also, this method is responsible of the initialization of the xmlTree attribute.
 	 * 
 	 */
+	//TODO
 	public void initialize() {
 		xmlReader = new XmlReader();
 		xmlReader.loadXmlFile(params.getInputPath());
 		xmlTree = xmlReader.getXmlTree();
+		
 	}
 
 	/**
@@ -393,5 +395,6 @@ public class FeatureIDEToHLVL implements IHlvlParser {
 		readTree(xmlTree.get(0));
 		return HlvlCode.toString();
 	}
+	
 
 }

@@ -8,14 +8,16 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashSet;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.coffee.modelParsers.featureIDEToHlvlParser.FeatureIDEToHLVL;
 import com.coffee.modelParsers.utils.ParsingParameters;
 
-public class TestFeatureIDEToHLVL {
-
+public class TestFeatureIDEToHLVLJoan {
+	
 	public static final String COMMONT_PATH_INPUT="temp/DataTestFeatureIDE/featureIDE";
 	public static final String COMMONT_PATH_INPUT_ATT="temp/DataTestFeatureIDE/featureIDE/featureIDEWithAtt";
 	public static final String COMMONT_PATH_INPUT_CONSTRAINS="temp/DataTestFeatureIDE/featureIDE/featureIDEWithConstrains";
@@ -23,7 +25,7 @@ public class TestFeatureIDEToHLVL {
 
 	private FeatureIDEToHLVL fToH;
 
-	@Test
+	@Test 
 	public void StringWithConstrains() {
 		ParsingParameters params = new ParsingParameters();
 		params.setInputPath(COMMONT_PATH_INPUT_CONSTRAINS);

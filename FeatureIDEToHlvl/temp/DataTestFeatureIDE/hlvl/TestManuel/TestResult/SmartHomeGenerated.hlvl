@@ -1,0 +1,41 @@
+model  SmartHomeGenerated_generated
+elements: 
+	boolean WiFi-n
+	boolean WiFi-b
+	boolean 3G
+	boolean Ethernet
+	boolean Internet
+	boolean Digital Media Server
+	boolean Cache
+	boolean Provider B
+	boolean Provider A
+	boolean Providers
+	boolean VideoOnDemand
+	boolean Contents
+	boolean HDTV32
+	boolean PCPlayer
+	boolean HDTV42
+	boolean Movie Players
+	boolean Anti-Theft Alarm
+	boolean Control Panel
+	boolean CellPhone
+	boolean Control System
+	boolean Lightning
+	boolean Smart Home
+relations:
+	r0:decomposition(Smart Home,[Lightning])<1>
+	r1:group(Control System,[CellPhone, Control Panel])[1,*]
+	r2:decomposition(Smart Home,[Control System])<1>
+	r3:decomposition(Smart Home,[Anti-Theft Alarm])<0>
+	r4:group(Movie Players,[HDTV42, PCPlayer, HDTV32])[1,*]
+	r5:decomposition(Smart Home,[Movie Players])<0>
+	r6:group(Contents,[VideoOnDemand, Digital Media Server])[1,*]
+	r7:decomposition(Smart Home,[Contents])<0>
+	r8:group(Providers,[Provider A, Provider B])[1,*]
+	r9:decomposition(VideoOnDemand,[Providers])<1>
+	r10:decomposition(VideoOnDemand,[Cache])<0>
+	r11:group(Internet,[Ethernet, 3G, WiFi-b, WiFi-n])[1,*]
+	r12:decomposition(Smart Home,[Internet])<0>
+	r13:expression(((~ (Anti-Theft Alarm)) OR (Control Panel)))
+	r14:expression(((Internet) OR (~ (VideoOnDemand))))
+

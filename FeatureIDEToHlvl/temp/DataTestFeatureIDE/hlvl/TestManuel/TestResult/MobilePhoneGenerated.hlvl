@@ -1,0 +1,21 @@
+model  MobilePhoneGenerated_generated
+elements: 
+	boolean MP3
+	boolean Camera
+	boolean Media
+	boolean GPS
+	boolean Calls
+	boolean High Resolution
+	boolean Colour
+	boolean Basic
+	boolean Screen
+	boolean MobilePhone
+relations:
+	r0:group(Screen,[Basic, Colour, High Resolution])
+	r1:decomposition(MobilePhone,[Calls])<1>
+	r2:decomposition(MobilePhone,[GPS])<0>
+	r3:group(Media,[Camera, MP3])[1,*]
+	r4:decomposition(MobilePhone,[Media])<0>
+	r5:expression(((~ (GPS)) OR (~ (Basic))))
+	r6:expression(((High Resolution) OR (~ (Camera))))
+

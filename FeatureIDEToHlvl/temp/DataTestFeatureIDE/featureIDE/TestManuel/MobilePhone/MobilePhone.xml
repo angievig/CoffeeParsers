@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<featureModel>
+	<properties>
+		<graphics key="showhiddenfeatures" value="true"/>
+		<graphics key="legendposition" value="591,44"/>
+		<graphics key="legendautolayout" value="false"/>
+		<graphics key="showshortnames" value="false"/>
+		<graphics key="layout" value="horizontal"/>
+		<graphics key="showcollapsedconstraints" value="true"/>
+		<graphics key="legendhidden" value="false"/>
+		<graphics key="layoutalgorithm" value="1"/>
+	</properties>
+	<struct>
+		<and abstract="true" mandatory="true" name="MobilePhone">
+			<alt abstract="true" mandatory="true" name="Screen">
+				<feature name="Basic"/>
+				<feature name="Colour"/>
+				<feature name="High Resolution"/>
+			</alt>
+			<feature mandatory="true" name="Calls"/>
+			<feature name="GPS"/>
+			<or name="Media">
+				<feature name="Camera"/>
+				<feature name="MP3"/>
+			</or>
+		</and>
+	</struct>
+	<constraints>
+		<rule>
+			<disj>
+				<not>
+					<var>GPS</var>
+				</not>
+				<not>
+					<var>Basic</var>
+				</not>
+			</disj>
+		</rule>
+		<rule>
+			<disj>
+				<var>High Resolution</var>
+				<not>
+					<var>Camera</var>
+				</not>
+			</disj>
+		</rule>
+	</constraints>
+</featureModel>

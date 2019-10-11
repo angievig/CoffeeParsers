@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<featureModel>
+	<properties>
+		<graphics key="showhiddenfeatures" value="true"/>
+		<graphics key="legendautolayout" value="true"/>
+		<graphics key="showshortnames" value="false"/>
+		<graphics key="layout" value="horizontal"/>
+		<graphics key="showcollapsedconstraints" value="true"/>
+		<graphics key="legendhidden" value="false"/>
+		<graphics key="layoutalgorithm" value="1"/>
+	</properties>
+	<struct>
+		<and abstract="true" mandatory="true" name="Smart Home">
+			<graphics key="collapsed" value="false"/>
+			<feature mandatory="true" name="Lightning"/>
+			<or mandatory="true" name="Control System">
+				<feature name="CellPhone"/>
+				<feature name="Control Panel"/>
+			</or>
+			<feature name="Anti-Theft Alarm"/>
+			<or name="Movie Players">
+				<graphics key="collapsed" value="false"/>
+				<feature name="HDTV42"/>
+				<feature name="PCPlayer"/>
+				<feature name="HDTV32"/>
+			</or>
+			<or name="Contents">
+				<and name="VideoOnDemand">
+					<or mandatory="true" name="Providers">
+						<feature name="Provider A"/>
+						<feature name="Provider B"/>
+					</or>
+					<feature name="Cache"/>
+				</and>
+				<feature name="Digital Media Server"/>
+			</or>
+			<or name="Internet">
+				<feature name="Ethernet"/>
+				<feature name="3G"/>
+				<feature name="WiFi-b"/>
+				<feature name="WiFi-n"/>
+			</or>
+		</and>
+	</struct>
+	<constraints>
+		<rule>
+			<disj>
+				<not>
+					<var>Anti-Theft Alarm</var>
+				</not>
+				<var>Control Panel</var>
+			</disj>
+		</rule>
+		<rule>
+			<disj>
+				<var>Internet</var>
+				<not>
+					<var>VideoOnDemand</var>
+				</not>
+			</disj>
+		</rule>
+	</constraints>
+</featureModel>
