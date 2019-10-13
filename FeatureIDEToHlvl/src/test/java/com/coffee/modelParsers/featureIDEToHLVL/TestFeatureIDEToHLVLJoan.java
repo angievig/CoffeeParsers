@@ -95,7 +95,6 @@ public class TestFeatureIDEToHLVLJoan {
 				datosHLVL += linea + "\n";
 				linea = in.readLine();
 			}
-			System.out.println(datosHLVL);
 			assertTrue(datosHLVL.equals(resultado));
 			in.close();
 			f.close();
@@ -139,37 +138,40 @@ public class TestFeatureIDEToHLVLJoan {
 		
 		String resultado = "model  Auto_generated\n" + 
 				"elements: \n" + 
-				"	boolean Testris\n"+
+				"	boolean Testris\n" + 
 				"	boolean TRESDCarRace\n" + 
 				"	boolean Chess\n" + 
-				"	"+ 
-				"boolean Games\n" + 
-				"	boolean Task\n"
-				+ "	boolean VideoCall\n" + 
+				"	boolean Games\n" + 
+				"	boolean Task\n" + 
+				"	boolean VideoCall\n" + 
 				"	boolean GPS\n" + 
 				"	boolean RAM\n" + 
-				"	boolean GPU\n"
-				+ "	boolean CPU\n" + 
+				"	boolean GPU\n" + 
+				"	boolean CPU\n" + 
 				"	boolean Processors\n" + 
-				"	boolean ScreenResolution\n"
-				+ "	boolean TRESGConector\n" + 
+				"	boolean ScreenResolution\n" + 
+				"	boolean TRESGConector\n" + 
 				"	boolean HardWare\n" + 
-				"	boolean EjemploFeatureIDE\n"
-				+ "relations:\n" + 
-				"	r0: coreElements(EjemploFeatureIDE)\n"
-				+ "	r1:decomposition(EjemploFeatureIDE,[HardWare])<1>\n"
-				+ "	r2:decomposition(HardWare,[TRESGConector])<0>\n"
-				+ "	r3:decomposition(HardWare,[ScreenResolution])<1>\n"
-				+ "	r4:decomposition(HardWare,[Processors])<1>\n" + "	r5:decomposition(Processors,[CPU])<0>\n"
-				+ "	r6:decomposition(Processors,[GPU])<0>\n" + "	r7:decomposition(HardWare,[RAM])<1>\n"
-				+ "	r8:decomposition(HardWare,[GPS])<0>\n" + "	r9:decomposition(EjemploFeatureIDE,[VideoCall])<0>\n"
-				+ "	r10:decomposition(EjemploFeatureIDE,[Task])<0>\n"
-				+ "	r11:group(Games,[Chess, TRESDCarRace, Testris])[1,*]\n"
-				+ "	r12:decomposition(EjemploFeatureIDE,[Games])<0>\n";;
-
+				"	boolean EjemploFeatureIDE\n" + 
+				"relations:\n" + 
+				"	r0: coreElements(EjemploFeatureIDE)\n" + 
+				"	r1:decomposition(EjemploFeatureIDE,[HardWare])<1>\n" + 
+				"	r2:decomposition(HardWare,[TRESGConector])<0>\n" + 
+				"	r3:decomposition(HardWare,[ScreenResolution])<1>\n" + 
+				"	r4:decomposition(HardWare,[Processors])<1>\n" + 
+				"	r5:decomposition(Processors,[CPU])<0>\n" + 
+				"	r6:decomposition(Processors,[GPU])<0>\n" + 
+				"	r7:decomposition(HardWare,[RAM])<1>\n" + 
+				"	r8:decomposition(HardWare,[GPS])<0>\n" + 
+				"	r9:decomposition(EjemploFeatureIDE,[VideoCall])<0>\n" + 
+				"	r10:decomposition(EjemploFeatureIDE,[Task])<0>\n" + 
+				"	r11:group(Games,[Chess, TRESDCarRace, Testris])[1,*]\n" + 
+				"	r12:decomposition(EjemploFeatureIDE,[Games])<0>\n";
+		
+		String variamosResult = "";
 		try {
-			String variamosResult = fToH.parse(xml);
-			assertTrue(resultado.equals(variamosResult));
+			variamosResult = fToH.parse(xml);
+			assertTrue(variamosResult.equals(resultado));
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail();
@@ -252,7 +254,8 @@ public class TestFeatureIDEToHLVLJoan {
 				"	r5:decomposition(EjemploFeatureIDE,[HardWare])<1>\n" + 
 				"	r6:decomposition(HardWare,[GPS])<0>\n" + 
 				"	r7:decomposition(HardWare,[RAM])<1>\n" + 
-				"	r8:group(Processors,[GPU, CPU])	r9:decomposition(HardWare,[Processors])<1>\n" + 
+				"	r8:group(Processors,[GPU, CPU])\n"+
+				"	r9:decomposition(HardWare,[Processors])<1>\n" + 
 				"	r10:decomposition(HardWare,[ScreenResolution])<1>\n" + 
 				"	r11:decomposition(HardWare,[TRESGConector])<0>\n" + 
 				"	r12:expression(((TRESGConector) => (GPU)))\n" + 
@@ -261,6 +264,7 @@ public class TestFeatureIDEToHLVLJoan {
 		try {
 			String variamosResult = fToH.parse(xml);
 			
+			System.out.println(variamosResult);
 			assertTrue(resultado.equals(variamosResult));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -359,7 +363,8 @@ public class TestFeatureIDEToHLVLJoan {
 				"	r5:decomposition(EjemploFeatureIDE,[HardWare])<1>\n" + 
 				"	r6:decomposition(HardWare,[GPS])<0>\n" + 
 				"	r7:decomposition(HardWare,[RAM])<1>\n" + 
-				"	r8:group(Processors,[GPU, CPU])	r9:decomposition(HardWare,[Processors])<1>\n" + 
+				"	r8:group(Processors,[GPU, CPU])\n" + 
+				"	r9:decomposition(HardWare,[Processors])<1>\n" + 
 				"	r10:decomposition(HardWare,[ScreenResolution])<1>\n" + 
 				"	r11:decomposition(HardWare,[TRESGConector])<0>\n" + 
 				"	r12:expression(((TRESGConector) => (GPU)))\n" + 
@@ -451,7 +456,6 @@ public class TestFeatureIDEToHLVLJoan {
 				datosHLVL += linea + "\n";
 				linea = in.readLine();
 			}
-			System.out.println(datosHLVL);
 			assertTrue(datosHLVL.equals(resultado));
 			in.close();
 			f.close();
