@@ -89,6 +89,5 @@ public class XmlReader {
 		} catch (ParserConfigurationException | SAXException | IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 }

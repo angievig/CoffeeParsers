@@ -24,7 +24,8 @@ relations:
 	r5:decomposition(EjemploFeatureIDE,[HardWare])<1>
 	r6:decomposition(HardWare,[GPS])<0>
 	r7:decomposition(HardWare,[RAM])<1>
-	r8:group(Processors,[GPU, CPU])	r9:decomposition(HardWare,[Processors])<1>
+	r8:group(Processors,[GPU, CPU])
+	r9:decomposition(HardWare,[Processors])<1>
 	r10:decomposition(HardWare,[ScreenResolution])<1>
 	r11:decomposition(HardWare,[TRESGConector])<0>
 	r12:expression(((TRESGConector) => (GPU)))

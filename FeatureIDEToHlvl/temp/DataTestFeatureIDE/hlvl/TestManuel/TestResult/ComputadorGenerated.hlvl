@@ -1,0 +1,75 @@
+model  ComputadorGenerated_generated
+elements: 
+	boolean Planta De Poder
+	boolean 24 Pulgadas
+	boolean 17 Pulgadas
+	boolean 14 Pulgadas
+	boolean Size
+	boolean 4K
+	boolean 3D
+	boolean Tecnologia
+	boolean Pantalla
+	boolean NVIDIA
+	boolean ATI
+	boolean Tarjeta Grafica
+	boolean 10 TB
+	boolean 5 TB
+	boolean 2 TB
+	boolean 1 TB
+	boolean 500 GB
+	boolean Disco
+	boolean 64 GB
+	boolean 32 GB
+	boolean 16 GB
+	boolean 8 GB
+	boolean 4 GB
+	boolean Memoria
+	boolean Intel
+	boolean AMD
+	boolean Procesador
+	boolean CPU
+	boolean Windows Server
+	boolean Windows 10
+	boolean Windows
+	boolean OS X Server
+	boolean Yosemite
+	boolean Mac SO
+	boolean Red Hat
+	boolean Fedora
+	boolean Linux
+	boolean SO
+	boolean Clon
+	boolean Apple
+	boolean Lenovo
+	boolean Toshiba
+	boolean Dell
+	boolean Marca
+	boolean Portatil
+	boolean Mesa
+	boolean Personal
+	boolean Servidor
+	boolean Tipo
+	boolean Computador
+relations:
+	r0:group(Tipo,[Servidor, Personal])
+	r1:group(Personal,[Mesa, Portatil])
+	r2:group(Marca,[Dell, Toshiba, Lenovo, Apple, Clon])
+	r3:group(SO,[Linux, Mac SO, Windows])
+	r4:group(Linux,[Fedora, Red Hat])
+	r5:group(Mac SO,[Yosemite, OS X Server])
+	r6:group(Windows,[Windows 10, Windows Server])
+	r7:group(Procesador,[AMD, Intel])
+	r8:group(Memoria,[4 GB, 8 GB, 16 GB, 32 GB, 64 GB])
+	r9:group(Disco,[500 GB, 1 TB, 2 TB, 5 TB, 10 TB])
+	r10:group(Tarjeta Grafica,[ATI, NVIDIA])
+	r11:group(Tecnologia,[3D, 4K])[1,*]
+	r12:group(Size,[14 Pulgadas, 17 Pulgadas, 24 Pulgadas])
+	r13:decomposition(Computador,[Planta De Poder])<0>
+	r14:expression(((Personal) OR (~ (Windows 10))))
+	r15:expression(((Servidor) OR (~ (Windows Server))))
+	r16:expression(((~ (Pantalla)) OR (Portatil)))
+	r17:expression(((Servidor) OR (~ (Red Hat))))
+	r18:expression(((Servidor) OR (~ (OS X Server))))
+	r19:expression(((Personal) OR (~ (Fedora))))
+	r20:expression(((Personal) OR (~ (Yosemite))))
+
