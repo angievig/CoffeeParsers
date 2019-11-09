@@ -15,7 +15,7 @@ import java.util.HashSet;
 import org.junit.Test;
 
 import com.coffee.modelParsers.featureIDEToHlvlParser.FeatureIDEToHLVL;
-import com.coffee.modelParsers.utils.ParsingParameters;
+import com.github.coffeeframework.utils.ParsingParameters;
 
 public class TestFeatureIDEToHLVLManuel {
 

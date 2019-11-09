@@ -8,13 +8,11 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashSet;
 
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.coffee.modelParsers.featureIDEToHlvlParser.FeatureIDEToHLVL;
-import com.coffee.modelParsers.utils.ParsingParameters;
+import com.github.coffeeframework.utils.ParsingParameters;
 
 public class TestFeatureIDEToHLVLJoan {
 	

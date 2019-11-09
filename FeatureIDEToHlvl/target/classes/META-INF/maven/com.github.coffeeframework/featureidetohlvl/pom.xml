@@ -18,7 +18,7 @@
 			<url>https://www.gnu.org/licenses/gpl-3.0.html</url>
 		</license>
 	</licenses>
-	
+
 	<developers>
 		<developer>
 			<name>Angela Villota</name>
@@ -27,13 +27,13 @@
 			<organizationUrl>https://www.icesi.edu.co</organizationUrl>
 		</developer>
 	</developers>
-	
+
 	<scm>
 		<connection>scm:git:git://github.com/coffeeframework/FeatureIDEToHlvl.git</connection>
 		<developerConnection>scm:git:ssh://github.com/coffeeframework/FeatureIDEToHlvl.git</developerConnection>
 		<url>https://github.com/coffeeframework/FeatureIDEToHlvl</url>
 	</scm>
-	
+
 	<distributionManagement>
 		<snapshotRepository>
 			<id>ossrh</id>
@@ -117,13 +117,31 @@
 			</build>
 		</profile>
 	</profiles>
-	
+
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>com.github.coffeeframework</groupId>
+			<artifactId>atthlvlpackage</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.coffeeframework</groupId>
+			<artifactId>expressionhlvlpackage</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.coffeeframework</groupId>
+			<artifactId>utils</artifactId>
+			<version>0.0.2-SNAPSHOT</version>
+		</dependency>
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>

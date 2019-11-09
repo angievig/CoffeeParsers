@@ -14,7 +14,8 @@ import org.w3c.dom.Node;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-import com.coffee.modelParsers.utils.FileUtils;
+import com.github.coffeeframework.utils.FileUtils;
+
 /**
  * This is a class which is responsible for reading a XML file, loading that
  * file into a ArrayList

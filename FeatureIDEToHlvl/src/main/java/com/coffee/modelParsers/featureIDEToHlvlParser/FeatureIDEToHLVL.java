@@ -10,11 +10,11 @@ import com.coffee.modelParsers.ExpresionHLVLPackage.HlvlExpressionKeys;
 import com.coffee.modelParsers.attHLVLPackage.AttType;
 import com.coffee.modelParsers.attHLVLPackage.HlvlAttFactory;
 import com.coffee.modelParsers.attHLVLPackage.IHlvlAttFactory;
-import com.coffee.modelParsers.basicHLVLPackage.DecompositionType;
-import com.coffee.modelParsers.basicHLVLPackage.GroupType;
-import com.coffee.modelParsers.basicHLVLPackage.IHlvlParser;
-import com.coffee.modelParsers.utils.FileUtils;
-import com.coffee.modelParsers.utils.ParsingParameters;
+import com.github.coffeeframework.basickhlvlpackage.DecompositionType;
+import com.github.coffeeframework.basickhlvlpackage.GroupType;
+import com.github.coffeeframework.basickhlvlpackage.IHlvlParser;
+import com.github.coffeeframework.utils.FileUtils;
+import com.github.coffeeframework.utils.ParsingParameters;
 /**
  * This is a class that is responsible for extracting 
  * information from the xmlTree object and converting that 
@@ -233,7 +233,7 @@ public class FeatureIDEToHLVL implements IHlvlParser {
 			   (findNameInNode(n.getParentNode()).equals("")) && 
 			   (!n.getParentNode().getNodeName().equals("or")&& 
 				!n.getParentNode().getNodeName().equals("alt"))) {
-				HlvlCode.append("	" + converter.getCore(findNameInNode(n)));
+				HlvlCode.append("	" + converter.getCommon(findNameInNode(n)));
 			} else if (n.getAttributes().item(0).getNodeName().equals("mandatory")&& 
 					  (!findNameInNode(n.getParentNode()).equals("")) && 
 					  (!n.getParentNode().getNodeName().equals("or")
