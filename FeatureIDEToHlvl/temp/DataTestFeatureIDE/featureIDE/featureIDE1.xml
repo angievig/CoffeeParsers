@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<featureModel>
+    <properties/>
+    <struct>
+        <and mandatory="true" name="EjemploFeatureIDE">
+            <and mandatory="true" name="HardWare">
+                <feature name="TRESGConector"/>
+                <feature mandatory="true" name="ScreenResolution"/>
+                <and mandatory="true" name="Processors">
+                    <feature name="CPU"/>
+                    <feature name="GPU"/>
+                </and>
+                <feature mandatory="true" name="RAM"/>
+                <feature name="GPS"/>
+            </and>
+            <feature name="VideoCall"/>
+            <feature name="Task"/>
+            <or name="Games">
+                <feature name="Chess"/>
+                <feature name="TRESDCarRace"/>
+                <feature name="Testris"/>
+            </or>
+        </and>
+    </struct>
+    <constraints/>
+    <calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+    <comments/>
+    <featureOrder userDefined="false"/>
+</featureModel>

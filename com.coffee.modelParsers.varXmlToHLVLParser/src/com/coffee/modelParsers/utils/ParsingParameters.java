@@ -8,6 +8,9 @@ package com.coffee.modelParsers.utils;
 
 public class ParsingParameters {
 	private static final String HLVL_EXT=".hlvl";
+	/**
+	 * 
+	 */
 	private String inputPath;
 	private String outputPath;
 	private String targetName;

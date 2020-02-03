@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<featureModel>
+	<properties>
+		<graphics key="showhiddenfeatures" value="true"/>
+		<graphics key="legendautolayout" value="true"/>
+		<graphics key="showshortnames" value="false"/>
+		<graphics key="layout" value="horizontal"/>
+		<graphics key="showcollapsedconstraints" value="true"/>
+		<graphics key="legendhidden" value="false"/>
+		<graphics key="layoutalgorithm" value="1"/>
+	</properties>
+	<struct>
+		<and abstract="true" mandatory="true" name="Computador">
+			<graphics key="collapsed" value="false"/>
+			<alt abstract="true" mandatory="true" name="Tipo">
+				<graphics key="collapsed" value="false"/>
+				<feature name="Servidor"/>
+				<alt abstract="true" name="Personal">
+					<feature name="Mesa"/>
+					<feature name="Portatil"/>
+				</alt>
+			</alt>
+			<alt abstract="true" mandatory="true" name="Marca">
+				<graphics key="collapsed" value="false"/>
+				<feature name="Dell"/>
+				<feature name="Toshiba"/>
+				<feature name="Lenovo"/>
+				<feature name="Apple"/>
+				<feature name="Clon"/>
+			</alt>
+			<alt abstract="true" mandatory="true" name="SO">
+				<graphics key="collapsed" value="false"/>
+				<alt abstract="true" name="Linux">
+					<feature name="Fedora"/>
+					<feature name="Red Hat"/>
+				</alt>
+				<alt abstract="true" name="Mac SO">
+					<feature name="Yosemite"/>
+					<feature name="OS X Server"/>
+				</alt>
+				<alt abstract="true" name="Windows">
+					<feature name="Windows 10"/>
+					<feature name="Windows Server"/>
+				</alt>
+			</alt>
+			<and abstract="true" mandatory="true" name="CPU">
+				<graphics key="collapsed" value="false"/>
+				<alt abstract="true" mandatory="true" name="Procesador">
+					<graphics key="collapsed" value="false"/>
+					<feature name="AMD"/>
+					<feature name="Intel"/>
+				</alt>
+				<alt abstract="true" mandatory="true" name="Memoria">
+					<graphics key="collapsed" value="false"/>
+					<feature name="4 GB"/>
+					<feature name="8 GB"/>
+					<feature name="16 GB"/>
+					<feature name="32 GB"/>
+					<feature name="64 GB"/>
+				</alt>
+				<alt abstract="true" mandatory="true" name="Disco">
+					<graphics key="collapsed" value="false"/>
+					<feature name="500 GB"/>
+					<feature name="1 TB"/>
+					<feature name="2 TB"/>
+					<feature name="5 TB"/>
+					<feature name="10 TB"/>
+				</alt>
+				<alt abstract="true" name="Tarjeta Grafica">
+					<graphics key="collapsed" value="false"/>
+					<feature name="ATI"/>
+					<feature name="NVIDIA"/>
+				</alt>
+			</and>
+			<and abstract="true" name="Pantalla">
+				<or abstract="true" mandatory="true" name="Tecnologia">
+					<feature name="3D"/>
+					<feature name="4K"/>
+				</or>
+				<alt abstract="true" mandatory="true" name="Size">
+					<feature name="14 Pulgadas"/>
+					<feature name="17 Pulgadas"/>
+					<feature name="24 Pulgadas"/>
+				</alt>
+			</and>
+			<feature name="Planta De Poder"/>
+		</and>
+	</struct>
+	<constraints>
+		<rule>
+			<disj>
+				<var>Personal</var>
+				<not>
+					<var>Windows 10</var>
+				</not>
+			</disj>
+		</rule>
+		<rule>
+			<disj>
+				<var>Servidor</var>
+				<not>
+					<var>Windows Server</var>
+				</not>
+			</disj>
+		</rule>
+		<rule>
+			<disj>
+				<not>
+					<var>Pantalla</var>
+				</not>
+				<var>Portatil</var>
+			</disj>
+		</rule>
+		<rule>
+			<disj>
+				<var>Servidor</var>
+				<not>
+					<var>Red Hat</var>
+				</not>
+			</disj>
+		</rule>
+		<rule>
+			<disj>
+				<var>Servidor</var>
+				<not>
+					<var>OS X Server</var>
+				</not>
+			</disj>
+		</rule>
+		<rule>
+			<disj>
+				<var>Personal</var>
+				<not>
+					<var>Fedora</var>
+				</not>
+			</disj>
+		</rule>
+		<rule>
+			<disj>
+				<var>Personal</var>
+				<not>
+					<var>Yosemite</var>
+				</not>
+			</disj>
+		</rule>
+	</constraints>
+</featureModel>

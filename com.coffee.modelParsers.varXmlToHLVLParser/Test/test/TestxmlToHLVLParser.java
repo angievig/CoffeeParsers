@@ -160,37 +160,34 @@ class TestxmlToHLVLParser {
 				+ "      <mxCell style=\"fillColor=#DCDCDC;\" vertex=\"1\" parent=\"binding_feature_component\">\r\n"
 				+ "        <mxGeometry x=\"580\" y=\"280\" width=\"100\" height=\"35\" as=\"geometry\"/>\r\n"
 				+ "      </mxCell>\r\n" + "    </leaf>\r\n" + "  </root>\r\n" + "</mxGraphModel>";
-		String result = "model  Auto_generated\r\n" + 
-				"elements: \r\n" + 
-				"	boolean Sala_de_juegos\r\n" + 
-				"	boolean Bañera\r\n" + 
-				"	boolean Cuarto_secundario\r\n" + 
-				"	boolean ducha\r\n" + 
-				"	boolean Lava_Platos\r\n" + 
-				"	boolean Garaje\r\n" + 
-				"	boolean Orno\r\n" + 
-				"	boolean Casa\r\n" + 
-				"	boolean Baño\r\n" + 
-				"	boolean Cocina\r\n" + 
-				"	boolean Cuarto_Principal\r\n" + 
-				"	boolean Biblioteca\r\n" + 
-				"relations:\r\n" + 
-				"	r0: coreElements(Casa)\r\n" + 
-				"	r1:group(Casa,[Cocina, Baño, Cuarto_Principal, Cuarto_secundario])[1,*]\r\n" + 
-				"	r2:group(Casa,[Biblioteca, Sala_de_juegos])[1,*]\r\n" + 
-				"	r3:group(Baño,[Bañera, ducha])[1,*]\r\n" + 
-				"	r4:decomposition(Lava_Platos,[Cocina])<1>\r\n" + 
-				"	r5:decomposition(Cocina,[Orno])<0>\r\n" + 
-				"	r6: implies(Cuarto_Principal,Baño)\r\n" + 
-				"	r7:decomposition(Baño,[Cuarto_secundario])<0>\r\n" + 
-				"	r8:decomposition(Casa,[Garaje])<0>\r\n" + 
-				"	r9: mutex(Biblioteca, Sala_de_juegos)\r\n" + 
-				"\r\n" + 
-				"";
+	
+		String result = "model  Auto_generated\n" + 
+				"elements: \n" + 
+				"	boolean Sala_de_juegos\n" + 
+				"	boolean Bañera\n" + 
+				"	boolean Cuarto_secundario\n" + 
+				"	boolean ducha\n" + 
+				"	boolean Lava_Platos\n" + 
+				"	boolean Garaje\n" + 
+				"	boolean Orno\n" + 
+				"	boolean Casa\n" + 
+				"	boolean Baño\n" + 
+				"	boolean Cocina\n" + 
+				"	boolean Cuarto_Principal\n" + 
+				"	boolean Biblioteca\n" + 
+				"relations:\n" + 
+				"	r0: coreElements(Casa)\n" + 
+				"	r1:group(Casa,[Cocina, Baño, Cuarto_Principal, Cuarto_secundario])[1,*]\n" + 
+				"	r2:group(Casa,[Biblioteca, Sala_de_juegos])[1,*]\n" + 
+				"	r3:group(Baño,[Bañera, ducha])[1,*]\n" + 
+				"	r4:decomposition(Lava_Platos,[Cocina])<1>\n" + 
+				"	r5:decomposition(Cocina,[Orno])<0>\n" + 
+				"	r6: implies(Cuarto_Principal,Baño)\n" + 
+				"	r7:decomposition(Baño,[Cuarto_secundario])<0>\n" + 
+				"	r8:decomposition(Casa,[Garaje])<0>\n" + 
+				"	r9: mutex(Biblioteca, Sala_de_juegos)\n";
 		try {
 			String variamosResult = variamosXMLToHlvlParser.parse(xml);
-//			System.out.println(result);
-			//System.out.println(variamosResult);
 			assertTrue(result.equals(variamosResult));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -281,19 +278,18 @@ class TestxmlToHLVLParser {
 				+ "      <mxCell style=\"fillColor=#DCDCDC;\" vertex=\"1\" parent=\"binding_feature_component\">\r\n"
 				+ "        <mxGeometry x=\"590\" y=\"240\" width=\"100\" height=\"35\" as=\"geometry\"/>\r\n"
 				+ "      </mxCell>\r\n" + "    </leaf>\r\n" + "  </root>\r\n" + "</mxGraphModel>";
-		String result = "model  Auto_generated\r\n" + "elements: \r\n" + "	boolean casa\r\n"
-				+ "	boolean baño\r\n" + "	boolean garaje\r\n" + "	boolean cuartoPrincipal\r\n"
-				+ "	boolean AnteMinusJardin\r\n" + "	boolean cuartoInvitador\r\n" + "	boolean cocina\r\n"
-				+ "relations:\r\n" + "	r0: coreElements(casa)\r\n"
-				+ "	r1:group(casa,[garaje, AnteMinusJardin])[1,*]\r\n" + "	r2:group(casa,[cocina, baño])[1,1]\r\n"
-				+ "	r3:decomposition(cuartoPrincipal,[casa])<1>\r\n"
-				+ "	r4:decomposition(casa,[cuartoInvitador])<0>\r\n" + "	r5: implies(cuartoPrincipal,garaje)\r\n"
-				+ "	r6: mutex(AnteMinusJardin, cuartoInvitador)\r\n" + "\r\n";
+		
+		String result = "model  Auto_generated\n" + "elements: \n" + "	boolean casa\n"
+				+ "	boolean baño\n" + "	boolean garaje\n" + "	boolean cuartoPrincipal\n"
+				+ "	boolean AnteMinusJardin\n" + "	boolean cuartoInvitador\n" + "	boolean cocina\n"
+				+ "relations:\n" + "	r0: coreElements(casa)\n"
+				+ "	r1:group(casa,[garaje, AnteMinusJardin])[1,*]\n" + "	r2:group(casa,[cocina, baño])[1,1]\n"
+				+ "	r3:decomposition(cuartoPrincipal,[casa])<1>\n"
+				+ "	r4:decomposition(casa,[cuartoInvitador])<0>\n" + "	r5: implies(cuartoPrincipal,garaje)\n"
+				+ "	r6: mutex(AnteMinusJardin, cuartoInvitador)\n";
 
 		try {
 			String variamosResult = variamosXMLToHlvlParser.parse(xml);
-			System.out.println(result);
-			System.out.println(variamosResult);
 			assertTrue(result.equals(variamosResult));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -675,70 +671,69 @@ class TestxmlToHLVLParser {
 				+ "      <mxCell style=\"fillColor=#DCDCDC;\" vertex=\"1\" parent=\"binding_feature_component\">\r\n"
 				+ "        <mxGeometry x=\"390\" y=\"510\" width=\"100\" height=\"35\" as=\"geometry\"/>\r\n"
 				+ "      </mxCell>\r\n" + "    </leaf>\r\n" + "  </root>\r\n" + "</mxGraphModel>";
-		String result = "model  Auto_generated\r\n" + "elements: \r\n" + "	boolean Director_de_estudiantes\r\n"
-				+ "	boolean Programas_de_acompañamiento\r\n" + "	boolean Ingenieria_civil\r\n"
-				+ "	boolean Ingenieria_electrica\r\n" + "	boolean Sicologos\r\n" + "	boolean Profesores_Deportes\r\n"
-				+ "	boolean Administracion\r\n" + "	boolean Economia_y_finanzas_esteriores\r\n"
-				+ "	boolean Departamento_de_investigacion\r\n" + "	boolean Departamento_TIC\r\n"
-				+ "	boolean Jefe_de_departamento\r\n" + "	boolean Sociologia\r\n"
-				+ "	boolean Departamento_de_ingenieria\r\n" + "	boolean Sicologia\r\n"
-				+ "	boolean Departamento_de_economía\r\n" + "	boolean Antropologia\r\n"
-				+ "	boolean Departamento_de_humanidades\r\n" + "	boolean Departamento_de_Salud\r\n"
-				+ "	boolean Departamento_de_ciencias_exactas\r\n" + "	boolean Bienestar_Universitario\r\n"
-				+ "	boolean Universidad\r\n" + "	boolean Direccion_Academica\r\n"
-				+ "	boolean Departamento_de_finanzas\r\n" + "	boolean Departamento_de_recursos_humanos\r\n"
-				+ "	boolean I2T\r\n" + "	boolean Investigacion_Estudiantil\r\n" + "	boolean Ingenieria_Sistemas\r\n"
-				+ "	boolean Musica\r\n" + "	boolean Voluntariado_Investigacion\r\n"
-				+ "	boolean Ingenieria_Telematica\r\n" + "	boolean Ingenieria_Industria\r\n"
-				+ "	boolean Monitores_Investigacion\r\n" + "	boolean Director_de_carrera\r\n" + "relations:\r\n"
-				+ "	r0:group(Universidad,[Departamento_de_investigacion, Bienestar_Universitario])[1,*]\r\n"
-				+ "	r1: coreElements(Universidad)\r\n"
-				+ "	r2:group(Universidad,[Direccion_Academica, Departamento_de_finanzas, Departamento_de_recursos_humanos])[1,*]\r\n"
-				+ "	r3:group(Universidad,[Departamento_de_ciencias_exactas, Departamento_de_humanidades, Departamento_de_economía, Departamento_de_Salud, Departamento_de_ingenieria, Departamento_TIC])[1,1]\r\n"
-				+ "	r4:decomposition(Jefe_de_departamento,[Departamento_de_ciencias_exactas])<1>\r\n"
-				+ "	r5:decomposition(Jefe_de_departamento,[Departamento_TIC])<1>\r\n"
-				+ "	r6:decomposition(Jefe_de_departamento,[Departamento_de_ingenieria])<1>\r\n"
-				+ "	r7:decomposition(Jefe_de_departamento,[Departamento_de_Salud])<1>\r\n"
-				+ "	r8:decomposition(Jefe_de_departamento,[Departamento_de_economía])<1>\r\n"
-				+ "	r9:decomposition(Jefe_de_departamento,[Departamento_de_humanidades])<1>\r\n"
-				+ "	r10:decomposition(Ingenieria_Sistemas,[Departamento_TIC])<1>\r\n"
-				+ "	r11:decomposition(Ingenieria_Telematica,[Departamento_TIC])<1>\r\n"
-				+ "	r12:decomposition(Ingenieria_Industria,[Departamento_de_ingenieria])<1>\r\n"
-				+ "	r13:decomposition(Ingenieria_civil,[Departamento_de_ingenieria])<1>\r\n"
-				+ "	r14:decomposition(Departamento_de_ingenieria,[Ingenieria_electrica])<0>\r\n"
-				+ "	r15: mutex(Ingenieria_civil, Ingenieria_electrica)\r\n"
-				+ "	r16:decomposition(Economia_y_finanzas_esteriores,[Departamento_de_economía])<1>\r\n"
-				+ "	r17:decomposition(Administracion,[Departamento_de_economía])<1>\r\n"
-				+ "	r18:decomposition(Sicologia,[Departamento_de_humanidades])<1>\r\n"
-				+ "	r19:decomposition(Departamento_de_humanidades,[Sociologia])<0>\r\n"
-				+ "	r20:decomposition(Departamento_de_humanidades,[Antropologia])<0>\r\n"
-				+ "	r21:decomposition(Musica,[Departamento_de_humanidades])<1>\r\n"
-				+ "	r22: implies(Antropologia,Musica)\r\n"
-				+ "	r23:decomposition(Director_de_estudiantes,[Bienestar_Universitario])<1>\r\n"
-				+ "	r24:decomposition(Director_de_carrera,[Ingenieria_Sistemas])<1>\r\n"
-				+ "	r25:decomposition(Director_de_carrera,[Ingenieria_Telematica])<1>\r\n"
-				+ "	r26:decomposition(Director_de_carrera,[Ingenieria_Industria])<1>\r\n"
-				+ "	r27:decomposition(Director_de_carrera,[Ingenieria_civil])<1>\r\n"
-				+ "	r28:decomposition(Director_de_carrera,[Ingenieria_electrica])<1>\r\n"
-				+ "	r29:decomposition(Director_de_carrera,[Economia_y_finanzas_esteriores])<1>\r\n"
-				+ "	r30:decomposition(Director_de_carrera,[Administracion])<1>\r\n"
-				+ "	r31:decomposition(Director_de_carrera,[Sicologia])<1>\r\n"
-				+ "	r32:decomposition(Director_de_carrera,[Sociologia])<1>\r\n"
-				+ "	r33:decomposition(Director_de_carrera,[Antropologia])<1>\r\n"
-				+ "	r34:decomposition(Director_de_carrera,[Musica])<1>\r\n"
-				+ "	r35:decomposition(I2T,[Departamento_de_investigacion])<1>\r\n"
-				+ "	r36:decomposition(Departamento_de_investigacion,[Investigacion_Estudiantil])<0>\r\n"
-				+ "	r37:decomposition(Investigacion_Estudiantil,[Voluntariado_Investigacion])<0>\r\n"
-				+ "	r38:decomposition(Monitores_Investigacion,[Investigacion_Estudiantil])<1>\r\n"
-				+ "	r39:decomposition(Programas_de_acompañamiento,[Bienestar_Universitario])<1>\r\n"
-				+ "	r40:decomposition(Director_de_estudiantes,[Sicologos])<0>\r\n"
-				+ "	r41:decomposition(Director_de_estudiantes,[Profesores_Deportes])<0>\r\n"
-				+ "	r42: mutex(Sicologos, Profesores_Deportes)\r\n" + "\r\n";
+		
+		String result = "model  Auto_generated\n" + "elements: \n" + "	boolean Director_de_estudiantes\n"
+				+ "	boolean Programas_de_acompañamiento\n" + "	boolean Ingenieria_civil\n"
+				+ "	boolean Ingenieria_electrica\n" + "	boolean Sicologos\n" + "	boolean Profesores_Deportes\n"
+				+ "	boolean Administracion\n" + "	boolean Economia_y_finanzas_esteriores\n"
+				+ "	boolean Departamento_de_investigacion\n" + "	boolean Departamento_TIC\n"
+				+ "	boolean Jefe_de_departamento\n" + "	boolean Sociologia\n"
+				+ "	boolean Departamento_de_ingenieria\n" + "	boolean Sicologia\n"
+				+ "	boolean Departamento_de_economía\n" + "	boolean Antropologia\n"
+				+ "	boolean Departamento_de_humanidades\n" + "	boolean Departamento_de_Salud\n"
+				+ "	boolean Departamento_de_ciencias_exactas\n" + "	boolean Bienestar_Universitario\n"
+				+ "	boolean Universidad\n" + "	boolean Direccion_Academica\n"
+				+ "	boolean Departamento_de_finanzas\n" + "	boolean Departamento_de_recursos_humanos\n"
+				+ "	boolean I2T\n" + "	boolean Investigacion_Estudiantil\n" + "	boolean Ingenieria_Sistemas\n"
+				+ "	boolean Musica\n" + "	boolean Voluntariado_Investigacion\n"
+				+ "	boolean Ingenieria_Telematica\n" + "	boolean Ingenieria_Industria\n"
+				+ "	boolean Monitores_Investigacion\n" + "	boolean Director_de_carrera\n" + "relations:\n"
+				+ "	r0:group(Universidad,[Departamento_de_investigacion, Bienestar_Universitario])[1,*]\n"
+				+ "	r1: coreElements(Universidad)\n"
+				+ "	r2:group(Universidad,[Direccion_Academica, Departamento_de_finanzas, Departamento_de_recursos_humanos])[1,*]\n"
+				+ "	r3:group(Universidad,[Departamento_de_ciencias_exactas, Departamento_de_humanidades, Departamento_de_economía, Departamento_de_Salud, Departamento_de_ingenieria, Departamento_TIC])[1,1]\n"
+				+ "	r4:decomposition(Jefe_de_departamento,[Departamento_de_ciencias_exactas])<1>\n"
+				+ "	r5:decomposition(Jefe_de_departamento,[Departamento_TIC])<1>\n"
+				+ "	r6:decomposition(Jefe_de_departamento,[Departamento_de_ingenieria])<1>\n"
+				+ "	r7:decomposition(Jefe_de_departamento,[Departamento_de_Salud])<1>\n"
+				+ "	r8:decomposition(Jefe_de_departamento,[Departamento_de_economía])<1>\n"
+				+ "	r9:decomposition(Jefe_de_departamento,[Departamento_de_humanidades])<1>\n"
+				+ "	r10:decomposition(Ingenieria_Sistemas,[Departamento_TIC])<1>\n"
+				+ "	r11:decomposition(Ingenieria_Telematica,[Departamento_TIC])<1>\n"
+				+ "	r12:decomposition(Ingenieria_Industria,[Departamento_de_ingenieria])<1>\n"
+				+ "	r13:decomposition(Ingenieria_civil,[Departamento_de_ingenieria])<1>\n"
+				+ "	r14:decomposition(Departamento_de_ingenieria,[Ingenieria_electrica])<0>\n"
+				+ "	r15: mutex(Ingenieria_civil, Ingenieria_electrica)\n"
+				+ "	r16:decomposition(Economia_y_finanzas_esteriores,[Departamento_de_economía])<1>\n"
+				+ "	r17:decomposition(Administracion,[Departamento_de_economía])<1>\n"
+				+ "	r18:decomposition(Sicologia,[Departamento_de_humanidades])<1>\n"
+				+ "	r19:decomposition(Departamento_de_humanidades,[Sociologia])<0>\n"
+				+ "	r20:decomposition(Departamento_de_humanidades,[Antropologia])<0>\n"
+				+ "	r21:decomposition(Musica,[Departamento_de_humanidades])<1>\n"
+				+ "	r22: implies(Antropologia,Musica)\n"
+				+ "	r23:decomposition(Director_de_estudiantes,[Bienestar_Universitario])<1>\n"
+				+ "	r24:decomposition(Director_de_carrera,[Ingenieria_Sistemas])<1>\n"
+				+ "	r25:decomposition(Director_de_carrera,[Ingenieria_Telematica])<1>\n"
+				+ "	r26:decomposition(Director_de_carrera,[Ingenieria_Industria])<1>\n"
+				+ "	r27:decomposition(Director_de_carrera,[Ingenieria_civil])<1>\n"
+				+ "	r28:decomposition(Director_de_carrera,[Ingenieria_electrica])<1>\n"
+				+ "	r29:decomposition(Director_de_carrera,[Economia_y_finanzas_esteriores])<1>\n"
+				+ "	r30:decomposition(Director_de_carrera,[Administracion])<1>\n"
+				+ "	r31:decomposition(Director_de_carrera,[Sicologia])<1>\n"
+				+ "	r32:decomposition(Director_de_carrera,[Sociologia])<1>\n"
+				+ "	r33:decomposition(Director_de_carrera,[Antropologia])<1>\n"
+				+ "	r34:decomposition(Director_de_carrera,[Musica])<1>\n"
+				+ "	r35:decomposition(I2T,[Departamento_de_investigacion])<1>\n"
+				+ "	r36:decomposition(Departamento_de_investigacion,[Investigacion_Estudiantil])<0>\n"
+				+ "	r37:decomposition(Investigacion_Estudiantil,[Voluntariado_Investigacion])<0>\n"
+				+ "	r38:decomposition(Monitores_Investigacion,[Investigacion_Estudiantil])<1>\n"
+				+ "	r39:decomposition(Programas_de_acompañamiento,[Bienestar_Universitario])<1>\n"
+				+ "	r40:decomposition(Director_de_estudiantes,[Sicologos])<0>\n"
+				+ "	r41:decomposition(Director_de_estudiantes,[Profesores_Deportes])<0>\n"
+				+ "	r42: mutex(Sicologos, Profesores_Deportes)\n";
 
 		try {
 			String variamosResult = variamosXMLToHlvlParser.parse(xml);
-//			System.out.println(result);
-//			System.out.println(variamosResult);
 			assertTrue(result.equals(variamosResult));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -761,17 +756,16 @@ class TestxmlToHLVLParser {
 			e.printStackTrace();
 		}
 
-		String resultado = "model  commonTest_generated\r\n" + "elements: \r\n" + "	boolean Sala_de_juegos\r\n"
-				+ "	boolean Bañera\r\n" + "	boolean Cuarto_secundario\r\n" + "	boolean ducha\r\n"
-				+ "	boolean Lava_Platos\r\n" + "	boolean Garaje\r\n" + "	boolean Orno\r\n" + "	boolean Casa\r\n"
-				+ "	boolean Baño\r\n" + "	boolean Cocina\r\n" + "	boolean Cuarto_Principal\r\n"
-				+ "	boolean Biblioteca\r\n" + "relations:\r\n" + "	r0: coreElements(Casa)\r\n"
-				+ "	r1:group(Casa,[Cocina, Baño, Cuarto_Principal, Cuarto_secundario])[1,*]\r\n"
-				+ "	r2:group(Casa,[Biblioteca, Sala_de_juegos])[1,*]\r\n" + "	r3:group(Baño,[Bañera, ducha])[1,*]\r\n"
-				+ "	r4:decomposition(Lava_Platos,[Cocina])<1>\r\n" + "	r5:decomposition(Cocina,[Orno])<0>\r\n"
-				+ "	r6: implies(Cuarto_Principal,Baño)\r\n" + "	r7:decomposition(Baño,[Cuarto_secundario])<0>\r\n"
-				+ "	r8:decomposition(Casa,[Garaje])<0>\r\n" + "	r9: mutex(Biblioteca, Sala_de_juegos)\r\n";
-
+		String resultado = "model  commonTest_generated\n" + "elements: \n" + "	boolean Sala_de_juegos\n"
+				+ "	boolean Bañera\n" + "	boolean Cuarto_secundario\n" + "	boolean ducha\n"
+				+ "	boolean Lava_Platos\n" + "	boolean Garaje\n" + "	boolean Orno\n" + "	boolean Casa\n"
+				+ "	boolean Baño\n" + "	boolean Cocina\n" + "	boolean Cuarto_Principal\n"
+				+ "	boolean Biblioteca\n" + "relations:\n" + "	r0: coreElements(Casa)\n"
+				+ "	r1:group(Casa,[Cocina, Baño, Cuarto_Principal, Cuarto_secundario])[1,*]\n"
+				+ "	r2:group(Casa,[Biblioteca, Sala_de_juegos])[1,*]\n" + "	r3:group(Baño,[Bañera, ducha])[1,*]\n"
+				+ "	r4:decomposition(Lava_Platos,[Cocina])<1>\n" + "	r5:decomposition(Cocina,[Orno])<0>\n"
+				+ "	r6: implies(Cuarto_Principal,Baño)\n" + "	r7:decomposition(Baño,[Cuarto_secundario])<0>\n"
+				+ "	r8:decomposition(Casa,[Garaje])<0>\n" + "	r9: mutex(Biblioteca, Sala_de_juegos)\n";
 		try {
 			File file = new File("test-data/HLVLFiles/commonTest.hlvl");
 			FileReader f = new FileReader(file);
@@ -781,10 +775,7 @@ class TestxmlToHLVLParser {
 			while (!linea.equals("")) {
 				datosHLVL += linea + "\n";
 				linea = in.readLine();
-
 			}
-			// System.out.println(datosHLVL);
-			// System.out.println(resultado);
 			assertTrue(datosHLVL.equals(resultado));
 			in.close();
 			f.close();
@@ -809,14 +800,14 @@ class TestxmlToHLVLParser {
 			e.printStackTrace();
 		}
 
-		String resultado = "model  smallTest_generated\r\n" + "elements: \r\n" + "	boolean casa\r\n"
-				+ "	boolean baño\r\n" + "	boolean garaje\r\n" + "	boolean cuartoPrincipal\r\n"
-				+ "	boolean AnteMinusJardin\r\n" + "	boolean cuartoInvitador\r\n" + "	boolean cocina\r\n"
-				+ "relations:\r\n" + "	r0: coreElements(casa)\r\n"
-				+ "	r1:group(casa,[garaje, AnteMinusJardin])[1,*]\r\n" + "	r2:group(casa,[cocina, baño])[1,1]\r\n"
-				+ "	r3:decomposition(cuartoPrincipal,[casa])<1>\r\n"
-				+ "	r4:decomposition(casa,[cuartoInvitador])<0>\r\n" + "	r5: implies(cuartoPrincipal,garaje)\r\n"
-				+ "	r6: mutex(AnteMinusJardin, cuartoInvitador)\r\n";
+		String resultado = "model  smallTest_generated\n" + "elements: \n" + "	boolean casa\n"
+				+ "	boolean baño\n" + "	boolean garaje\n" + "	boolean cuartoPrincipal\n"
+				+ "	boolean AnteMinusJardin\n" + "	boolean cuartoInvitador\n" + "	boolean cocina\n"
+				+ "relations:\n" + "	r0: coreElements(casa)\n"
+				+ "	r1:group(casa,[garaje, AnteMinusJardin])[1,*]\n" + "	r2:group(casa,[cocina, baño])[1,1]\n"
+				+ "	r3:decomposition(cuartoPrincipal,[casa])<1>\n"
+				+ "	r4:decomposition(casa,[cuartoInvitador])<0>\n" + "	r5: implies(cuartoPrincipal,garaje)\n"
+				+ "	r6: mutex(AnteMinusJardin, cuartoInvitador)\n";
 
 		try {
 			File file = new File("test-data/HLVLFiles/smallTest.hlvl");
@@ -829,8 +820,7 @@ class TestxmlToHLVLParser {
 				linea = in.readLine();
 
 			}
-//			System.out.println(datosHLVL);
-//			System.out.println(resultado);
+
 			assertTrue(datosHLVL.equals(resultado));
 			in.close();
 			f.close();
@@ -853,65 +843,66 @@ class TestxmlToHLVLParser {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		String resultado = "model  SmallTest_generated\r\n" + "elements: \r\n" + "	boolean Director_de_estudiantes\r\n"
-				+ "	boolean Programas_de_acompañamiento\r\n" + "	boolean Ingenieria_civil\r\n"
-				+ "	boolean Ingenieria_electrica\r\n" + "	boolean Sicologos\r\n" + "	boolean Profesores_Deportes\r\n"
-				+ "	boolean Administracion\r\n" + "	boolean Economia_y_finanzas_esteriores\r\n"
-				+ "	boolean Departamento_de_investigacion\r\n" + "	boolean Departamento_TIC\r\n"
-				+ "	boolean Jefe_de_departamento\r\n" + "	boolean Sociologia\r\n"
-				+ "	boolean Departamento_de_ingenieria\r\n" + "	boolean Sicologia\r\n"
-				+ "	boolean Departamento_de_economía\r\n" + "	boolean Antropologia\r\n"
-				+ "	boolean Departamento_de_humanidades\r\n" + "	boolean Departamento_de_Salud\r\n"
-				+ "	boolean Departamento_de_ciencias_exactas\r\n" + "	boolean Bienestar_Universitario\r\n"
-				+ "	boolean Universidad\r\n" + "	boolean Direccion_Academica\r\n"
-				+ "	boolean Departamento_de_finanzas\r\n" + "	boolean Departamento_de_recursos_humanos\r\n"
-				+ "	boolean I2T\r\n" + "	boolean Investigacion_Estudiantil\r\n" + "	boolean Ingenieria_Sistemas\r\n"
-				+ "	boolean Musica\r\n" + "	boolean Voluntariado_Investigacion\r\n"
-				+ "	boolean Ingenieria_Telematica\r\n" + "	boolean Ingenieria_Industria\r\n"
-				+ "	boolean Monitores_Investigacion\r\n" + "	boolean Director_de_carrera\r\n" + "relations:\r\n"
-				+ "	r0:group(Universidad,[Departamento_de_investigacion, Bienestar_Universitario])[1,*]\r\n"
-				+ "	r1: coreElements(Universidad)\r\n"
-				+ "	r2:group(Universidad,[Direccion_Academica, Departamento_de_finanzas, Departamento_de_recursos_humanos])[1,*]\r\n"
-				+ "	r3:group(Universidad,[Departamento_de_ciencias_exactas, Departamento_de_humanidades, Departamento_de_economía, Departamento_de_Salud, Departamento_de_ingenieria, Departamento_TIC])[1,1]\r\n"
-				+ "	r4:decomposition(Jefe_de_departamento,[Departamento_de_ciencias_exactas])<1>\r\n"
-				+ "	r5:decomposition(Jefe_de_departamento,[Departamento_TIC])<1>\r\n"
-				+ "	r6:decomposition(Jefe_de_departamento,[Departamento_de_ingenieria])<1>\r\n"
-				+ "	r7:decomposition(Jefe_de_departamento,[Departamento_de_Salud])<1>\r\n"
-				+ "	r8:decomposition(Jefe_de_departamento,[Departamento_de_economía])<1>\r\n"
-				+ "	r9:decomposition(Jefe_de_departamento,[Departamento_de_humanidades])<1>\r\n"
-				+ "	r10:decomposition(Ingenieria_Sistemas,[Departamento_TIC])<1>\r\n"
-				+ "	r11:decomposition(Ingenieria_Telematica,[Departamento_TIC])<1>\r\n"
-				+ "	r12:decomposition(Ingenieria_Industria,[Departamento_de_ingenieria])<1>\r\n"
-				+ "	r13:decomposition(Ingenieria_civil,[Departamento_de_ingenieria])<1>\r\n"
-				+ "	r14:decomposition(Departamento_de_ingenieria,[Ingenieria_electrica])<0>\r\n"
-				+ "	r15: mutex(Ingenieria_civil, Ingenieria_electrica)\r\n"
-				+ "	r16:decomposition(Economia_y_finanzas_esteriores,[Departamento_de_economía])<1>\r\n"
-				+ "	r17:decomposition(Administracion,[Departamento_de_economía])<1>\r\n"
-				+ "	r18:decomposition(Sicologia,[Departamento_de_humanidades])<1>\r\n"
-				+ "	r19:decomposition(Departamento_de_humanidades,[Sociologia])<0>\r\n"
-				+ "	r20:decomposition(Departamento_de_humanidades,[Antropologia])<0>\r\n"
-				+ "	r21:decomposition(Musica,[Departamento_de_humanidades])<1>\r\n"
-				+ "	r22: implies(Antropologia,Musica)\r\n"
-				+ "	r23:decomposition(Director_de_estudiantes,[Bienestar_Universitario])<1>\r\n"
-				+ "	r24:decomposition(Director_de_carrera,[Ingenieria_Sistemas])<1>\r\n"
-				+ "	r25:decomposition(Director_de_carrera,[Ingenieria_Telematica])<1>\r\n"
-				+ "	r26:decomposition(Director_de_carrera,[Ingenieria_Industria])<1>\r\n"
-				+ "	r27:decomposition(Director_de_carrera,[Ingenieria_civil])<1>\r\n"
-				+ "	r28:decomposition(Director_de_carrera,[Ingenieria_electrica])<1>\r\n"
-				+ "	r29:decomposition(Director_de_carrera,[Economia_y_finanzas_esteriores])<1>\r\n"
-				+ "	r30:decomposition(Director_de_carrera,[Administracion])<1>\r\n"
-				+ "	r31:decomposition(Director_de_carrera,[Sicologia])<1>\r\n"
-				+ "	r32:decomposition(Director_de_carrera,[Sociologia])<1>\r\n"
-				+ "	r33:decomposition(Director_de_carrera,[Antropologia])<1>\r\n"
-				+ "	r34:decomposition(Director_de_carrera,[Musica])<1>\r\n"
-				+ "	r35:decomposition(I2T,[Departamento_de_investigacion])<1>\r\n"
-				+ "	r36:decomposition(Departamento_de_investigacion,[Investigacion_Estudiantil])<0>\r\n"
-				+ "	r37:decomposition(Investigacion_Estudiantil,[Voluntariado_Investigacion])<0>\r\n"
-				+ "	r38:decomposition(Monitores_Investigacion,[Investigacion_Estudiantil])<1>\r\n"
-				+ "	r39:decomposition(Programas_de_acompañamiento,[Bienestar_Universitario])<1>\r\n"
-				+ "	r40:decomposition(Director_de_estudiantes,[Sicologos])<0>\r\n"
-				+ "	r41:decomposition(Director_de_estudiantes,[Profesores_Deportes])<0>\r\n"
-				+ "	r42: mutex(Sicologos, Profesores_Deportes)\r\n";
+		String resultado = "model  bigTest_generated\n" + "elements: \n" + "	boolean Director_de_estudiantes\n"
+				+ "	boolean Programas_de_acompañamiento\n" + "	boolean Ingenieria_civil\n"
+				+ "	boolean Ingenieria_electrica\n" + "	boolean Sicologos\n" + "	boolean Profesores_Deportes\n"
+				+ "	boolean Administracion\n" + "	boolean Economia_y_finanzas_esteriores\n"
+				+ "	boolean Departamento_de_investigacion\n" + "	boolean Departamento_TIC\n"
+				+ "	boolean Jefe_de_departamento\n" + "	boolean Sociologia\n"
+				+ "	boolean Departamento_de_ingenieria\n" + "	boolean Sicologia\n"
+				+ "	boolean Departamento_de_economía\n" + "	boolean Antropologia\n"
+				+ "	boolean Departamento_de_humanidades\n" + "	boolean Departamento_de_Salud\n"
+				+ "	boolean Departamento_de_ciencias_exactas\n" + "	boolean Bienestar_Universitario\n"
+				+ "	boolean Universidad\n" + "	boolean Direccion_Academica\n"
+				+ "	boolean Departamento_de_finanzas\n" + "	boolean Departamento_de_recursos_humanos\n"
+				+ "	boolean I2T\n" + "	boolean Investigacion_Estudiantil\n" + "	boolean Ingenieria_Sistemas\n"
+				+ "	boolean Musica\n" + "	boolean Voluntariado_Investigacion\n"
+				+ "	boolean Ingenieria_Telematica\n" + "	boolean Ingenieria_Industria\n"
+				+ "	boolean Monitores_Investigacion\n" + "	boolean Director_de_carrera\n" + "relations:\n"
+				+ "	r0:group(Universidad,[Departamento_de_investigacion, Bienestar_Universitario])[1,*]\n"
+				+ "	r1: coreElements(Universidad)\n"
+				+ "	r2:group(Universidad,[Direccion_Academica, Departamento_de_finanzas, Departamento_de_recursos_humanos])[1,*]\n"
+				+ "	r3:group(Universidad,[Departamento_de_ciencias_exactas, Departamento_de_humanidades, Departamento_de_economía, Departamento_de_Salud, Departamento_de_ingenieria, Departamento_TIC])[1,1]\n"
+				+ "	r4:decomposition(Jefe_de_departamento,[Departamento_de_ciencias_exactas])<1>\n"
+				+ "	r5:decomposition(Jefe_de_departamento,[Departamento_TIC])<1>\n"
+				+ "	r6:decomposition(Jefe_de_departamento,[Departamento_de_ingenieria])<1>\n"
+				+ "	r7:decomposition(Jefe_de_departamento,[Departamento_de_Salud])<1>\n"
+				+ "	r8:decomposition(Jefe_de_departamento,[Departamento_de_economía])<1>\n"
+				+ "	r9:decomposition(Jefe_de_departamento,[Departamento_de_humanidades])<1>\n"
+				+ "	r10:decomposition(Ingenieria_Sistemas,[Departamento_TIC])<1>\n"
+				+ "	r11:decomposition(Ingenieria_Telematica,[Departamento_TIC])<1>\n"
+				+ "	r12:decomposition(Ingenieria_Industria,[Departamento_de_ingenieria])<1>\n"
+				+ "	r13:decomposition(Ingenieria_civil,[Departamento_de_ingenieria])<1>\n"
+				+ "	r14:decomposition(Departamento_de_ingenieria,[Ingenieria_electrica])<0>\n"
+				+ "	r15: mutex(Ingenieria_civil, Ingenieria_electrica)\n"
+				+ "	r16:decomposition(Economia_y_finanzas_esteriores,[Departamento_de_economía])<1>\n"
+				+ "	r17:decomposition(Administracion,[Departamento_de_economía])<1>\n"
+				+ "	r18:decomposition(Sicologia,[Departamento_de_humanidades])<1>\n"
+				+ "	r19:decomposition(Departamento_de_humanidades,[Sociologia])<0>\n"
+				+ "	r20:decomposition(Departamento_de_humanidades,[Antropologia])<0>\n"
+				+ "	r21:decomposition(Musica,[Departamento_de_humanidades])<1>\n"
+				+ "	r22: implies(Antropologia,Musica)\n"
+				+ "	r23:decomposition(Director_de_estudiantes,[Bienestar_Universitario])<1>\n"
+				+ "	r24:decomposition(Director_de_carrera,[Ingenieria_Sistemas])<1>\n"
+				+ "	r25:decomposition(Director_de_carrera,[Ingenieria_Telematica])<1>\n"
+				+ "	r26:decomposition(Director_de_carrera,[Ingenieria_Industria])<1>\n"
+				+ "	r27:decomposition(Director_de_carrera,[Ingenieria_civil])<1>\n"
+				+ "	r28:decomposition(Director_de_carrera,[Ingenieria_electrica])<1>\n"
+				+ "	r29:decomposition(Director_de_carrera,[Economia_y_finanzas_esteriores])<1>\n"
+				+ "	r30:decomposition(Director_de_carrera,[Administracion])<1>\n"
+				+ "	r31:decomposition(Director_de_carrera,[Sicologia])<1>\n"
+				+ "	r32:decomposition(Director_de_carrera,[Sociologia])<1>\n"
+				+ "	r33:decomposition(Director_de_carrera,[Antropologia])<1>\n"
+				+ "	r34:decomposition(Director_de_carrera,[Musica])<1>\n"
+				+ "	r35:decomposition(I2T,[Departamento_de_investigacion])<1>\n"
+				+ "	r36:decomposition(Departamento_de_investigacion,[Investigacion_Estudiantil])<0>\n"
+				+ "	r37:decomposition(Investigacion_Estudiantil,[Voluntariado_Investigacion])<0>\n"
+				+ "	r38:decomposition(Monitores_Investigacion,[Investigacion_Estudiantil])<1>\n"
+				+ "	r39:decomposition(Programas_de_acompañamiento,[Bienestar_Universitario])<1>\n"
+				+ "	r40:decomposition(Director_de_estudiantes,[Sicologos])<0>\n"
+				+ "	r41:decomposition(Director_de_estudiantes,[Profesores_Deportes])<0>\n"
+				+ "	r42: mutex(Sicologos, Profesores_Deportes)\n";
+
 
 		try {
 			File file = new File("test-data/HLVLFiles/bigTest.hlvl");
